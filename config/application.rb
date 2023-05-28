@@ -25,7 +25,7 @@ module WaterBnb
 
 config.middleware.use ActionDispatch::Cookies
 config.middleware.use ActionDispatch::Session::CookieStore,
-key: '_appname_session',
+key: '_WaterBnB_session',
 same_site: :lax, 
 secure: Rails.env.production?
 
@@ -42,4 +42,9 @@ secure: Rails.env.production?
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
   end
+
+
+
+
+  
 end

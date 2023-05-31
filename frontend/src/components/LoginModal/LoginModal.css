@@ -34,7 +34,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* transition: transform 0.3s ease;
+    transform: translateY(100%); */
 }
+
+/* .modal.open {
+    height: 100vh;
+  }
+  
+
+  .modal.open .modal-content {
+    transform: translateY(0);
+  } */
 
 .modal-content form {
     display: flex;
@@ -59,3 +70,28 @@
 .trigger {
     cursor: pointer;
 }
+
+.login-button {
+    text-align: center;
+    background-color: #FF5A5F;
+    color: black;
+    border: none;
+  }
+
+  .demo-login {
+
+    padding: 10px;
+    border: none;
+    background-color: #FF5A5F;
+    color: white;
+    cursor: pointer;
+
+
+  }
+  
+  .login-button:hover {
+    background-color: #f1f1f1;
+    width: 100%;
+    
+  }
+  

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from "../../store/session";
 import './RegistrationForm.css';
 
+
 function RegistrationForm({ trigger }) {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false)
@@ -16,19 +17,38 @@ function RegistrationForm({ trigger }) {
   const submitForm = (e) => {
     e.preventDefault();
     setErrorMessages([]);
-    return dispatch(sessionActions.signup({ userEmail, name, username, userPassword, confirmPassword }))
+    if (userPassword !== confirmPassword) {
+      setErrorMessages(["Passwords do not match!"]);
+      return;
+    }
+    return dispatch(
+      sessionActions.signup({
+        username: username,
+        email: userEmail,
+        password: userPassword,
+      })
+    )
       .catch(async (res) => {
         let data;
         try {
           data = await res.clone().json();
         } catch {
-          data = await res.text(); 
+          data = await res.text();
         }
         if (data && data.errors) setErrorMessages(data.errors);
         else if (data) setErrorMessages([data]);
         else setErrorMessages([res.statusText]);
       });
   };
+
+  const demoLogin = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.login({
+        username: 'Demo-lition',
+        password: 'password'
+    }))
+    }
+  
 
   const openModal = (e) => {
     e.preventDefault();
@@ -45,16 +65,20 @@ function RegistrationForm({ trigger }) {
   }
 
   return (
-    <>  
-      <button onClick={openModal}>
-        Register!
-      </button>
+    <>  <div className='login-button'>
+      <span onClick={openModal}>
+        Sign up
+      </span>
+      </div>
       {isOpen && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={stopPropagation}>
             <form onSubmit={submitForm}>
+
+                <span Sign up> </span>
+
               <div className="field">
-             
+        
                 <input className="entryInput" id="name" type="text" value={name}
                   onChange={(e) => setName(e.target.value)} required 
                   placeholder="Name"/>
@@ -87,7 +111,12 @@ function RegistrationForm({ trigger }) {
                 {errorMessages.map(error => <li key={error}>{error}</li>)}
               </ul>
               <button className="Login-button" type="submit">Agree and Continue</button>
+              <button onClick={demoLogin} className='demo-login'>Demo Login</button>
             </form>
+            <p class="centered-text">
+  By selecting <span class="bold-text">Agree and Continue</span>, I agree to WaterBnb's Terms of Service, Payments Terms of Service, and Nondiscrimination Policy and acknowledge the Privacy Policy
+</p>
+
           </div>
         </div>
       )}

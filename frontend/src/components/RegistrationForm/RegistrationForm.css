@@ -55,3 +55,36 @@
 .trigger {
     cursor: pointer;
 }
+
+.centered-text {
+    text-align: center;
+  }
+  
+  .bold-text {
+    font-weight: bold;
+  }
+
+  .login-button {
+    text-align: center;
+    background-color: transparent;
+    color: black;
+    border: none;
+  }
+  
+  .login-button:hover {
+    background-color: #f1f1f1;
+    width: 100%;
+    
+  }
+
+  .demo-login {
+
+    padding: 10px;
+    border: none;
+    background-color: #FF5A5F;
+    color: white;
+    cursor: pointer;
+
+
+  }
+  

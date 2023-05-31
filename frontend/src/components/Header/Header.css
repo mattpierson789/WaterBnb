@@ -1,0 +1,43 @@
+#span-logo {
+    font-family: "Airbnb Cereal App Medium", sans-serif;
+    font-size: 24px;
+    color: #ff385c;
+  }
+
+  #header-bar-4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px;
+  }
+  
+  #logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  #logo-img {
+    width: 70px;
+    height: 70px;
+    margin-right: 0px;
+  }
+  
+  #span-logo {
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 15px;
+  }
+
+  .icons-header {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+
+  }
+  
+  
+  

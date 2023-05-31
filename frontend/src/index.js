@@ -7,6 +7,8 @@ import { csrfFetch } from './store/csrf';
 import configureStore from './store';
 import { Provider } from 'react-redux';
 
+
+
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {

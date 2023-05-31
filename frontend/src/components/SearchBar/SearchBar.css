@@ -1,0 +1,51 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 125px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 400px;
+    max-width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+  
+  .search-bar input::placeholder {
+    color: #999;
+  }
+  
+  .search-bar input:focus {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-bar input::selection {
+    background-color: #ff385c;
+    color: #fff;
+  }
+
+  .search-bar-container {
+    align-items: center;
+  }
+  
+  .filter-button2 {
+    margin-left: 10px;
+
+  }
+
+  .price-button {
+
+    margin-left: 15px;
+  }
+  
+  
+  
+  

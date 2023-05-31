@@ -1,0 +1,21 @@
+#hamburger {
+    width: 20px;
+    padding-right: 10px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    right: 25px;
+}
+
+.dropdown-button {
+    cursor: pointer;
+    margin-top: -5px;
+}
+
+#profile-dropdown-pic {
+    width: 30px;
+    border-radius: 50%;
+}
+

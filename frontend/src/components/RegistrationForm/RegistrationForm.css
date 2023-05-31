@@ -1,0 +1,57 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.entryInput {
+    padding: 10px;
+    border: 1px solid #ddd; 
+}
+
+.Login-button {
+    padding: 10px;
+    border: none;
+    background-color: #FF5A5F;
+    color: white;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.small-text {
+    color: #000; 
+}
+
+.trigger {
+    cursor: pointer;
+}

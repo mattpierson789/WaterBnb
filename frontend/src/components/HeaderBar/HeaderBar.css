@@ -1,0 +1,9 @@
+#header-bar {
+    position: sticky;
+    top: 0px;
+    margin-top: -10px;
+    padding-bottom: 8px;
+    border-bottom: 1px lightgray solid;
+    background-color: white;
+    z-index: 1;
+}

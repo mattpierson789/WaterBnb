@@ -1,45 +1,50 @@
 import React from 'react';
-import {useState, useSelector} from 'react-redux'
-import {NavLink} from 'react-router-dom'
-import ProfileButton from "./ProfileButton"
+import { useDispatch, useSelector } from 'react-redux';
+import LoginModal from '../LoginModal/LoginModal';
+import './Navigation.css';
+import RegistrationFormModal from '../RegistrationForm/RegistrationForm';
+import * as sessionActions from '../../store/session';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Navigation() {
+    const sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch()
 
-const sessionUser = useSelector(state => state.session.user)
+    const logout = (e) => {
+        e.preventDefault();
+        dispatch(sessionActions.logout());
+    };
 
-let sessionLinks
+    let sessionLinks;
+    if (sessionUser) {
+        sessionLinks = (
+            <div className="logged-out-links">
+                <ul>
+                    <li>
+                        {/* <Link id='trips' className='dropdown-menu-option' to={'/trips'}>My Trips</Link> */}
+                    </li>
+                    <li className='dropdown-menu-option' onClick={logout}>
+                        <span id='logout'>Log Out</span>
+                    </li>
+                </ul>
+            </div>
+        );
+    } else {
+        sessionLinks = (
+            <div className='logged-out-links'>
+              <LoginModal/>
+              <RegistrationFormModal/>
+            </div>
+        );
+    }
 
-if (sessionUser) {
-
-    sessionLinks = (<ProfileButton user={sessionUser} />
-    )
-
-} else {
-
-    sessionLinks = (
-
-        <>
-        <NavLink to="/login">Log in</NavLink>
-        <NavLink to="signup">Sign up</NavLink>
-
-        </>
-    )
-
-}
-
-return (
-
-<ul>
-<li>
-<NavLink to="/">Home</NavLink>
-{sessionLinks}
-</li>
-</ul>
-);
+    return (
+        <ul>
+            <div id='session-Links'>
+                {sessionLinks}
+            </div>
+        </ul>
+    );
 }
 
 export default Navigation;
-
-
-
-

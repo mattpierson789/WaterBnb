@@ -1,16 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LoginFormPage from './components/LoginFormPage';
-import SignUpForm from './components/SignUpForm';
-import Navigation from './components/Navigation';
+import HeaderBar from './components/HeaderBar';
+
+
 
 function App() {
   return (
     <Router>
-      <Navigation />
+       <HeaderBar/>
       <Routes>
-        <Route path="/login" element={<LoginFormPage />} />
-        <Route path="/signup" element={<SignUpForm />} />
       </Routes>
     </Router>
   );

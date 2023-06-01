@@ -25,8 +25,10 @@ export const getListing = (listingId) => (state) => state.listings ? state.listi
 export const fetchListings = () => async (dispatch) => {
     const res = await csrfFetch('/api/listings');
     const data = await res.json();
+    debugger
+    
 
-    dispatch(receiveListings(data.listings))
+    console.log(dispatch(receiveListings(data)))
 }
 
 export const fetchListing = (listingId) => async (dispatch) => {
@@ -37,12 +39,11 @@ export const fetchListing = (listingId) => async (dispatch) => {
 }
 
 export const fetchListingsType = (props) => async dispatch => {
-    const res = await csrfFetch(`/api/listings/tags/${props}`)
+    const res = await csrfFetch(`/api/listings/${props}`)
 
     let data = await res.json()
     dispatch(receiveListings(data))
 }
-
 
 
 const listingsReducer = (state = {}, action) => {
@@ -50,6 +51,7 @@ const listingsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_LISTINGS:
             return {...newState,...action.listings}
+        
         case RECEIVE_LISTING:
             return {[action.listing.id]: action.listing}
         default:

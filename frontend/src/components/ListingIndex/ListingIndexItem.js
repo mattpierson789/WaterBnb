@@ -12,7 +12,8 @@ const ListingIndexItem = (props) => {
             <div className="listing-index-item">
                 <Link className="index-show-element" to={`/listings/${listing.id}`}>
             <div className="listing-index-item-image-container">
-                <img className="listing-index-item-image" src={`https://waterbnb-seeds.s3.amazonaws.com/${listing.id}_0a.png`} alt="" />
+                <img className="listing-index-item-image" src={`https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1`} alt="" /> 
+
             </div>
             <div>
             <span id='title'>{listing.city}, {listing.country}</span>

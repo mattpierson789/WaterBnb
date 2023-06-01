@@ -14,6 +14,13 @@ class User < ApplicationRecord
   presence: true, 
   uniqueness: true
 
+  has_one_attached :photo
+
+  has_many :listings,
+  class_name: :Listing,
+  foreign_key: :lister_id,
+  dependent: :destroy
+
 
   validates :password_digest, presence: true
 

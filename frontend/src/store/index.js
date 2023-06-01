@@ -2,6 +2,8 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import listingsReducer from './listings';
+import * as listingActions from './listings'
+import * as sessionActions from './session'
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -20,6 +22,8 @@ else {
     const logger = require('redux-logger').default;
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     enhancer = composeEnhancers(applyMiddleware(thunk, logger));
+    window.listingActions = listingActions
+    window.sessionActions = sessionActions
 
 }
 

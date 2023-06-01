@@ -1,6 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
+require "open-uri"
+
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
@@ -17,7 +19,42 @@ ApplicationRecord.transaction do
       email: 'demo@user.io', 
       password: 'password'
     )
+
+    # Create the base users for the application
+
+    u2 = User.create!(
+      name: 'Michael',
+      username: 'aquaman',
+      email: 'michael.phelps@gmail.com',
+      password: 'password',
+  )
+  u2.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/michael'), filename: 'Profile-Pictures/michael')
   
+  u3 = User.create!(
+      name: 'Katie',
+      username: 'katie-ledecky',
+      email: 'katie.ledecky@gmail.com',
+      password: 'password',
+  )
+  u3.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/katie'), filename: 'Profile-Pictures/katie')
+  
+  u4 = User.create!(
+      name: 'Jason',
+      username: 'aquaman2',
+      email: 'jason.aquaman.momoa@gmail.com',
+      password: 'password',
+  )
+  u4.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/jason'), filename: 'Profile-Pictures/jason')
+  
+  u5 = User.create!(
+      name: 'Ariel',
+      username: 'under-the-sea',
+      email: 'ariel@gmail.com',
+      password: 'password',
+  )
+  u5.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/ariel'), filename: 'Profile-Pictures/ariel')
+  
+
     # More users
     10.times do 
       User.create!({
@@ -27,5 +64,103 @@ ApplicationRecord.transaction do
       }) 
     end
   
+
+    # Create some base listings for the application 
+
+    puts "Creating listings..."
+    l1 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: "263",
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael'
+    )
+    
+    l1.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+
+    l2 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: "26",
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael'
+    )
+    
+    l2.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+
+    l3 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: "2630",
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael'
+    )
+    
+    l3.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+    
+
     puts "Done!"
   end

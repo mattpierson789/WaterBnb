@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './ListingIndexItem.css';
 
 
 const ListingIndexItem = (props) => {
@@ -16,6 +17,8 @@ const ListingIndexItem = (props) => {
 
             </div>
             <div>
+
+             <div className="listing-test"> 
             <span id='title'>{listing.city}, {listing.country}</span>
             </div>
 
@@ -24,6 +27,8 @@ const ListingIndexItem = (props) => {
             <span id='beds'> {listing.sleeps} beds </span>
                     
              <span id='price'><span id='price-number'>${listing.night_price}</span>/night</span>
+
+             </div>  
 
                 </Link>
             </div>

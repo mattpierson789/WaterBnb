@@ -160,7 +160,256 @@ ApplicationRecord.transaction do
       {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
       {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
     ])
-    
 
+    l4 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: "150",
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael2'
+    )
+    
+    l4.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+    
+    l5 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: "200",
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael3'
+    )
+    
+    l5.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+
+    l6 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: rand(100..300).to_s,
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael6'
+    )
+    
+    l6.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+    
+    l7 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: rand(100..300).to_s,
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael7'
+    )
+    
+    l7.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+
+    l8 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: rand(100..300).to_s,
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael6'
+    )
+    
+    l8.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+    
+    l9 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: rand(100..300).to_s,
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael7'
+    )
+    
+    l9.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+
+    l10 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: rand(100..300).to_s,
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael6'
+    )
+    
+    l10.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+    
+    l11 = Listing.create!(
+      lister_id: 2,
+      city: 'San Francisco',
+      night_price: rand(100..300).to_s,
+      country: 'United States',
+      description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
+      unique_type: 'Ocean',
+      bedrooms: 3,
+      bathrooms: 2,
+      max_guests: 5,
+      rental_type: 'House',
+      latitude: 37.76016,
+      longitude: -122.50717,
+      wifi: true,
+      kitchen: true,
+      pets_allowed: false,
+      parking: false,
+      self_check_in: true,
+      sleeps: 2,
+      unique_activity: 'Surfing',
+      lister_name: 'michael7'
+    )
+    
+    l11.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
+    
+    
+    
     puts "Done!"
   end

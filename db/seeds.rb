@@ -71,6 +71,7 @@ ApplicationRecord.transaction do
     l1 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: "263",
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -88,7 +89,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael'
+      lister_name: 'Michael'
     )
     
     l1.photos.attach([
@@ -102,6 +103,7 @@ ApplicationRecord.transaction do
     l2 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: "26",
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -119,7 +121,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael'
+      lister_name: 'Michael'
     )
     
     l2.photos.attach([
@@ -133,6 +135,7 @@ ApplicationRecord.transaction do
     l3 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: "2630",
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -150,7 +153,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael'
+      lister_name: 'Michael'
     )
     
     l3.photos.attach([
@@ -164,6 +167,7 @@ ApplicationRecord.transaction do
     l4 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: "150",
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -181,7 +185,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael2'
+      lister_name: 'Michael'
     )
     
     l4.photos.attach([
@@ -195,6 +199,7 @@ ApplicationRecord.transaction do
     l5 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: "200",
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -212,7 +217,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael3'
+      lister_name: 'Michael'
     )
     
     l5.photos.attach([
@@ -223,9 +228,12 @@ ApplicationRecord.transaction do
       {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
     ])
 
+
+
     l6 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: rand(100..300).to_s,
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -243,7 +251,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael6'
+      lister_name: 'Michael'
     )
     
     l6.photos.attach([
@@ -257,6 +265,7 @@ ApplicationRecord.transaction do
     l7 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: rand(100..300).to_s,
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -274,7 +283,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael7'
+      lister_name: 'Michael'
     )
     
     l7.photos.attach([
@@ -288,6 +297,7 @@ ApplicationRecord.transaction do
     l8 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: rand(100..300).to_s,
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -305,7 +315,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael6'
+      lister_name: 'Michael'
     )
     
     l8.photos.attach([
@@ -319,6 +329,7 @@ ApplicationRecord.transaction do
     l9 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: rand(100..300).to_s,
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -336,7 +347,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael7'
+      lister_name: 'Michael'
     )
     
     l9.photos.attach([
@@ -350,6 +361,7 @@ ApplicationRecord.transaction do
     l10 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: rand(100..300).to_s,
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -367,7 +379,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael6'
+      lister_name: 'Michael'
     )
     
     l10.photos.attach([
@@ -381,6 +393,7 @@ ApplicationRecord.transaction do
     l11 = Listing.create!(
       lister_id: 2,
       city: 'San Francisco',
+      title: 'Ocean Beach Surf getaway',
       night_price: rand(100..300).to_s,
       country: 'United States',
       description: 'Lovely home a stones throw from Ocean Beach. Close to N Line making it easy to get anywhere in the city',
@@ -398,7 +411,7 @@ ApplicationRecord.transaction do
       self_check_in: true,
       sleeps: 2,
       unique_activity: 'Surfing',
-      lister_name: 'michael7'
+      lister_name: 'Michael'
     )
     
     l11.photos.attach([

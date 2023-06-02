@@ -5,6 +5,7 @@ import logo from './waterbnb_logo.png'
 
 function Header(props) {
   return (
+    <>
     <div id="header-bar-4">
       <Link id="logo" to="/">
         <img id="logo-img" alt="WaterBnb logo" src={logo} />
@@ -27,6 +28,8 @@ function Header(props) {
       </a>
       <br />
     </div>
+
+     </>
   );
 }
 

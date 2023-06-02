@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as sessionActions from './store/session';
+import * as listingActions from './store/listings';
 import { csrfFetch } from './store/csrf';
 import configureStore from './store';
 import { Provider } from 'react-redux';
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV !== "production") {
   window.store = store;
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
+  window.listingActions = listingActions;
 }
 
 ReactDOM.render(

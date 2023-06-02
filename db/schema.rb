@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_01_022149) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_211003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_022149) do
     t.integer "sleeps", null: false
     t.string "unique_activity"
     t.string "lister_name", default: "Michael"
+    t.string "title"
     t.index ["bathrooms"], name: "index_listings_on_bathrooms"
     t.index ["bedrooms"], name: "index_listings_on_bedrooms"
     t.index ["city"], name: "index_listings_on_city"
@@ -73,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_022149) do
     t.index ["max_guests"], name: "index_listings_on_max_guests"
     t.index ["night_price"], name: "index_listings_on_night_price"
     t.index ["rental_type"], name: "index_listings_on_rental_type"
+    t.index ["title"], name: "index_listings_on_title"
     t.index ["unique_activity"], name: "index_listings_on_unique_activity"
     t.index ["unique_type"], name: "index_listings_on_unique_type"
   end

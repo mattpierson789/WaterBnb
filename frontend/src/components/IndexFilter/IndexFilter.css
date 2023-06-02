@@ -3,9 +3,14 @@
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    padding: 25px;
+    width: 100%;
+    padding-right: 10px;
     position: sticky;
+    z-index: 1;
+    top: 0;
     background-color: white;
+    margin-right: 100px;
+    margin-left: 100px;
   }
   
   .filter-button {
@@ -15,6 +20,7 @@
     justify-content: center;
     cursor: pointer;
   }
+
   
   .filter-button:hover {
     border-bottom: 2px solid #222222;

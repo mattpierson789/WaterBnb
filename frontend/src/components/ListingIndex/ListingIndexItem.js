@@ -18,13 +18,15 @@ const ListingIndexItem = (props) => {
             </div>
             <div>
 
-             <div className="listing-test"> 
+             <div className="listing-test" > 
             <span id='title'>{listing.city}, {listing.country}</span>
             </div>
 
-            <span id='location'>{listing.listerName}'s {listing.rental_type} near the {listing.unique_type}</span>
+            <span id='location'>{listing.lister_name}'s {listing.rental_type} near the {listing.unique_type}</span>
+            <br />
 
             <span id='beds'> {listing.sleeps} beds </span>
+            <br />
                     
              <span id='price'><span id='price-number'>${listing.night_price}</span>/night</span>
 

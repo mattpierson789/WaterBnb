@@ -8,7 +8,7 @@ class Listing < ApplicationRecord
     validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
     validates :night_price, numericality: { greater_than: 0 }
     validates :unique_type, inclusion: { in: ["Ocean", "Lake", "River", "Island", "Sea", "Mountains"] }
-    validates :unique_activity, inclusion: { in: ["Surfing", "Swimming", "Fishing", "Camping", "Skiing", "Hiking"] }
+    validates :unique_activity, inclusion: { in: ["Surfing", "Swimming", "Fishing", "National Park", "Skiing", "Hiking"], allow_nil: true  }
     validates :rental_type, inclusion: { in: ["House", "Apartment", "Cabin", "Villa", "Yurt", "Chalet", "Condo"] }
   
 

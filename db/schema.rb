@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_01_211003) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_02_020623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_211003) do
     t.string "unique_activity"
     t.string "lister_name", default: "Michael"
     t.string "title"
+    t.float "rating"
     t.index ["bathrooms"], name: "index_listings_on_bathrooms"
     t.index ["bedrooms"], name: "index_listings_on_bedrooms"
     t.index ["city"], name: "index_listings_on_city"

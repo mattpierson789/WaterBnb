@@ -50,14 +50,14 @@ const ListingShow = () => {
 
             <div id='listing-show-main-image'>
 
-                <img id='listing-image-main' src={'https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'} />
+                <img id='listing-image-main' src={listing.imgUrls[0]}/>
 
                 <div id='listing-show-small-images-container'>
 
-                    <img id='listing-image-small' src={'https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'} />
-                    <img id='listing-image-small' src={'https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'} />
-                    <img id='listing-image-small' src={'https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'} />
-                    <img id='listing-image-small' src={'https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'} />
+                    <img id='listing-image-small' src={listing.photos[1]} />
+                    <img id='listing-image-small' src={listing.photos[2]} />
+                    <img id='listing-image-small' src={listing.photos[3]} />
+                    <img id='listing-image-small' src={listing.photos[4]} />
 
                 </div>
 
@@ -119,7 +119,6 @@ const ListingShow = () => {
 {/* Listing Reviews Container */}
 
 <h2>Reviews</h2>
-
 
 
 {/* Listing Map Container*/}

@@ -37,6 +37,7 @@ const ListingShow = () => {
         locationAdjective = "near the " + listing.unique_type.toLowerCase();
     }
 
+debugger
 
     return (
 
@@ -50,14 +51,22 @@ const ListingShow = () => {
 
             <div id='listing-show-main-image'>
 
-                <img id='listing-image-main' src={listing.imgUrls[0]}/>
+                {/* <img id='listing-image-main' src={listing.photos[0]}/> */}
+
+                <img id='listing-image-main' src='https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'/>
 
                 <div id='listing-show-small-images-container'>
 
-                    <img id='listing-image-small' src={listing.photos[1]} />
+                    {/* <img id='listing-image-small' src={listing.photos[1]} />
                     <img id='listing-image-small' src={listing.photos[2]} />
                     <img id='listing-image-small' src={listing.photos[3]} />
-                    <img id='listing-image-small' src={listing.photos[4]} />
+                    <img id='listing-image-small' src={listing.photos[4]} /> */}
+
+                    <img id='listing-image-small' src='https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1' />
+                    <img id='listing-image-small' src='https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1' />
+                    <img id='listing-image-small' src='https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1' />
+                    <img id='listing-image-small' src= 'https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1' />
+
 
                 </div>
 

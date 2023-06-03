@@ -93,13 +93,13 @@ ApplicationRecord.transaction do
       lister_name: 'Michael'
     )
     
-    l1.photos.attach([
-      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
-      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
-      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
-      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
-      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
-    ])
+    # l1.photos.attach([
+    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    # ])
 
       l2 = Listing.create!(
         lister_id: 1,
@@ -1119,7 +1119,7 @@ ApplicationRecord.transaction do
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/New+York+Riverside+Condo/Screen+Shot+2023-06-02+at+9.28.44+PM.png'), filename: '1'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/New+York+Riverside+Condo/Screen+Shot+2023-06-02+at+9.28.57+PM.png'), filename: '2'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/New+York+Riverside+Condo/Screen+Shot+2023-06-02+at+9.29.07+PM.png'), filename: '3'},
-        {io: URI.open('hhttps://mp-waterbnb-seeds.s3.amazonaws.com/Listings/New+York+Riverside+Condo/Screen+Shot+2023-06-02+at+9.29.18+PM.png'), filename: '4'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/New+York+Riverside+Condo/Screen+Shot+2023-06-02+at+9.29.18+PM.png'), filename: '4'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/New+York+Riverside+Condo/Screen+Shot+2023-06-02+at+9.29.28+PM.png'), filename: '5'}
       ])
 
@@ -1380,7 +1380,7 @@ ApplicationRecord.transaction do
       l40.photos.attach([
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Istanbul+Villa/Screen+Shot+2023-06-02+at+8.49.22+PM.png'), filename: '1'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Istanbul+Villa/Screen+Shot+2023-06-02+at+8.49.52+PM.png'), filename: '2'},
-        {io: URI.open('hhttps://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Istanbul+Villa/Screen+Shot+2023-06-02+at+8.50.05+PM.png'), filename: '3'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Istanbul+Villa/Screen+Shot+2023-06-02+at+8.50.05+PM.png'), filename: '3'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Istanbul+Villa/Screen+Shot+2023-06-02+at+8.50.20+PM.png'), filename: '4'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Istanbul+Villa/Screen+Shot+2023-06-02+at+8.50.58+PM.png'), filename: '5'}
       ])
@@ -1608,11 +1608,11 @@ ApplicationRecord.transaction do
       )
 
       l47.photos.attach([
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: '1'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: '2'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: '3'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: '4'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: '5'}
       ])
 
       l48 = Listing.create!(
@@ -1642,11 +1642,11 @@ ApplicationRecord.transaction do
 
 
       l48.photos.attach([
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: '1'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: '2'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: '3'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: '4'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: '5'}
       ])
 
       l49 = Listing.create!(
@@ -1675,11 +1675,11 @@ ApplicationRecord.transaction do
       )
 
       l49.photos.attach([
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: '1'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: '2'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: '3'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: '4'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: '5'}
       ])
 
       l50 = Listing.create!(

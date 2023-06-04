@@ -3,14 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.22.3",
+    "@googlemaps/js-api-loader": "^1.15.2",
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "@react-google-maps/api": "^2.18.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "moment": "^2.29.4",
+    "react": "^16.14.0",
+    "react-dates": "^21.8.0",
+    "react-dom": "^16.14.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-with-direction": "^1.4.0",
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1"
@@ -36,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "react": "^18.2.0"
   }
 }

@@ -3,6 +3,7 @@ import csrfFetch from "./csrf";
 
 export const RECEIVE_LISTINGS = 'listings/receiveListings'
 export const RECEIVE_LISTING = 'listings/receiveListing'
+export const RECEIVE_LISTING_DETAILS = 'listings/RECEIVE_LISTING_DETAILS'
 
 
 export const receiveListings = (listings) => ({
@@ -12,6 +13,11 @@ export const receiveListings = (listings) => ({
 
 export const receiveListing = (listing) => ({
     type: RECEIVE_LISTING,
+    listing
+})
+
+const receiveListingDetails = (listing) => ({
+    type: RECEIVE_LISTING_DETAILS,
     listing
 })
 
@@ -37,10 +43,11 @@ export const fetchListing = (listingId) => async (dispatch) => {
     dispatch(receiveListing(data))
 }
 
-export const fetchListingsType = (props) => async dispatch => {
-    const res = await csrfFetch(`/api/listings/${props}`)
+export const fetchListingsType = (unique_type) => async dispatch => {
+    const res = await csrfFetch(`/api/listings/unique_type/${unique_type}`)
 
     let data = await res.json()
+
     dispatch(receiveListings(data))
 }
 
@@ -54,8 +61,14 @@ const listingsReducer = (state = {}, action) => {
         case RECEIVE_LISTING:
             newState[action.listing.id] = action.listing
             return newState
+
+            case RECEIVE_LISTING_DETAILS:
+                const newListingStuff = action.payload ? action.payload.listing : null;
+                return {...newState, ...newListingStuff}
+              
         default:
             return newState
+
     }
 }
 

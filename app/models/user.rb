@@ -21,6 +21,9 @@ class User < ApplicationRecord
   foreign_key: :lister_id,
   dependent: :destroy
 
+  has_many :reservations,
+  foreign_key: :reserver_id
+
 
   validates :password_digest, presence: true
 

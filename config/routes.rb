@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:show, :create, :destroy]
     resources :listings, only: [:create, :show, :index]
+    get 'listings/unique_type/:unique_type', to: 'listings#unique_type_index'
 
   end 
+
+  
 
 end

@@ -5,20 +5,20 @@ import './ListingIndexItem.css';
 const ListingIndexItem = ({ listing }) => {
   let locationAdjective = '';
 
-  if (listing.unique_type === 'Mountains') {
+  if (listing.uniqueType === 'Mountains') {
     locationAdjective = 'in the mountains';
-  } else if (listing.unique_type === 'Island') {
+  } else if (listing.uniqueType === 'Island') {
     locationAdjective = 'on the island';
   } else {
-    locationAdjective = 'near the ' + listing.unique_type;
+    locationAdjective = 'near the ' + listing.uniqueType;
   }
 
   let activityStatement = '';
 
-  if (listing.unique_activities === 'National Park') {
+  if (listing.uniqueActivities === 'National Park') {
     activityStatement = 'Go to a National Park nearby!';
   } else {
-    activityStatement = 'Go ' + listing.unique_activities + ' nearby!';
+    activityStatement = 'Go ' + listing.uniqueActivities + ' nearby!';
   }
 
   return (
@@ -27,7 +27,7 @@ const ListingIndexItem = ({ listing }) => {
         <div className="listing-index-item-image-container">
           <img
             className="listing-index-item-image"
-            src={'https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'}
+            src={listing.photos[0]}
             alt=""
           />
         </div>
@@ -38,7 +38,7 @@ const ListingIndexItem = ({ listing }) => {
             </span>
           </div>
           <span id="location">
-            {listing.rental_type} {locationAdjective} hosted by {listing.lister_name}
+            {listing.rentalType} {locationAdjective} hosted by {listing.listerName}
           </span>
           <br />
           <span id="beds">
@@ -47,7 +47,7 @@ const ListingIndexItem = ({ listing }) => {
           </span>
           <br />
           <span id="price">
-            <span id="price-number">${listing.night_price}</span>/night
+            <span id="price-number">${listing.nightPrice}</span>/night
           </span>
         </div>
       </Link>

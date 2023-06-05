@@ -6,15 +6,15 @@ export const RECEIVE_LISTING = 'listings/receiveListing'
 export const RECEIVE_LISTING_DETAILS = 'listings/RECEIVE_LISTING_DETAILS'
 
 
-export const receiveListings = (listings) => ({
-    type: RECEIVE_LISTINGS,
-    listings
-})
+export const receiveListings = (listings) => {
+  return {type: RECEIVE_LISTINGS, 
+    listings}
+}
 
-export const receiveListing = (listing) => ({
-    type: RECEIVE_LISTING,
-    listing
-})
+export const receiveListing = (listing) => {
+    return {type: RECEIVE_LISTING,
+    listing}
+}
 
 const receiveListingDetails = (listing) => ({
     type: RECEIVE_LISTING_DETAILS,
@@ -32,15 +32,17 @@ export const fetchListings = () => async (dispatch) => {
     const res = await csrfFetch('/api/listings');
     const data = await res.json();
    
+  
 
-    console.log(dispatch(receiveListings(data)))
+    console.log(dispatch(receiveListings(data.listings)))
 }
 
 export const fetchListing = (listingId) => async (dispatch) => {
     const res = await fetch(`/api/listings/${listingId}`)
     const data = await res.json();
+  
 
-    dispatch(receiveListing(data))
+    dispatch(receiveListing(data.listing))
 }
 
 export const fetchListingsType = (unique_type) => async dispatch => {
@@ -56,10 +58,12 @@ const listingsReducer = (state = {}, action) => {
     const newState = {...state}
     switch(action.type) {
         case RECEIVE_LISTINGS:
+            
             return {...newState,...action.listings}
         
         case RECEIVE_LISTING:
             newState[action.listing.id] = action.listing
+            
             return newState
 
             case RECEIVE_LISTING_DETAILS:

@@ -93,13 +93,13 @@ ApplicationRecord.transaction do
       lister_name: 'Michael'
     )
     
-    # l1.photos.attach([
-    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
-    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
-    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
-    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
-    #   {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
-    # ])
+    l1.photos.attach([
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'), filename: 'OceanBeach1'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach2'), filename: 'OceanBeach2'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach3'), filename: 'OceanBeach3'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach4'), filename: 'OceanBeach4'},
+      {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach5'), filename: 'OceanBeach5'}
+    ])
 
       l2 = Listing.create!(
         lister_id: 1,
@@ -1806,6 +1806,8 @@ ApplicationRecord.transaction do
         lister_name: 'Michael'
       )
 
+
+
       l53.photos.attach([
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Zion+Yurt/Screen+Shot+2023-06-02+at+8.01.14+PM.png'), filename: '1'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Zion+Yurt/Screen+Shot+2023-06-02+at+8.01.35+PM.png'), filename: '2'},
@@ -1817,3 +1819,5 @@ ApplicationRecord.transaction do
     
     puts "Done!"
   end
+
+  

@@ -13,6 +13,7 @@ const ListingShow = () => {
   const { listingId } = useParams();
   const dispatch = useDispatch();
   const listing = useSelector(getListing(listingId));
+  const imageType = 'landscape';
 
   useEffect(() => {
     dispatch(fetchListing(listingId));
@@ -22,14 +23,16 @@ const ListingShow = () => {
     return null;
   }
 
+
   let locationAdjective = '';
-  if (listing.unique_type === 'Mountains') {
+  if (listing.uniqueType === 'Mountains') {
     locationAdjective = 'in the mountains';
-  } else if (listing.unique_type === 'Island') {
+  } else if (listing.uniqueType === 'Island') {
     locationAdjective = 'on the island';
   } else {
-    locationAdjective = 'near the ' + listing.unique_type.toLowerCase();
+    locationAdjective = 'near the ' + listing.uniqueType
   }
+
 
   return (
     <div className="listing-show-container">
@@ -40,48 +43,38 @@ const ListingShow = () => {
         <span id="location-title">
           {listing.city}, {listing.country}
         </span>
+          
+    <div id="listing-show-main-image">
+  <img
+    id='listing-image-main'
+    className={imageType === 'landscape' ? 'image-landscape' : 'image-portrait'}
+    src={listing.photos[0]}
+  />
 
-        <div id="listing-show-main-image">
-          {/* <img id='listing-image-main' src={listing.photos[0]}/> */}
-          <img
-            id="listing-image-main"
-            src="https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1"
-          />
+  <div id="listing-show-small-images-container">
+    {listing.photos.slice(1).map((photo, index) => (
+      <img
+        key={index}
+        id='listing-image-small'
+        className={imageType === 'landscape' ? 'image-landscape' : 'image-portrait'}
+        src={photo}
+      />
+    ))}
+  </div>
+</div>
 
-          <div id="listing-show-small-images-container">
-            {/* <img id='listing-image-small' src={listing.photos[1]} />
-                <img id='listing-image-small' src={listing.photos[2]} />
-                <img id='listing-image-small' src={listing.photos[3]} />
-                <img id='listing-image-small' src={listing.photos[4]} /> */}
-            <img
-              id="listing-image-small"
-              src="https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1"
-            />
-            <img
-              id="listing-image-small"
-              src="https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1"
-            />
-            <img
-              id="listing-image-small"
-              src="https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1"
-            />
-            <img
-              id="listing-image-small"
-              src="https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1"
-            />
-          </div>
-        </div>
+
 
         <div id="listing-show-title-details">
           <h2>
-            {listing.rental_type} {locationAdjective} hosted by {listing.lister_name}
+            {listing.rentalType} {locationAdjective} hosted by {listing.listerName}
           </h2>
-          <img id="prof-pic" src={listing.lister_id.profile_picture} />
+          {/* <img id="prof-pic" src={listing.lister_id.profile_picture} /> */}
         </div>
 
         <div id="listing-show-description-details">
           <span>
-            {listing.max_guests} guests · {listing.bedrooms}{' '}
+            {listing.maxGuests} guests · {listing.bedrooms}{' '}
             {listing.bedrooms > 1 ? 'bedrooms' : 'bedroom'} · {listing.sleeps}{' '}
             {listing.sleeps > 1 ? 'beds' : 'bed'} · {listing.bathrooms}{' '}
             {listing.bathrooms > 1 ? 'baths' : 'bath'}

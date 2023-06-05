@@ -3,8 +3,9 @@ module Api
 
     def index
       @listings = Listing.all
-      render json: @listings
+      render 'api/listings/index'
     end
+    
 
     # def show
     #   @listing = Listing.find(params[:id])
@@ -16,11 +17,16 @@ module Api
 
     def show
       @listing = Listing.find(params[:id])
-      render json: @listing 
+      render :show
+    end
+
+    def unique_type_index
+      @listings = Listing.where("unique_type LIKE ?", "%#{params[:unique_type]}%")
+      render :index
     end
     
     
-
+    
     private
 
     def listing_params

@@ -1,3 +1,114 @@
+// import { useState } from "react"
+// import { useDispatch } from "react-redux"
+// import { login } from "../../store/session"
+// import './LoginModal.css'
+
+
+
+// export const LoginModal = () => {
+//     const dispatch = useDispatch()
+    
+//     const [email, setEmail] = useState('')
+//     const [password, setPassword] = useState('')
+//     const [errors, setErrors] = useState([])
+//     const [showModal, setShowModal] = useState(false)
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault()
+//         setErrors([])
+
+//         return dispatch(login({ email, password }))
+//             .catch(async (res) => {
+//                 let data;
+//                 try {
+//                     data = await res.clone().json()
+//                 } catch {
+//                     data = await res.text()
+//                 }
+//                 if (data?.errors) setErrors(data.errors)
+//                 else if (data) setErrors([data])
+//                 else setErrors([res.statusText])
+                
+//             })        
+//     }
+
+//     const handleDemo = (e) => {
+//         e.preventDefault()
+//         setErrors([])
+
+//         return dispatch(login({ email: 'demo@user.io', password: 'password' }))
+//             .catch(async (res) => {
+//                 let data;
+//                 try {
+//                     data = await res.clone().json()
+//                 } catch {
+//                     data = await res.text()
+//                 }
+//                 if (data?.errors) setErrors(data.errors)
+//                 else if (data) setErrors([data])
+//                 else setErrors([res.statusText])
+
+//             })
+//     }
+
+//     const closeModal = () => {
+//         setShowModal(false)
+        
+//     }
+
+//     return (
+//         <div className='modal-form'>
+//         <form  onSubmit={handleSubmit}>
+//             <header>
+//                 <div>
+//                     <button onClick={() => dispatch(closeModal())}>X</button>
+//                 </div>
+//                 <h3>Log in</h3>
+//             </header>
+//                 <hr></hr>
+//             <h1 id="login-title">Welcome to Waterbnb</h1>
+//             <div
+//                 className="input-container"
+//                 style={errors.length > 0 ? {border: '2px solid red'} : {}}
+//             >
+//                 <input
+//                     type="email"
+//                     value={email}
+//                     onChange={(e) => setEmail(e.target.value)}
+//                     required
+//                     placeholder="Email"
+//                     onFocus={() => setErrors([])}
+//                 />
+//                 <input
+//                     type="password"
+//                     value={password}
+//                     onChange={(e) => setPassword(e.target.value)}
+//                     required
+//                     placeholder="Password"
+//                     onFocus={() => setErrors([])}
+//                 />
+//             </div>
+//             <ul className="error-list">
+//                 {errors.map(error => <li key={error} style={{color: 'red'}}>{error}</li>)}
+//             </ul>
+//             <div className='submit-div'>
+//                 <button type="submit">Log in</button>
+//             </div>
+//             <div id='line-div'>
+//                 <div className="line"><hr></hr></div>
+//                     <div id='or'>or</div>
+//                 <div className="line"><hr></hr></div>
+//             </div>
+//         </form>
+//             <div id='other-buttons-div'>
+//                 <button onClick={handleDemo} className='other-buttons-login'><img src="https://a0.muscache.com/defaults/user_pic-50x50.png?v=3" alt=""></img>Log in with demo</button>
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default LoginModal
+
 import React, { useState } from 'react';
 import './LoginModal.css';
 import csrfFetch from '../../store/csrf';

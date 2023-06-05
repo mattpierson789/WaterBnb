@@ -10,7 +10,7 @@
 #listing-image-main {
   width: 50%;
   height: auto;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 #listing-show-small-images-container {
@@ -24,103 +24,94 @@
 #listing-show-small-images-container img {
   width: 100%;
   height: auto;
-  object-fit: cover; 
+  object-fit: cover;
   border: 1px solid #ffffff;
 }
 
 .image-landscape {
-  width: 200px; 
-  height: 100px; 
+  width: 200px;
+  height: 100px;
 }
 
 .image-portrait {
-  width: 100px; 
-  height: 200px; 
+  width: 100px;
+  height: 200px;
 }
 
+.listing-test {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
-  .listing-test {
-    margin-top: 20px; 
-    margin-bottom: 20px; 
-  }
+.listing-index-item {
+  margin-top: 200px;
+  margin-bottom: 20px;
+}
 
-  .listing-index-item {
-    margin-top: 200px; 
-    margin-bottom: 20px;
-  }
-  
-  
+#location-title {
+  font-weight: italic;
+  margin-top: 100px;
+  padding-bottom: 100px;
+}
 
-  #location-title {
+#listing-show-title-details {
+  width: 100%;
+  height: 30px;
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
 
-    font-weight: italic;
-    margin-top: 100px;
-    padding-bottom: 100px;
-  }
-  
-    #listing-show-title-details {
-        width: 100%;
-        height: 30px;
-        padding-left: 0px;
-        margin-bottom: 0px;
-    }
+#listing-show-description-details {
+  width: 80%;
+  height: auto;
+  box-sizing: border-box;
+  padding-left: 0px;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
 
-    #listing-show-description-details {
+#amenities ul.amenities-item {
+  list-style-type: none;
+  margin-left: 65px;
+  margin-right: 65px;
+}
 
-        width: 80%;
-        height: auto;
-        box-sizing: border-box;
-        padding-left: 0px;
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 10px;
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  margin-left: 100px;
+  margin-right: 100px;
+}
 
-    }
-  
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+  margin-left: 100px;
+  margin-right: 100px;
+}
 
-  #amenities ul.amenities-item {
+span {
+  margin-left: 100px;
+  margin-right: 100px;
+}
 
-    list-style-type: none;
-    margin-left: 65px;
-    margin-right: 65px
-    
-  }
+.break {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+  margin-left: 100px;
+  margin-right: 100px;
+}
 
-  h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: normal;
-    margin-left: 100px;
-    margin-right: 100px
-  }
+.top-break {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+}
 
-  h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 28px;
-    font-weight: normal;
-    margin-left: 100px;
-    margin-right: 100px
-  }
-
-  span {
-
-    margin-left: 100px;
-    margin-right: 100px
-
-  }
-
-  .break {
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.2);
-    margin: 20px 0;
-    margin-left: 100px;
-    margin-right: 100px
-  }
-
-  .top-break {
-    height: 1px;
-    background-color: rgba(0, 0, 0, 0.2);
-    margin: 20px 0;
-   
-  }
-  
-  
+.description {
+  margin-left: 200px;
+}

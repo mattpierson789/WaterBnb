@@ -2,9 +2,10 @@ module Api
   class ListingsController < ApplicationController
 
     def index
-      @listings = Listing.all
+      @listings = Listing.all.limit(10)
       render 'api/listings/index'
     end
+    
     
 
     # def show
@@ -22,9 +23,14 @@ module Api
 
     def unique_type_index
       @listings = Listing.where("unique_type LIKE ?", "%#{params[:unique_type]}%")
-      render :index
+      render 'api/listings/index'
     end
-    
+
+    def unique_activity_index
+      @listings = Listing.where("unique_type LIKE ?", "%#{params[:unique_activity]}%")
+      render 'api/listings/index'
+      debugger
+    end
     
     
     private

@@ -80,7 +80,7 @@ const ListingShow = () => {
             {listing.bathrooms > 1 ? 'baths' : 'bath'}
           </span>
           <div className="break"></div>
-          <span>{listing.description}</span>
+          <span id='description'>{listing.description}</span>
           <div className="break"></div>
         </div>
 

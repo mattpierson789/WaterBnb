@@ -48,9 +48,21 @@ export const fetchListing = (listingId) => async (dispatch) => {
 export const fetchListingsType = (unique_type) => async dispatch => {
     const res = await csrfFetch(`/api/listings/unique_type/${unique_type}`)
 
+    
     let data = await res.json()
 
-    dispatch(receiveListings(data))
+
+    dispatch(receiveListings(data.listings))
+}
+
+export const fetchListingsActivity = (activity_type) => async dispatch => {
+    const res = await csrfFetch(`/api/listings/activity_type/${activity_type}`)
+
+    
+    let data = await res.json()
+
+
+    dispatch(receiveListings(data.listings))
 }
 
 
@@ -59,7 +71,7 @@ const listingsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_LISTINGS:
             
-            return {...newState,...action.listings}
+            return action.listings
         
         case RECEIVE_LISTING:
             newState[action.listing.id] = action.listing

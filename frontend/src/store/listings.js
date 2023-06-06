@@ -34,7 +34,7 @@ export const fetchListings = () => async (dispatch) => {
    
   
 
-    console.log(dispatch(receiveListings(data.listings)))
+    dispatch(receiveListings(data.listings))
 }
 
 export const fetchListing = (listingId) => async (dispatch) => {

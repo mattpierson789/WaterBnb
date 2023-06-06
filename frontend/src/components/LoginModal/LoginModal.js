@@ -158,12 +158,12 @@ const LoginModal = ({  }) => {
       
           if (response.ok) {
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             dispatch(setCurrentUser(data.user));
             setIsOpen(false);
           } else {
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setErrorMessages(data.errors);
           }
         } catch (error) {

@@ -29,7 +29,6 @@ module Api
     def unique_activity_index
       @listings = Listing.where("unique_type LIKE ?", "%#{params[:unique_activity]}%")
       render 'api/listings/index'
-      debugger
     end
     
     

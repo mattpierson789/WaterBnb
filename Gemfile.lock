@@ -187,6 +187,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
+  bundler
   byebug
   faker
   jbuilder

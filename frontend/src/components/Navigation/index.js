@@ -21,7 +21,7 @@ function Navigation() {
             <div className="logged-out-links">
                 <ul>
                     <li>
-                        {/* <Link id='trips' className='dropdown-menu-option' to={'/trips'}>My Trips</Link> */}
+                      
                     </li>
                     <li className='dropdown-menu-option' onClick={logout}>
                         <span id='logout'>Log Out</span>
@@ -34,6 +34,7 @@ function Navigation() {
             <div className='logged-out-links'>
               <LoginModal/>
               <RegistrationFormModal/>
+              {/* <Link id='trips' className='dropdown-menu-option' to={'/trips'}>My Trips</Link> */}
             </div>
         );
     }

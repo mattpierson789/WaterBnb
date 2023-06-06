@@ -1,13 +1,13 @@
-class ReservationsController < ApplicationController
 
-  wrap_parameters include Reservation.attribute_names + [:start_date, :end_date, :num_guests, :listing_id, :reserver_id]
+module Api
+  class ReservationsController < ApplicationController
+
+  wrap_parameters Reservation.attribute_names + [:start_date, :end_date, :num_guests, :listing_id, :reserver_id]
 
   def index
 
-    @reservations = Reservation.all
-    .where (reserver_id: current_user.id)
-    .order("start_date")
-    render :index
+    @reservations = Reservation.all.where(reserver_id: current_user.id).order("start_date")
+
 
   end 
 
@@ -46,6 +46,8 @@ class ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:reserver_id, :listing_id, :start_date, :end_date, :num_guests)
+  end
+
   end
 
 end

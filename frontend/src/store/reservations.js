@@ -2,7 +2,7 @@ import csrfFetch from "./csrf";
 
 export const RECEIVE_RESERVATIONS = 'listings/receiveListings';
 export const RECEIVE_RESERVATION = 'listings/receiveListing';
-export const RECEIVE_RESERVATION_DETAILS = 'listings/RECEIVE_RESERVATION_DETAILS';
+export const REMOVE_RESERVATION = 'listings/removeReservation';
 
 export const receiveReservations = (reservations) => ({
   type: RECEIVE_RESERVATIONS,
@@ -14,10 +14,10 @@ export const receiveReservation = (reservation) => ({
   reservation,
 });
 
-export const receiveReservationDetails = (reservation) => ({
-  type: RECEIVE_RESERVATION_DETAILS,
-  reservation,
-});
+export const removeReservation = (reservationId) => ({
+  type: REMOVE_RESERVATION, 
+  reservationId
+})
 
 export const getReservations = (state) => state.reservations ? Object.values(state.reservations) : [];
 
@@ -30,10 +30,42 @@ export const fetchReservations = () => async (dispatch) => {
 };
 
 export const fetchReservation = (reservationId) => async (dispatch) => {
-  const res = await fetch(`/api/reservations/${reservationId}`);
+  const res = await csrfFetch(`/api/reservations/${reservationId}`);
   const data = await res.json();
   dispatch(receiveReservation(data.reservation));
 };
+
+export const createReservation = (reservation) => async (dispatch) => {
+  const res = await csrfFetch(`/api/reservations`, {
+    method: 'POST', 
+    body: JSON.stringify(reservation),
+    headers: { 'Content-Type': 'application/json'}
+  })
+
+  const data = await res.json();
+  dispatch(receiveReservation(data))
+}
+
+export const updateReservation = (reservation) => async (dispatch) => {
+  const res = await csrfFetch(`/api/reservations/${reservation.id}`, {
+    method: 'PATCH', 
+    body: JSON.stringify(reservation),
+    headers: { 'Content-Type': 'application/json'}
+  })
+
+  const data = await res.json();
+  dispatch(receiveReservation(data))
+}
+
+export const deleteReservation = (reservationId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/reservations/${reservationId}`, {
+    method: 'DELETE', 
+  })
+
+  if (res.ok) {
+    dispatch(removeReservation(reservationId));
+  }
+}
 
 const reservationsReducer = (state = {}, action) => {
   const newState = { ...state };
@@ -45,9 +77,9 @@ const reservationsReducer = (state = {}, action) => {
       newState[action.reservation.id] = action.reservation;
       return newState;
 
-    case RECEIVE_RESERVATION_DETAILS:
-      const newReservationStuff = action.reservation ? action.reservation : null;
-      return { ...newState, ...newReservationStuff };
+    case REMOVE_RESERVATION:
+      delete newState[action.reservationId]
+      return newState
 
     default:
       return newState;

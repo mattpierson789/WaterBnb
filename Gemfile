@@ -7,7 +7,7 @@ ruby "3.1.1"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "sassc"
 gem 'rack-cors'
-
+gem 'bundler'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

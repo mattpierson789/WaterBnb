@@ -4,7 +4,8 @@ import LoginModal from '../LoginModal/LoginModal';
 import './Navigation.css';
 import RegistrationFormModal from '../RegistrationForm/RegistrationForm';
 import * as sessionActions from '../../store/session';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);

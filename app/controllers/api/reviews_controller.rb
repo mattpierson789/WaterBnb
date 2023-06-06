@@ -1,52 +1,54 @@
-def create 
+# modul
 
-    @review = Review.new(review_params)
+# def create 
 
-    if @review.save 
-        render :show 
-    else 
-        render json: @review.errors.full_messages, status: 422
-    end
+#     @review = Review.new(review_params)
 
-end 
+#     if @review.save 
+#         render :show 
+#     else 
+#         render json: @review.errors.full_messages, status: 422
+#     end
 
-def index 
+# end 
 
-    @reviews = Review.all.where(listing_id: params[:listing_id])
-    render :index
+# def index 
 
-end 
+#     @reviews = Review.all.where(listing_id: params[:listing_id])
+#     render :index
 
-def show 
+# end 
 
-    @review = Review.find(params[:id])
-    render :show
+# def show 
 
-end 
+#     @review = Review.find(params[:id])
+#     render :show
 
-def destroy 
+# end 
 
-    @review = Review.find(params[:id])
-    @review.destroy
-    render :show
+# def destroy 
 
-end 
+#     @review = Review.find(params[:id])
+#     @review.destroy
+#     render :show
+
+# end 
 
 
-def update 
+# def update 
 
-    @review = Review.find(params[:id])
+#     @review = Review.find(params[:id])
 
-    if @review.update(review_params)
-        render :show
-    else
-        render json: @review.errors.full_messages, status: 422
-    end
+#     if @review.update(review_params)
+#         render :show
+#     else
+#         render json: @review.errors.full_messages, status: 422
+#     end
 
-end 
+# end 
 
-private 
+# private 
 
-def review_params 
-    params.require(:review).permit(:reviewer_id, :listing_id, :rating, :body, :cleanliness, :communication, :check_in, :accuracy, :location, :value)
-end
+# def review_params 
+#     params.require(:review).permit(:reviewer_id, :listing_id, :rating, :body, :cleanliness, :communication, :check_in, :accuracy, :location, :value)
+# end

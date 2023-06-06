@@ -1,0 +1,23 @@
+{
+  "name": "waterbnb",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": "18.9.1"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "latest"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.12.0"
+  }
+}

@@ -11,7 +11,7 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchTerm);
+    // console.log('Searching for:', searchTerm);
   };
 
   return (

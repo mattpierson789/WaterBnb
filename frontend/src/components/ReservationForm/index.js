@@ -143,7 +143,7 @@ const ReservationForm = () => {
 
         <div className="detail">
           <p className="label">Cleaning Fee</p>
-          <p className="cleaning-fee-value">${listing.nightPrice*.1}</p>
+          <p className="cleaning-fee-value">${listing.nightPrice*.3 }</p>
         </div>
 
         <div className="detail">

@@ -179,42 +179,7 @@ const LoginModal = ({  }) => {
             password: 'password'
         }))
         }
-    
-      
-      
-   
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     setErrorMessages([]);
-      
-    //     if (password !== confirmPassword) {
-    //       setErrorMessages(["Passwords do not match!"]);
-    //       return;
-    //     }
-      
-    //     try {
-    //       const response = await csrfFetch('/api/session', {
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //           session: { credential, password },
-    //         }),
-    //       });
-    //       const data = await response.json();
-    //       console.log(data);
-    //       if (response.ok) {
-    //         dispatch(setCurrentUser(data.user));
-    //         setIsOpen(false);
-    //       } else {
-    //         setErrorMessages(data.errors);
-    //       }
-    //     } catch (err) {
-         
-    //       console.error(err);
-    //       setErrorMessages(['An error occurred. Please try again.']);
-    //     }
-    //   };
-      
+        
       
     const openModal = (e) => {
         e.stopPropagation();
@@ -258,3 +223,38 @@ const LoginModal = ({  }) => {
 };
 
 export default LoginModal;
+
+
+
+ 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     setErrorMessages([]);
+      
+    //     if (password !== confirmPassword) {
+    //       setErrorMessages(["Passwords do not match!"]);
+    //       return;
+    //     }
+      
+    //     try {
+    //       const response = await csrfFetch('/api/session', {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //           session: { credential, password },
+    //         }),
+    //       });
+    //       const data = await response.json();
+    //       console.log(data);
+    //       if (response.ok) {
+    //         dispatch(setCurrentUser(data.user));
+    //         setIsOpen(false);
+    //       } else {
+    //         setErrorMessages(data.errors);
+    //       }
+    //     } catch (err) {
+         
+    //       console.error(err);
+    //       setErrorMessages(['An error occurred. Please try again.']);
+    //     }
+    //   };

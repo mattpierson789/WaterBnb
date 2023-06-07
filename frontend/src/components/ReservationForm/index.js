@@ -14,7 +14,7 @@ const ReservationForm = () => {
   const dispatch = useDispatch();
   const { listingId } = useParams();
   const listing = useSelector(getListing(listingId));
-  const user = useSelector(state => state.session.user);
+  const currentUser = useSelector(state => state.session.user);
 
   const [startDate, setStartDate] = useState(moment());
   const [endDate, setEndDate] = useState(moment().add(1, 'day'));
@@ -26,12 +26,7 @@ const ReservationForm = () => {
   const [errors, setErrors] = useState([]);
   const [focusedInput, setFocusedInput] = useState(null);
 
-  let userId
-  if(user){
-      userId = user.id
-  } else {
-      userId = null
-  }
+  
 
   useEffect(() => {
     setNumGuests(adults + children);
@@ -53,10 +48,20 @@ const ReservationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
- 
+
+  let reserver_id
+  debugger
+  if(user){
+      reserver_id = 2
+      debugger
+  } else {
+      reserver_id = null 
+  }
+
     const price = listing.nightPrice * numDays() + listing.nightPrice*.1 + Math.floor(numDays() * listing.nightPrice / 7)
-    const reservation = { listingId, userId: user?.id, numGuests, startDate, endDate, price };
-  
+    debugger
+    const reservation = { listing_id, reserver_id, num_guests, start_date, end_date};
+    debugger
     return dispatch(createReservation(reservation))
       .catch(async (res) => {
         let data;
@@ -74,7 +79,7 @@ const ReservationForm = () => {
   
 
 
-//   if (user) {
+  // if (user) {
   return (
     <form id="reservation-form" className="reservation-form" onSubmit={handleSubmit}>
       <ul className="list-container">
@@ -114,8 +119,6 @@ const ReservationForm = () => {
     </div>
   </div>
 </div>
-
-
 
         <div className="guests-container" onClick={openMenu}>
           <div id='guests-title-wrapper'>
@@ -210,6 +213,6 @@ const ReservationForm = () => {
 //       </div>
 //     )
 //   }
-};
+// };
 
 export default ReservationForm;

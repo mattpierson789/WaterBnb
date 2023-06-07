@@ -37,6 +37,10 @@
 #logout {
   cursor: pointer;
   color: #333;
+  text-align: center;
+  display: block;
+  text-align: center;
+
 }
 
 .dropdown-button {

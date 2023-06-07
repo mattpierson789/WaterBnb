@@ -7,6 +7,7 @@ import * as sessionActions from '../../store/session';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
+
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
@@ -21,11 +22,13 @@ function Navigation() {
         sessionLinks = (
             <div className="logged-out-links">
                 <ul>
-                    <li>
-                      
-                    </li>
                     <li className='dropdown-menu-option' onClick={logout}>
                         <span id='logout'>Log Out</span>
+                    </li>
+                    <li className='dropdown-menu-option'>
+                        <Link to='/trips'>
+                            <span id='my-trips'>My Trips</span>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -35,7 +38,6 @@ function Navigation() {
             <div className='logged-out-links'>
               <LoginModal/>
               <RegistrationFormModal/>
-              {/* <Link id='trips' className='dropdown-menu-option' to={'/trips'}>My Trips</Link> */}
             </div>
         );
     }

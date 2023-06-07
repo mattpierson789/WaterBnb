@@ -3,6 +3,8 @@ class Api::SessionsController < ApplicationController
 
   protect_from_forgery with: :exception
 
+  skip_before_action :verify_authenticity_token, only: :create
+
 
     def show
         if @user =  current_user

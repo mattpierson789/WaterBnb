@@ -6,7 +6,8 @@ import { useParams, Link } from 'react-router-dom';
 import { getListing } from '../../store/listings';
 import { updateReservation } from '../../store/reservations';
 import { format, subDays, addDays } from 'date-fns';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
 
 
 const ReservationIndexItem = (props) => {

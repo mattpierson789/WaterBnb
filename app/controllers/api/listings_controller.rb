@@ -2,20 +2,11 @@ module Api
   class ListingsController < ApplicationController
 
     def index
-      @listings = Listing.all.limit(10)
+      @listings = Listing.all
       render 'api/listings/index'
     end
     
     
-
-    # def show
-    #   @listing = Listing.find(params[:id])
-    #   @photos_urls = @listing.photos.map do |photo|
-    #     rails_blob_url(photo.blob)
-    #   end
-    #   render json: {listing: @listing, photos: @photos_urls}
-    # end
-
     def show
       @listing = Listing.find(params[:id])
       render :show

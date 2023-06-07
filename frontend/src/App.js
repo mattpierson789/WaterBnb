@@ -17,7 +17,6 @@ function App() {
           <Route path="/" element={<IndexPage />} />
           <Route path="listings/:listingId" element={<ListingShow />} />
           <Route exact path="/trips" element={<ReservationsShowPage />} />
-          <Route exact path="/trips/${reservation.id}#edit" element={<ReservationUpdatePage />} />
         </Routes>
       </Router>
     </>

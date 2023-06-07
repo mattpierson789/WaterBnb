@@ -31,9 +31,13 @@ const ListingMap = ({ listings }) => {
 
 const ListingMapWrapper = (props) => {
   return (
-    <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} libraries={['places']}>
-      <ListingMap {...props} />
-    </Wrapper>
+    // <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} libraries={['places']}>
+    //   <ListingMap {...props} />
+    // </Wrapper>
+
+<img src={`https://maps.googleapis.com/maps/api/staticmap?center=San%20Francisco,CA&zoom=12&size=600x400&markers=san%20francisco,%20ca|37.811039,%20-122.477567&key=${process.env.REACT_APP_MAPS_API_KEY}`} alt="Map" />
+
+
   );
 };
 

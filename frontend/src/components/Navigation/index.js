@@ -5,6 +5,7 @@ import './Navigation.css';
 import RegistrationFormModal from '../RegistrationForm/RegistrationForm';
 import * as sessionActions from '../../store/session';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 

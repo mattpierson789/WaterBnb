@@ -1,18 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReservation } from "../../store/reservations";
-import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getListing } from '../../store/listings';
-import { updateReservation } from '../../store/reservations';
-import { format, subDays, addDays } from 'date-fns';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { format, subDays, isValid } from 'date-fns';
 
+const handleInvalidDate = (date) => {
+  const parsedDate = new Date(date);
+  return isValid(parsedDate) ? parsedDate : new Date();
+};
 
-
-const ReservationIndexItem = (props) => {
+const UpcomingReservationItem = (props) => {
   const reservation = props.reservation;
-  const listing = reservation.listing;
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
 
@@ -21,33 +19,33 @@ const ReservationIndexItem = (props) => {
     dispatch(deleteReservation(reservation.id));
   }
 
-  const startDate = new Date(reservation.start_date);
-  const endDate = new Date(reservation.end_date);
+  const startDate = handleInvalidDate(reservation.start_date);
+  const endDate = handleInvalidDate(reservation.end_date);
 
- if (reservation.id) 
-
-  return (
-    <div>
-      <h3>Upcoming Trips!</h3>
+  if (reservation.id)
+    return (
       <div>
-        <h3>{reservation.listing.city}</h3>
-        <p>{reservation.listing.title}</p>
-        <div id='solid-line'></div>
-        <p>
-          {reservation.start_date} - {reservation.end_date}
-        </p>
-        <div id='vertical-line'></div>
-        <Link to={`trips/${reservation.id}#edit`}>
-          <button className='cancel-reservation-button'>Change Reservation</button>
-        </Link>
-        <br/><br/>
-        <button className='cancel-reservation-button' onClick={handleClick}>Cancel Reservation</button>
-        <br/>
-        <span className='small-text'>Free cancellation until {format(subDays(startDate, 7), 'MMM d')}</span>
-        <br/><br/>
+        <h3></h3>
+        <div>
+          <h3>{reservation.listingCity}</h3>
+          <p>{reservation.listingtitle}</p>
+          <div id='solid-line'></div>
+          <p>
+            {format(startDate, 'yyyy-MM-dd')} - {format(endDate, 'yyyy-MM-dd')}
+          </p>
+          <div id='vertical-line'></div>
+          <Link to={`trips/${reservation.id}#edit`}>
+            <button className='cancel-reservation-button'>Change Reservation</button>
+          </Link>
+          <br/><br/>
+          <button className='cancel-reservation-button' onClick={handleClick}>Cancel Reservation</button>
+          <br/>
+
+          <br/><br/>
+        </div>
       </div>
-    </div>
-  )
+    );
 }
 
-export default ReservationIndexItem;
+export default UpcomingReservationItem;
+ 

@@ -5,7 +5,7 @@ import { IndexFilter } from './components/IndexFilter/IndexFilter';
 import ListingIndex from './components/ListingIndex';
 import ListingShow from './components/ListingShow';
 import ReservationsShowPage from './components/ReservationsShowPage';
-import ReservationUpdatePage from './components/ReservationUpdatePage';
+// import ReservationUpdatePage from './components/ReservationUpdatePage';
 
 function App() {
   return (
@@ -16,12 +16,13 @@ function App() {
         <Routes>
           <Route path="/" element={<IndexPage />} />
           <Route path="listings/:listingId" element={<ListingShow />} />
-          <Route exact path="/trips" element={<ReservationsShowPage />} />
+          <Route exact path="user/trips" element={<ReservationsShowPage />} />
         </Routes>
       </Router>
     </>
   );
 }
+
 
 function IndexPage() {
   return (

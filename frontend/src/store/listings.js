@@ -71,7 +71,11 @@ const listingsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_LISTINGS:
             
-            return action.listings
+            return {
+                ...state,
+             ...action.listings
+
+            }
         
         case RECEIVE_LISTING:
             newState[action.listing.id] = action.listing

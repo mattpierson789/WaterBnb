@@ -4,10 +4,12 @@ import sessionReducer from './session';
 import listingsReducer from './listings';
 import * as listingActions from './listings'
 import * as sessionActions from './session'
+import reservationsReducer from './reservations';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    listings: listingsReducer
+    listings: listingsReducer,
+    reservations: reservationsReducer
 
 });
 

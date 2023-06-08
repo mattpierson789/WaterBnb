@@ -8,6 +8,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import { getListing } from '../../store/listings';
 import './ReservationForm.css';
 import {createReservation} from '../../store/reservations'
+import format from 'date-fns/format';
 
 
 const ReservationForm = () => {
@@ -50,42 +51,46 @@ const ReservationForm = () => {
     setErrors([]);
 
   let reserver_id
-  debugger
-  if(user){
-      reserver_id = 2
-      debugger
+ 
+  if(currentUser){
+      reserver_id = currentUser.id
+      
   } else {
       reserver_id = null 
   }
 
     const price = listing.nightPrice * numDays() + listing.nightPrice*.1 + Math.floor(numDays() * listing.nightPrice / 7)
-    debugger
-    const reservation = { listing_id, reserver_id, num_guests, start_date, end_date};
-    debugger
-    return dispatch(createReservation(reservation))
-      .catch(async (res) => {
-        let data;
-        try {
-          data = await res.clone().json();
-        } catch(e) {
-          data = await res.text();
-        }
-  
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
-      });
-  }
-  
+    
+    // const reservation = { listing_id, reserver_id, num_guests, start_date, end_date};
+
+    const reservation = {
+      reservation: {
+        listingId: listingId,
+        reserverId: reserver_id,
+        numGuests: numGuests,
+        startDate: startDate.format('YYYY-MM-DD'),
+        endDate: endDate.format('YYYY-MM-DD'),
+      }
+    };
+    
 
 
-  // if (user) {
+    
+return dispatch(createReservation(reservation))
+    .catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
+  };
+  
+
+  // if (currentUser) {
   return (
     <form id="reservation-form" className="reservation-form" onSubmit={handleSubmit}>
       <ul className="list-container">
         <ul className="inner-list">
           <div className="booking-info">
-            <div className="price-no-wrap">${listing.nightPrice} per night</div>
+            <div className="price-no-wrap">${listing.nightPrice} <span id= "night"> night </span></div>
           </div>
         </ul>
     
@@ -140,7 +145,7 @@ const ReservationForm = () => {
         {/* <p className="charge-info">No charges will be made yet</p> */}
         <div className="price-details">
         <div className="detail">
-        <p className="label">{`${listing.nightPrice} X ${numDays()}`}</p>
+        <p className="label">${`${listing.nightPrice} X ${numDays()}`}</p>
           <p className="listing-price-value">${listing.nightPrice * numDays()}</p>
         </div>
 
@@ -157,7 +162,7 @@ const ReservationForm = () => {
         <div id='break'></div>
 
         <div className="total">
-          <p className="label">Total before taxes</p>
+          <p className="label-total">Total before taxes</p>
           <p className="total-value">${listing.nightPrice * numDays() + listing.nightPrice*.1 + Math.floor(numDays() * listing.nightPrice / 7)}</p>
         </div>
       </div>

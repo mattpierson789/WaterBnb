@@ -65,58 +65,82 @@ function RegistrationForm({ trigger }) {
   }
 
   return (
-    <>  <div className='login-button'>
-      <span onClick={openModal}>
-        Sign up
-      </span>
+    <>
+      <div className='login-button'>
+        <span onClick={openModal}>
+          Signup
+        </span>
       </div>
       {isOpen && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={stopPropagation}>
             <form onSubmit={submitForm}>
-
-                <span Sign up> </span>
-
-              <div className="field">
-        
-                <input className="entryInput" id="name" type="text" value={name}
-                  onChange={(e) => setName(e.target.value)} required 
-                  placeholder="Name"/>
+              <div className="input-container">
+                <input
+                  className="modal-content input[type='text']"
+                  id="name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  placeholder="Name"
+                />
               </div>
-              <div className="field">
-           
-                <input className="entryInput" id="email" type="text" value={userEmail}
-                  onChange={(e) => setUserEmail(e.target.value)} required 
-                  placeholder="Email Address"/>
+              <div className="input-container">
+                <input
+                  className="modal-content input[type='text']"
+                  id="email"
+                  type="text"
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                  required
+                  placeholder="Email Address"
+                />
               </div>
-              <div className="field">
-     
-                <input className="entryInput" id="username" type="text" value={username}
-                  onChange={(e) => setUsername(e.target.value)} required 
-                  placeholder="Username"/>
+              <div className="input-container">
+                <input
+                  className="modal-content input[type='text']"
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  placeholder="Username"
+                />
               </div>
-              <div className="field">
-  
-                <input className="entryInput" id="password" type="password" value={userPassword}
-                  onChange={(e) => setUserPassword(e.target.value)} required 
-                  placeholder="Password"/>
+              <div className="input-container">
+                <input
+                  className="modal-content input[type='password']"
+                  id="password"
+                  type="password"
+                  value={userPassword}
+                  onChange={(e) => setUserPassword(e.target.value)}
+                  required
+                  placeholder="Password"
+                />
               </div>
-              <div className="field">
-               
-                <input className="entryInput" id="confirmPassword" type="password" value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)} required 
-                  placeholder="Confirm Password"/>
+              <div className="input-container">
+                <input
+                  className="modal-content input[type='password']"
+                  id="confirmPassword"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  placeholder="Confirm Password"
+                />
               </div>
-              <ul className="form-errors">
+              <ul className="error-list">
                 {errorMessages.map(error => <li key={error}>{error}</li>)}
               </ul>
-              <button className="Login-button" type="submit">Agree and Continue</button>
+              <div className="submit-div">
+                <button className="modal-content input[type='submit']" type="submit">Agree and Continue</button>
+              </div>
               <button onClick={demoLogin} className='demo-login'>Demo Login</button>
             </form>
-            <p class="centered-text">
-  By selecting <span class="bold-text">Agree and Continue</span>, I agree to WaterBnb's Terms of Service, Payments Terms of Service, and Nondiscrimination Policy and acknowledge the Privacy Policy
-</p>
-
+            <p className="centered-text">
+              By selecting <span className="bold-text">Agree and Continue</span>, I agree to WaterBnb's Terms of Service, Payments Terms of Service, and Nondiscrimination Policy and acknowledge the Privacy Policy
+            </p>
           </div>
         </div>
       )}

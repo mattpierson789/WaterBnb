@@ -1,7 +1,7 @@
-import csrfFetch from "./csrf";
+import {csrfFetch, storeCSRFToken, restoreCSRF} from "./csrf";
 
-export const RECEIVE_RESERVATIONS = 'listings/receiveListings';
-export const RECEIVE_RESERVATION = 'listings/receiveListing';
+export const RECEIVE_RESERVATIONS = 'listings/receiveReservations';
+export const RECEIVE_RESERVATION = 'listings/receiveReservation';
 export const REMOVE_RESERVATION = 'listings/removeReservation';
 
 export const receiveReservations = (reservations) => ({
@@ -9,10 +9,15 @@ export const receiveReservations = (reservations) => ({
   reservations,
 });
 
-export const receiveReservation = (reservation) => ({
-  type: RECEIVE_RESERVATION,
-  reservation,
-});
+export const receiveReservation = (reservation) => {
+
+  debugger
+
+ return {type: RECEIVE_RESERVATION,
+
+
+  reservation}
+};
 
 export const removeReservation = (reservationId) => ({
   type: REMOVE_RESERVATION, 
@@ -36,17 +41,26 @@ export const fetchReservation = (reservationId) => async (dispatch) => {
 };
 
 export const createReservation = (reservation) => async (dispatch) => {
+
   debugger
+ 
   const res = await csrfFetch(`/api/reservations`, {
     method: 'POST', 
     body: JSON.stringify(reservation),
-    headers: { 'Content-Type': 'application/json',
-    'X-CSRF-Token': csrfToken}
+    headers: { 'Content-Type': 'application/json'}
   
   })
 
+if (res.ok) {
   const data = await res.json();
   dispatch(receiveReservation(data))
+} else {
+  throw res 
+
+}
+
+return res
+
 }
 
 export const updateReservation = (reservation) => async (dispatch) => {
@@ -71,22 +85,25 @@ export const deleteReservation = (reservationId) => async (dispatch) => {
 }
 
 const reservationsReducer = (state = {}, action) => {
-  const newState = { ...state };
   switch (action.type) {
     case RECEIVE_RESERVATIONS:
       return action.reservations;
 
     case RECEIVE_RESERVATION:
-      newState[action.reservation.id] = action.reservation;
-      return newState;
+      debugger
+      return { ...state, [action.reservation.id]: action.reservation };
 
     case REMOVE_RESERVATION:
-      delete newState[action.reservationId]
-      return newState
+      const { [action.reservationId]: _, ...newState } = state;
+      return newState;
 
     default:
-      return newState;
+      return state;
   }
 };
 
 export default reservationsReducer;
+
+
+
+

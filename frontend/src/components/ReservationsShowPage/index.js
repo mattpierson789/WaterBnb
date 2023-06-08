@@ -1,63 +1,74 @@
-// import { useEffect } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { getReservations, fetchReservations } from '../../store/reservations'
-// import { PastReservationItem } from './PastReservationItem'
-// import { UpcomingReservationItem } from './UpcomingReservationItem'
-// import moment from 'moment'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchReservations } from '../../store/reservations';
+import moment from 'moment';
+import UpcomingReservationItem from './UpcomingReservationItem';
+import PastReservationItem from './PastReservationItem';
 
-// export const ReservationsShowPage = () => {
-//   const user = useSelector(state => state.session.user)
-//   const dispatch = useDispatch()
+export const ReservationsShowPage = () => {
+  const dispatch = useDispatch();
 
-//   const getReservationsSelector = (state) => {
-//     return state.listings.reservations ? Object.values(state.listings.reservations) : null
-//   }
+  useEffect(() => {
+    dispatch(fetchReservations());
+  }, [dispatch]);
 
-//   let reservations = useSelector(getReservationsSelector)
+  const reservationsSelector = (state) =>
+    state.reservations ? Object.values(state.reservations) : [];
 
-//   useEffect(() => {
-//     dispatch(fetchReservations(user.id))
-//   }, [])
+  const reservations = useSelector(reservationsSelector);
 
-//   const reservationsFilter = () => {
-//     const past = []
-//     const upcoming = []
+  const reservationsFilter = () => {
+    const past = [];
+    const upcoming = [];
 
-//     reservations.forEach(reservation => {
-//       if (moment(reservation.end_date).isBefore(moment())) {
-//         past.push(reservation)
-//       } else {
-//         upcoming.push(reservation)
-//       }
-//     })
+    if (reservations) {
+      const currentDate = new Date();
 
-//     return { past, upcoming }
-//   }
+      reservations.forEach((reservation) => {
+        const endDate = new Date(reservation.endDate);
 
-//   const { past, upcoming } = reservationsFilter()
+        if (endDate instanceof Date && !isNaN(endDate)) {
+          if (endDate < currentDate) {
+            past.push(reservation);
+            console.log(reservation)
+          } else {
+            upcoming.push(reservation);
+          }
+        } else {
+          console.log('Invalid endDate:', reservation.endDate);
+        }
+      });
+    }
 
-//   return (
+console.log(past)
+console.log(upcoming)
+    return { past, upcoming };
+   
+  };
+
+  const { past, upcoming } = reservationsFilter();
 
 
-//     <div id='my_trips-container'>
-//       <h1>Upcoming Trips</h1>
-//       <div id='upcoming-trips-container'>
-//         <ul id='upcoming-trips'>
-       
-//           {upcoming.map(reservation => (
-//             <UpcomingReservationItem key={reservation.id} reservation={reservation} />
-//           ))}
-//         </ul>
-//       </div>
-//       <h1>Past Trips</h1>
-//       <ul id='past-trips-container'>
-  
-//         {past.map(reservation => (
-//           <PastReservationItem key={reservation.id} reservation={reservation} />
-//         ))}
-//       </ul>
-//     </div>
-//   )
-// }
+  return (
+    <div id='my_trips-container'>
+      <h1>Upcoming Trips</h1>
+      <div id='upcoming-trips-container'>
+        <ul id='upcoming-trips'>
+          {upcoming.map((reservation) => (
+            <UpcomingReservationItem key={reservation.id} reservation={reservation} />
+          ))}
+        </ul>
+      </div>
+      <h1>Past Trips</h1>
+      <div id='past-trips-container'>
+        <ul>
+          {past.map((reservation) => (
+            <PastReservationItem key={reservation.id} reservation={reservation} />
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-// export default ReservationsShowPage
+export default ReservationsShowPage;

@@ -23,7 +23,7 @@ const SearchBar = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-             <button class='price-button'> Price </button>
+  
       </form>
     </div>
   );

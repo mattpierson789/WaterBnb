@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createReview } from '../../store/reviews';
 import { useState } from 'react';
+import StarRating from '../StarRating';
+
 
 function PastReservationItem({ reservation }) {
   const dispatch = useDispatch();
@@ -42,38 +44,62 @@ function PastReservationItem({ reservation }) {
   };
 
   return (
-    <div>
-      <div id="past-trip-container"></div>
-
-      <div>
-        <h3>{reservation.start_date}</h3>
-        <p>{reservation.listingTitle}</p>
-        <div id='solid-line'></div>
-        <p>
-          {reservation.start_date} - {reservation.end_date}
-        </p>
-        <div id='vertical-line'></div>
-      </div>
-
-      <div id='review-container'>
-        <h2>Rate and Review!</h2>
-        <h3>{reservation.start_date}</h3>
-        <form id='reviewform' onSubmit={handleSubmit}>
-          <label>Rating</label>
-          <input type='number' min='1' max='5' placeholder='1-5' value={rating} onChange={e => setRating(e.target.value)} required></input>
-          <input type='number' min='1' max='5' placeholder='1-5' value={cleanliness} onChange={e => setCleanliness(e.target.value)} required></input>
-          <input type='number' min='1' max='5' placeholder='1-5' value={value} onChange={e => setValue(e.target.value)} required></input>
-          <input type='number' min='1' max='5' placeholder='1-5' value={accuracy} onChange={e => setAccuracy(e.target.value)} required></input>
-          <input type='number' min='1' max='5' placeholder='1-5' value={checkIn} onChange={e => setCheckIn(e.target.value)} required></input>
-          <input type='number' min='1' max='5' placeholder='1-5' value={communication} onChange={e => setCommunication(e.target.value)} required></input>
-
-          <label>Review</label>
-          <input type='text' placeholder='Write your review here!' value={body} onChange={e => setBody(e.target.value)} required></input>
-          <button type='submit'>Submit Review</button>
-        </form>
-      </div>
+  <div className="reservation-container">
+    <div className="reservation-info">
+      <h3>{reservation.start_date}</h3>
+      <p>{reservation.listingTitle}</p>
+      <div id='solid-line'></div>
+      <p>
+        {reservation.start_date} - {reservation.end_date}
+      </p>
+      <div id='vertical-line'></div>
     </div>
-  );
-}
+
+    <div className='review-container'>
+      <img id="lighthouse" src="https://mp-waterbnb-seeds.s3.amazonaws.com/Screen+Shot+2023-06-08+at+2.46.27+PM.png" />
+      <h2>Rate and Review!</h2>
+      <div className="rating-section">
+        <div className="rating-row">
+          <label htmlFor="rating">Rating</label>
+          <StarRating rating={rating} setRating={setRating} />
+        </div>
+
+        <div className="rating-row">
+          <label htmlFor="cleanliness">Cleanliness</label>
+          <StarRating rating={cleanliness} setRating={setCleanliness} />
+        </div>
+
+        <div className="rating-row">
+          <label htmlFor="value">Value</label>
+          <StarRating rating={value} setRating={setValue} />
+        </div>
+
+        <div className="rating-row">
+          <label htmlFor="accuracy">Accuracy</label>
+          <StarRating rating={accuracy} setRating={setAccuracy} />
+        </div>
+
+        <div className="rating-row">
+          <label htmlFor="checkIn">Check-In</label>
+          <StarRating rating={checkIn} setRating={setCheckIn} />
+        </div>
+
+        <div className="rating-row">
+          <label htmlFor="communication">Communication</label>
+          <StarRating rating={communication} setRating={setCommunication} />
+        </div>
+      </div>
+
+      <div className="review-row">
+        <label htmlFor="body">Review</label>
+        <textarea id="body" placeholder="Write your review here!" value={body} onChange={e => setBody(e.target.value)} required></textarea>
+      </div>
+
+      <button type='submit'>Submit Review</button>
+    </div>
+  </div>
+);
+  }
+  
 
 export default PastReservationItem;

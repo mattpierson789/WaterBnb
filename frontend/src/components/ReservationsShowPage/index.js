@@ -4,6 +4,8 @@ import { fetchReservations } from '../../store/reservations';
 import moment from 'moment';
 import UpcomingReservationItem from './UpcomingReservationItem';
 import PastReservationItem from './PastReservationItem';
+import './ReservationShowPage.css';
+import StarRating from '../StarRating';
 
 export const ReservationsShowPage = () => {
   const dispatch = useDispatch();

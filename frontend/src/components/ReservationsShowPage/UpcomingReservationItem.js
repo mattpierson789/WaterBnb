@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteReservation } from "../../store/reservations";
 import { useParams, Link } from 'react-router-dom';
 import { format, subDays, isValid } from 'date-fns';
+import './UpcomingReservationItem.css';
 
 const handleInvalidDate = (date) => {
   const parsedDate = new Date(date);
@@ -24,12 +25,13 @@ const UpcomingReservationItem = (props) => {
 
   if (reservation.id)
     return (
-      <div>
+      <div id ="reservation-item">
         <h3></h3>
-        <div>
+        <div id="reservation-info" >
           <h3>{reservation.listingCity}</h3>
           <p>{reservation.listingtitle}</p>
           <div id='solid-line'></div>
+          <img id="lighthouse" src="https://mp-waterbnb-seeds.s3.amazonaws.com/Screen+Shot+2023-06-08+at+2.46.27+PM.png" />
           <p>
             {format(startDate, 'yyyy-MM-dd')} - {format(endDate, 'yyyy-MM-dd')}
           </p>

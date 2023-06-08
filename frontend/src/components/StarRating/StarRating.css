@@ -23,7 +23,7 @@
   
   .review-form textarea {
     width: 100%;
-    height: 150px; /* Adjust the height as needed */
+    height: 150px; 
     resize: vertical;
     margin-bottom: 10px;
   }

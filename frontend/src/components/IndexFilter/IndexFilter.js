@@ -50,7 +50,7 @@ export const IndexFilter = () => {
             </div>
 
             <div className="filter-button" onClick={() => {dispatch(fetchListingsActivity('Swimming')); setSelected('Swimming')}} style={selected === 'Swimming' ? { borderBottom: '2px solid #222222' } : {}}>
-                <img className="filter-image" alt="" src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png'></img>
+                <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+5.00.06+PM.png'></img>
                 <p>Swimming</p>
             </div>
 

@@ -7,6 +7,7 @@ export const RECEIVE_LISTING_DETAILS = 'listings/RECEIVE_LISTING_DETAILS'
 
 
 export const receiveListings = (listings) => {
+    debugger
   return {type: RECEIVE_LISTINGS, 
     listings}
 }
@@ -55,36 +56,39 @@ export const fetchListingsType = (unique_type) => async dispatch => {
     dispatch(receiveListings(data.listings))
 }
 
-export const fetchListingsActivity = (activity_type) => async dispatch => {
-    const res = await csrfFetch(`/api/listings/activity_type/${activity_type}`)
+export const fetchListingsActivity = (unique_activity) => async dispatch => {
+    const res = await csrfFetch(`/api/listings/unique_activity/${unique_activity}`)
 
-    
+    debugger
     let data = await res.json()
+    debugger
 
 
     dispatch(receiveListings(data.listings))
 }
-
 
 const listingsReducer = (state = {}, action) => {
     const newState = {...state}
     switch(action.type) {
         case RECEIVE_LISTINGS:
             
-            return action.listings
-        
+            if (action.listings !== undefined) {
+                debugger
+                return action.listings;
+            } else {
+                return state; 
+            }
+
         case RECEIVE_LISTING:
             newState[action.listing.id] = action.listing
+            return newState;
+
+        case RECEIVE_LISTING_DETAILS:
+            const newListingStuff = action.payload ? action.payload.listing : null;
+            return {...newState, ...newListingStuff};
             
-            return newState
-
-            case RECEIVE_LISTING_DETAILS:
-                const newListingStuff = action.payload ? action.payload.listing : null;
-                return {...newState, ...newListingStuff}
-              
         default:
-            return newState
-
+            return newState;
     }
 }
 

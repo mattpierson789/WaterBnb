@@ -43,7 +43,13 @@ const ListingShow = () => {
         <span id="location-title">
           {listing.city}, {listing.country}
         </span>
-          
+
+
+
+
+     
+    <div id='outer-photo-title'>  
+
     <div id="listing-show-main-image">
   <img
     id='listing-image-main'
@@ -62,8 +68,15 @@ const ListingShow = () => {
     ))}
   </div>
 </div>
+</div>    
 
 
+      </div>
+
+        <div id="general-reservation-info">
+
+        <div className="listing-show-reservation">
+        <ReservationForm />
 
         <div id="listing-show-title-details">
           <h2>
@@ -72,6 +85,8 @@ const ListingShow = () => {
           {/* <img id="prof-pic" src={listing.lister_id.profile_picture} /> */}
         </div>
 
+        
+
         <div id="listing-show-description-details">
           <span>
             {listing.maxGuests} guests · {listing.bedrooms}{' '}
@@ -79,14 +94,17 @@ const ListingShow = () => {
             {listing.sleeps > 1 ? 'beds' : 'bed'} · {listing.bathrooms}{' '}
             {listing.bathrooms > 1 ? 'baths' : 'bath'}
           </span>
-          <div className="break"></div>
-          <span id='description'>{listing.description}</span>
-          <div className="break"></div>
-        </div>
+         
+          </div>
 
-        <div className="amenities-reservation-container">
+          <div>
+
+       
+          <span id='description'>{listing.description}</span>
+
+          <div className="amenities-reservation-container">
   <div id="amenities">
-    <h2>What this place offers</h2>
+    <h2 id='amenities-item-h2'>What this place offers</h2>
     <ul className="amenities-item">
       {listing.kitchen ? (
         <li>
@@ -120,14 +138,19 @@ const ListingShow = () => {
       ) : null}
     </ul>
   </div>
-
-  <div className="listing-show-reservation">
-    <ReservationForm />
   </div>
+          
+      
+      </div>
+
+  
+
+ 
+
 </div>
 
 
-        <div className="break"></div>
+
 
         <h2>Reviews</h2>
 

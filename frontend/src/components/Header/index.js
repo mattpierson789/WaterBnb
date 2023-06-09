@@ -9,7 +9,7 @@ function Header(props) {
     <div id="header-bar-4">
       <Link id="logo" to="/">
         <img id="logo-img" alt="WaterBnb logo" src={logo} />
-        <span id="span-logo">waterbnb</span>
+        <span id="span-logo">Waterbnb</span>
       </Link>
       <a href="https://github.com/mattpierson789" target="_blank">
         <img

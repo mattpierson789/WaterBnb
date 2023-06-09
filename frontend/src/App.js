@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HeaderBar from './components/HeaderBar';
 import { IndexFilter } from './components/IndexFilter/IndexFilter';
 import ListingIndex from './components/ListingIndex';
 import ListingShow from './components/ListingShow';
-
-
+import ReservationsShowPage from './components/ReservationsShowPage';
+// import ReservationUpdatePage from './components/ReservationUpdatePage';
 
 function App() {
   return (
@@ -16,12 +16,13 @@ function App() {
         <Routes>
           <Route path="/" element={<IndexPage />} />
           <Route path="listings/:listingId" element={<ListingShow />} />
+          <Route exact path="user/trips" element={<ReservationsShowPage />} />
         </Routes>
-
       </Router>
     </>
   );
 }
+
 
 function IndexPage() {
   return (
@@ -33,6 +34,3 @@ function IndexPage() {
 }
 
 export default App;
-
-
-

@@ -18,6 +18,7 @@
     "@babel/plugin-proposal-private-property-in-object": "latest"
   },
   "dependencies": {
+    "date-fns": "^2.30.0",
     "react-router-dom": "^6.12.0"
   }
 }

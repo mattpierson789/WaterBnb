@@ -65,7 +65,7 @@ export const restoreSession = () => async dispatch => {
 
     export const logout = (user) => async dispatch => {
 
-    const response = await csrfFetch('api/session', {
+    const response = await csrfFetch('/api/session', {
 
         method: "DELETE"
 

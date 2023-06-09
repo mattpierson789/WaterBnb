@@ -2,6 +2,8 @@
 module Api
   class ReservationsController < ApplicationController
 
+    skip_before_action :verify_authenticity_token, only: :create
+
   wrap_parameters Reservation.attribute_names + [:start_date, :end_date, :num_guests, :listing_id, :reserver_id]
 
   def index
@@ -12,8 +14,11 @@ module Api
   end 
 
   def create
+    
     @reservation = Reservation.new(reservation_params)
+    
     if @reservation.save
+     
       render :show
     else
       render json: @reservation.errors.full_messages, status: 422
@@ -45,8 +50,12 @@ module Api
   private
 
   def reservation_params
+    
+    
     params.require(:reservation).permit(:reserver_id, :listing_id, :start_date, :end_date, :num_guests)
+    
   end
+  
 
   end
 

@@ -6,13 +6,15 @@
   margin-left: 100px;
   margin-right: 100px;
   max-height: 600px;
+  width: 100%
 }
 
 #listing-image-main {
-  width: 50%;
-  height: auto;
+  width: 70%;
+  height: 100%;
   max-height: 400px;
   object-fit: cover;
+  margin-top: 10px
 }
 
 #listing-show-small-images-container {
@@ -21,29 +23,23 @@
   grid-gap: 7.5px;
   box-sizing: border-box;
   margin-left: 7.5px;
-  width: 49%;
+  width: 100%;
   height: 100%;
   max-height: 205px ;
+  margin-top: 9px;
+  margin-right: 200px;
 }
 
 #listing-show-small-images-container img {
   width: 100%;
   height: 100%;
-  max-height: 205px ;
+  max-height: 200px ;
   height: auto;
   object-fit: cover;
   border: 1px solid #ffffff;
+  
 }
 
-.image-landscape {
-  width: 200px;
-  height: 100px;
-}
-
-.image-portrait {
-  width: 100px;
-  height: 200px;
-}
 
 .listing-test {
   margin-top: 20px;
@@ -57,7 +53,7 @@
 
 #location-title {
   font-weight: italic;
-  margin-top: 100px;
+  margin-bottom: 300px;
   padding-bottom: 100px;
 }
 
@@ -109,8 +105,8 @@ span {
   height: 1px;
   background-color: rgba(0, 0, 0, 0.2);
   margin: 20px 0;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 0px;
+  margin-right: 300px;
 }
 
 .top-break {
@@ -126,3 +122,79 @@ span {
 .photos-container {
   max-height: 600px;
 }
+
+.amenities-item li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.amenities-item li img {
+  width: 40px; 
+  height: 40px;
+  margin-right: 10px; 
+}
+
+.amenities-item li  {
+  font-size: 20px; 
+  font-weight: normal; 
+
+}
+
+#amenities-item-h2 {
+  font-size: 30px;
+}
+
+#listing-show-description-details {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.listing-show-content {
+  display: flex;
+}
+
+.listing-description {
+  width: 50%;
+}
+
+.listing-show-reservation {
+  width: 100%;
+}
+
+.booking-info {
+  display: flex;
+  align-items: center;
+}
+
+.price-no-wrap {
+  white-space: nowrap;
+  font-weight: bold;
+  text-align: left;
+  margin-right: 10px;
+}
+
+#night {
+  margin-left: 0px;
+  font-size: 14px;
+  font-weight: normal;
+
+}
+
+#detail {
+  font-weight: normal;
+}
+
+#description {
+  width: 70%;
+  margin-right: 325px;
+  margin-left: auto;
+  display: block;
+}
+

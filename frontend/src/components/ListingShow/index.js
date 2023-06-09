@@ -159,7 +159,7 @@ const ListingShow = () => {
           {listing.city}, {listing.country}
         </span>
 
-        <div className="listing-page-map"><ListingMapWrapper /></div>
+        {/* <div className="listing-page-map"><ListingMapWrapper /></div> */}
       </div>
 
      

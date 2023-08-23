@@ -5,11 +5,12 @@ import { IndexFilter } from './components/IndexFilter/IndexFilter';
 import ListingIndex from './components/ListingIndex';
 import ListingShow from './components/ListingShow';
 import ReservationsShowPage from './components/ReservationsShowPage';
-// import ReservationUpdatePage from './components/ReservationUpdatePage';
+// import { useModal } from "./context/ModalContext";
+import ModalProvider from "./context/ModalContext";
 
 function App() {
   return (
-    <>
+    <ModalProvider>
       <Router>
         <HeaderBar />
         
@@ -19,10 +20,9 @@ function App() {
           <Route exact path="user/trips" element={<ReservationsShowPage />} />
         </Routes>
       </Router>
-    </>
+    </ModalProvider>
   );
 }
-
 
 function IndexPage() {
   return (
@@ -34,3 +34,4 @@ function IndexPage() {
 }
 
 export default App;
+

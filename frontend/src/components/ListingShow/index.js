@@ -159,15 +159,20 @@ const ListingShow = () => {
         <span>
           {listing.city}, {listing.country}
         </span>
-        <div className="map-section">
+      
+      </div>
+
+
+      {/* <div className="map-section">
           <MapContainer
             center={{ lat: listing.latitude, lng: listing.longitude }}
           />
-        </div>
-      </div>
+        </div> */}
 
      
     </div>
+
+    
   );
 };
 

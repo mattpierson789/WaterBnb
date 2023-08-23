@@ -85,21 +85,31 @@ export const deleteReservation = (reservationId) => async (dispatch) => {
 }
 
 const reservationsReducer = (state = {}, action) => {
+  Object.freeze(state);
+  const newState = { ...state };
+  
   switch (action.type) {
-    case RECEIVE_RESERVATIONS:
-      return action.reservations;
-
     case RECEIVE_RESERVATION:
-      debugger
-      return { ...state, [action.reservation.id]: action.reservation };
+      newState[action.reservation.id] = action.reservation;
+      return newState;
+
+    case RECEIVE_RESERVATIONS:
+      // Make sure reservations are correctly structured
+      for (let key in action.reservations) {
+        if (key !== "undefined" && Number.isInteger(Number(key))) {
+          newState[key] = action.reservations[key];
+        }
+      }
+      return newState;
 
     case REMOVE_RESERVATION:
-      const { [action.reservationId]: _, ...newState } = state;
+      delete newState[action.reservationId];
       return newState;
 
     default:
       return state;
   }
+
 };
 
 export default reservationsReducer;

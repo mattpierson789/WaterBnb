@@ -54,6 +54,8 @@ const ReservationForm = () => {
  
   if(currentUser){
       reserver_id = currentUser.id
+
+      debugger
       
   } else {
       reserver_id = null 
@@ -66,7 +68,7 @@ const ReservationForm = () => {
     const reservation = {
       reservation: {
         listingId: listingId,
-        reserverId: reserver_id,
+        reserver_id: reserver_id,
         numGuests: numGuests,
         startDate: startDate.format('YYYY-MM-DD'),
         endDate: endDate.format('YYYY-MM-DD'),

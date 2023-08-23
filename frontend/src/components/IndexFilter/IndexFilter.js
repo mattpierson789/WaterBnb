@@ -24,8 +24,8 @@ export const IndexFilter = () => {
             </div>
 
             <div className="filter-button" onClick={() => {dispatch(fetchListingsType('River')); setSelected('River')}} style={selected === 'River' ? { borderBottom: '2px solid #222222' } : {}}>
-                <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+5.01.15+PM.png'></img>
-                <p>River</p>
+                <img className="filter-image-2" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+5.01.15+PM.png'></img>
+                <p id ="adjust">River</p>
             </div>
 
             <div className="filter-button" onClick={() => {dispatch(fetchListingsType('Island')); setSelected('Island')}} style={selected === 'Island' ? { borderBottom: '2px solid #222222' } : {}}>
@@ -50,8 +50,8 @@ export const IndexFilter = () => {
             </div>
 
             <div className="filter-button" onClick={() => {dispatch(fetchListingsActivity('Swimming')); setSelected('Swimming')}} style={selected === 'Swimming' ? { borderBottom: '2px solid #222222' } : {}}>
-                <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+5.00.06+PM.png'></img>
-                <p>Swimming</p>
+                <img className="filter-image-2" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+5.00.06+PM.png'></img>
+                <p id ="adjust">Swimming</p>
             </div>
 
             <div className="filter-button" onClick={() => {dispatch(fetchListingsActivity('Skiing')); setSelected('Skiing')}} style={selected === 'Skiing' ? { borderBottom: '2px solid #222222' } : {}}>
@@ -60,8 +60,8 @@ export const IndexFilter = () => {
             </div>
 
             <div className="filter-button" onClick={() => {dispatch(fetchListingsActivity('Fishing')); setSelected('Fishing')}} style={selected === 'Fishing' ? { borderBottom: '2px solid #222222' } : {}}>
-                <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+5.03.27+PM.png'></img>
-                <p>Fishing</p>
+                <img className="filter-image-2" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+5.03.27+PM.png'></img>
+                <p id ="adjust">Fishing</p>
             </div>
 
             <div className="filter-button" onClick={() => {dispatch(fetchListingsActivity('National Park')); setSelected('National Park')}} style={selected === 'National Park' ? { borderBottom: '2px solid #222222' } : {}}>

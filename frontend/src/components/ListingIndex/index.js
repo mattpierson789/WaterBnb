@@ -1,14 +1,21 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchListings } from '../../store/listings';
 import { getListings } from '../../store/listings';
 import ListingIndexItem from './ListingIndexItem';
+// import { useHistory, useParams } from "react-router-dom";
+import { ReactComponent as ListIcon } from "../../assets/images/list_icon.svg";
+import { ReactComponent as MapIcon } from "../../assets/images/map_icon.svg";
+import Map from "../Map";
+import LoadingPage from "../../util/LoadingPage";
 
 
 const ListingIndex = () => {
     const dispatch = useDispatch();
     const listings = useSelector(getListings)
+    const [loading, setLoading] = useState(true);
+    const [toggleMap, setToggleMap] = useState(false);
 
     useEffect(() => {
         dispatch(fetchListings())
@@ -54,12 +61,27 @@ const ListingIndex = () => {
 
 
     return (
-        <div className="featured-listings">
-            <ul className="featured-listings-ul">
-                {featuredListingItems}
-            </ul>
+        <div className="container">
+            {toggleMap ? (
+                <Map listings={locations} /> 
+            ) : (
+                <div className="featured-listings">
+                    <ul className="featured-listings-ul">
+                        {featuredListingItems}
+                    </ul>
+                </div>
+            )}
+    
+            <button className="map-toggle" onClick={() => setToggleMap((prev) => !prev)}>
+                <div>{toggleMap ? "Show list" : "Show map"}</div>
+                <div className="toggle-map-svg">
+                    {toggleMap ? <ListIcon /> : <MapIcon />}
+                </div>
+            </button>
         </div>
     );
+    
+    
 }
 
 export default ListingIndex;

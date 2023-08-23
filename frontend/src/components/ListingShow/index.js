@@ -7,7 +7,8 @@ import { fetchListing } from '../../store/listings';
 import { useParams } from 'react-router-dom';
 import './ListingShow.css';
 import ReservationForm from '../ReservationForm';
-import ListingMapWrapper from '../ListingMap';
+import MapContainer from "../Map";
+// import ListingMapWrapper from '../ListingMap';
 
 const ListingShow = () => {
   const { listingId } = useParams();
@@ -158,8 +159,11 @@ const ListingShow = () => {
         <span>
           {listing.city}, {listing.country}
         </span>
-
-        <div className="listing-page-map"><ListingMapWrapper /></div>
+        <div className="map-section">
+          <MapContainer
+            center={{ lat: listing.latitude, lng: listing.longitude }}
+          />
+        </div>
       </div>
 
      

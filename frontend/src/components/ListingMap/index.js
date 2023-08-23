@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { getListing } from '../../store/listings';
+// import React, { useEffect, useRef, useState } from 'react';
+// import { useSelector } from 'react-redux';
+// import { getListing } from '../../store/listings';
 
-const ListingMapWrapper = ({ listingId }) => {
-  const listing = useSelector(state => getListing(state, listingId));
-  const { latitude, longitude } = listing;
+// const ListingMapWrapper = ({ listingId }) => {
+//   const listing = useSelector(state => getListing(state, listingId));
+//   const { latitude, longitude } = listing;
 
-  const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=12&size=600x400&markers=color:red%7C${latitude},${longitude}&key=process.env.REACT_APP_GOOGLE_MAPS_API_KEY`;
+//   const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=12&size=600x400&markers=color:red%7C${latitude},${longitude}&key=process.env.REACT_APP_GOOGLE_MAPS_API_KEY`;
 
-  return <img src={mapUrl} alt="Map" />;
-};
+//   return <img src={mapUrl} alt="Map" />;
+// };
 
-export default ListingMapWrapper;
+// export default ListingMapWrapper;
 
 
 

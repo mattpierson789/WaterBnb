@@ -11,7 +11,7 @@ export const receiveReservations = (reservations) => ({
 
 export const receiveReservation = (reservation) => {
 
-  debugger
+  // debugger
 
  return {type: RECEIVE_RESERVATION,
 
@@ -42,7 +42,7 @@ export const fetchReservation = (reservationId) => async (dispatch) => {
 
 export const createReservation = (reservation) => async (dispatch) => {
 
-  debugger
+  // debugger
  
   const res = await csrfFetch(`/api/reservations`, {
     method: 'POST', 

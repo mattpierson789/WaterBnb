@@ -11,19 +11,31 @@ import { deleteReview, fetchReview } from "../../store/reviews";
 import { useEffect } from "react";
 
 const TripItem = ({ trip, type }) => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const startDate = convertToDate(trip.reservation.startDate);
-  const endDate = convertToDate(trip.reservation.endDate);
+  const startDate = convertToDate(trip.startDate);
+  const endDate = convertToDate(trip.endDate);
   const { setToggleEditModal, setTripToUpdate, setToggleReviewModal, setTripData } = useModal();
-  const review = useSelector(state => state.reviews[trip.reservation.id]);
+
+  const review = useSelector((state) => {
+    if (state.reviews && trip.reservation && trip.reservation.id) {
+      return state.reviews[trip.reservation.id];
+    }
+    return null;
+  });
 
   useEffect(() => {
     if (type === "past") {
-      dispatch(fetchReview(trip.reservation.id));
+      dispatch(fetchReview(trip.id));
     }
   }, []);
 
+  if (!trip || !trip.reservation) {
+    console.error("Trip or trip reservation is undefined");
+    return null;
+  }
+  
   const handleCreateUpdate = (e, formType) => {
     e.preventDefault();
     let reviewData;
@@ -38,7 +50,7 @@ const TripItem = ({ trip, type }) => {
         location: 5,
         value: 5,
         body: "",
-        reservationId: trip.reservation.id
+        reservationId: trip.id,
       };
     }
     const tripInfo = trip;
@@ -67,11 +79,17 @@ const TripItem = ({ trip, type }) => {
     case "past":
       buttonGroup = review ? (
         <>
-          <button className="res-btn review" onClick={(e) => handleCreateUpdate(e, "update")}>Update Review</button>
-          <button className="res-btn review" onClick={(e) => handleRemoveReview(e, review.id)}>Remove Review</button>
+          <button className="res-btn review" onClick={(e) => handleCreateUpdate(e, "update")}>
+            Update Review
+          </button>
+          <button className="res-btn review" onClick={(e) => handleRemoveReview(e, review.id)}>
+            Remove Review
+          </button>
         </>
       ) : (
-        <button className="res-btn review" onClick={(e) => handleCreateUpdate(e, "create")}>Write a Review</button>
+        <button className="res-btn review" onClick={(e) => handleCreateUpdate(e, "create")}>
+          Write a Review
+        </button>
       );
       break;
     case "current":
@@ -80,8 +98,12 @@ const TripItem = ({ trip, type }) => {
     case "future":
       buttonGroup = (
         <>
-          <button className="res-btn" onClick={toUpdate}>Update</button>
-          <button className="res-btn" onClick={toCancel}>Cancel</button>
+          <button className="res-btn" onClick={toUpdate}>
+            Update
+          </button>
+          <button className="res-btn" onClick={toCancel}>
+            Cancel
+          </button>
         </>
       );
       break;
@@ -100,7 +122,9 @@ const TripItem = ({ trip, type }) => {
       </div>
       <div className="trip-item-right">
         <div className="trip-info">
-          <div className="trip-location" onClick={toListing}>{trip.listing.city}, {trip.listing.state}</div>
+          <div className="trip-location" onClick={toListing}>
+            {trip.listing.city}, {trip.listing.state}
+          </div>
           <div className="trip-title">{trip.listing.title}</div>
           <div className="trip-dates">{tripRange}</div>
           <div className="trip-guests">Guests: {trip.reservation.numGuests}</div>

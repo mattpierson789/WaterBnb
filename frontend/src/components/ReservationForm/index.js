@@ -55,7 +55,7 @@ const ReservationForm = () => {
   if(currentUser){
       reserver_id = currentUser.id
 
-      debugger
+      // debugger
       
   } else {
       reserver_id = null 

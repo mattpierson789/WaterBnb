@@ -24,7 +24,6 @@ const ListingShow = () => {
     return null;
   }
 
-
   let locationAdjective = '';
   if (listing.uniqueType === 'Mountains') {
     locationAdjective = 'in the mountains';
@@ -33,7 +32,6 @@ const ListingShow = () => {
   } else {
     locationAdjective = 'near the ' + listing.uniqueType
   }
-
 
   return (
     <div className="listing-show-container">
@@ -44,9 +42,6 @@ const ListingShow = () => {
         <span id="location-title">
           {listing.city}, {listing.country}
         </span>
-
-
-
 
      
     <div id='outer-photo-title'>  

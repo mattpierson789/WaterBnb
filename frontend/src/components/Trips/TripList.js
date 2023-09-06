@@ -19,7 +19,7 @@ const TripsList = ({ trips, type }) => {
   }
 
   const tripItems = trips.map((trip, i) => (
-    <div className="trip-item-container" key={trip.reservation.id}>
+    <div className="trip-item-container" key={trip.id}>
       <TripItem trip={trip} type={type} />
     </div>
   ));

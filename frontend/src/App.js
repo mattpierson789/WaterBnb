@@ -5,6 +5,7 @@ import { IndexFilter } from './components/IndexFilter/IndexFilter';
 import ListingIndex from './components/ListingIndex';
 import ListingShow from './components/ListingShow';
 import ReservationsShowPage from './components/ReservationsShowPage';
+import TripsIndex from './components/Trips';
 // import { useModal } from "./context/ModalContext";
 import ModalProvider from "./context/ModalContext";
 
@@ -17,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<IndexPage />} />
           <Route path="listings/:listingId" element={<ListingShow />} />
-          <Route exact path="user/trips" element={<ReservationsShowPage />} />
+          <Route exact path="user/trips" element={<TripsIndex />} />
         </Routes>
       </Router>
     </ModalProvider>

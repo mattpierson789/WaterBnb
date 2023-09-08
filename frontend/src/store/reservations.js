@@ -31,13 +31,17 @@ export const getReservation = (reservationId) => (state) => state.reservation ? 
 export const fetchReservations = () => async (dispatch) => {
   const res = await csrfFetch('/api/reservations');
   const data = await res.json();
+  debugger
   dispatch(receiveReservations(data.reservations));
+  debugger
 };
 
 export const fetchReservation = (reservationId) => async (dispatch) => {
   const res = await csrfFetch(`/api/reservations/${reservationId}`);
   const data = await res.json();
+  debugger
   dispatch(receiveReservation(data.reservation));
+  debugger
 };
 
 export const createReservation = (reservation) => async (dispatch) => {
@@ -62,6 +66,8 @@ if (res.ok) {
 return res
 
 }
+
+
 
 export const updateReservation = (reservation) => async (dispatch) => {
   const res = await csrfFetch(`/api/reservations/${reservation.id}`, {

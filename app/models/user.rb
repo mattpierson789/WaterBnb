@@ -24,6 +24,15 @@ class User < ApplicationRecord
   has_many :reservations,
   foreign_key: :reserver_id
 
+  has_many :trip_listings,
+  through: :reservations,
+  source: :listing
+
+  has_many :reviews_given,
+  class_name: :Review,
+  foreign_key: :reviewer_id,
+  dependent: :destroy
+
 
   validates :password_digest, presence: true
 

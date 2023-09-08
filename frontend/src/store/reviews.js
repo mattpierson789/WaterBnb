@@ -18,10 +18,11 @@ export const getListingReviews = (listingId) => (state) => {
   return listingReviews;
 };
 
-export const receiveReview = (review) => {
+export const receiveReview = (review, listingId) => {
   return {
     type: RECEIVE_REVIEW,
-    review,
+    review, listingId
+    
   };
 };
 

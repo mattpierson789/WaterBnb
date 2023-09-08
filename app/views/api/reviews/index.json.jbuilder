@@ -1,10 +1,11 @@
 json.reviews do
-    @reviews.each do |review|
-      json.set! review.id do
-        json.extract! review, :id, :reservation_id, :reviewer_id, :overall_rating, :body
-        reviewer_name = review.reviewer.first_name + " " + review.reviewer.last_name
-        json.listingId @listing.id
-        json.reviewer reviewer_name
-      end
+  @reviews.each do |review|
+    json.set! review.id do
+      json.extract! review, :id, :reviewer_id, :listing_id, :body, :rating, :cleanliness, 
+                    :communication, :check_in, :accuracy, :location, :value
+      
+      json.reviewer review.reviewer.name
+      json.reviewerProfilePicture review.reviewer.profile_picture
     end
   end
+end

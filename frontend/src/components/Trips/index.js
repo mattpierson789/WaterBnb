@@ -105,9 +105,6 @@ console.log(currentTrips)
         <div className="search-trips-box">
           <div className="search-trips left">
             <div className="hello">
-              <div className="wave-img">
-                <img src={wave} alt="hand wave" width="48" height="48" />
-              </div>
               <h2>Hi {currentUser ? currentUser.firstName : 'Guest'}, welcome back!</h2>
             </div>
             <div className="banner-card">{bannerCard}</div>

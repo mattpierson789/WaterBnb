@@ -31,13 +31,14 @@ const TripItem = ({ trip, type }) => {
     }
   }, []);
 
-  if (!trip || !trip.reservation) {
+  if (!trip) {
     console.error("Trip or trip reservation is undefined");
     return null;
   }
   
   const handleCreateUpdate = (e, formType) => {
     e.preventDefault();
+    debugger
     let reviewData;
     if (formType === "update") {
       reviewData = review;
@@ -59,6 +60,7 @@ const TripItem = ({ trip, type }) => {
     setToggleReviewModal(true);
   };
 
+  
   const handleRemoveReview = (e, reviewId) => {
     e.preventDefault();
     dispatch(deleteReview(reviewId));
@@ -73,6 +75,8 @@ const TripItem = ({ trip, type }) => {
     setToggleEditModal(true);
   };
   const toCancel = () => dispatch(deleteReservation(trip.reservation.id));
+
+    // debugger
 
   let buttonGroup;
   switch (type) {
@@ -116,19 +120,19 @@ const TripItem = ({ trip, type }) => {
       <div className="trip-item-left" onClick={toListing}>
         <ImageLoader
           className={"trip-img"}
-          src={trip.listing.photoUrls.length > 0 ? trip.listing.photoUrls[0] : sampleHouse}
+          src={trip.photos?.length > 0 ? trip.photos[0] : 'https://mp-waterbnb-seeds.s3.amazonaws.com/OceanBeach1'}
           alt="listing-banner-img"
         />
       </div>
       <div className="trip-item-right">
         <div className="trip-info">
           <div className="trip-location" onClick={toListing}>
-            {trip.listing.city}, {trip.listing.state}
+            {/* {trip.listing.city}, {trip.listing.state} */}
           </div>
-          <div className="trip-title">{trip.listing.title}</div>
+          {/* <div className="trip-title">{trip.listing.title}</div> */}
           <div className="trip-dates">{tripRange}</div>
-          <div className="trip-guests">Guests: {trip.reservation.numGuests}</div>
-          <div className="trip-price">Total: ${trip.reservation.totalPrice.toFixed(2)}</div>
+          {/* <div className="trip-guests">Guests: {trip.reservation.numGuests}</div> */}
+          {/* <div className="trip-price">Total: ${trip.reservation.totalPrice.toFixed(2)}</div> */}
         </div>
         <div className="button-group">{buttonGroup}</div>
       </div>

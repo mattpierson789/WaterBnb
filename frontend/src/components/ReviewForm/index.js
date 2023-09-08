@@ -12,12 +12,18 @@ import { useEffect } from "react";
 const ReviewForm = () => {
   const dispatch = useDispatch();
   const formatDate = (date) => {
-    return format(date, "MMM dd, yy");
-  };
+    if (date && !isNaN(new Date(date).getTime())) {
+        return format(date, "MMM dd, yy");
+    }
+    return "";  
+};
+
   const { setToggleReviewModal, tripData, setTripData } = useModal();
-  const startDate = convertToDate(tripData.reservation.startDate);
-  const endDate = convertToDate(tripData.reservation.endDate);
+  const startDate = tripData?.reservation?.startDate ? convertToDate(tripData.reservation.startDate) : null;
+const endDate = tripData?.reservation?.endDate ? convertToDate(tripData.reservation.endDate) : null;
   const tripRange = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+  const reservedTrips = useSelector((state) => state.listings) 
+  // const tripId = useSelector(state) => state.reservations.id
   const header = !!tripData.reviewData.id
     ? "Update Review"
     : "Write a new Review";
@@ -79,6 +85,8 @@ const ReviewForm = () => {
   };
   useEffect(() => {}, [dispatch]);
 
+  debugger
+
   return (
     <div className="review-modal-bg">
       <div className="review-modal-wrapper">
@@ -96,26 +104,26 @@ const ReviewForm = () => {
               <h2>Trip Details: </h2>
               <div className="review-trip-details">
                 <span className="review-listing-title">
-                  {tripData.listing.title}
+                  {reservedTrips.description}
                 </span>
                 <span className="review-listing-location">
-                  {tripData.listing.city}, {tripData.listing.state}
+                  {reservedTrips.city}, {reservedTrips.state}
                 </span>
                 <div className="review-listing-rating">
                   Overall Rating: <Star />
-                  {tripData.listing.ratings.overallRating}
+                  {tripData.ratings.overallRating}
                 </div>
                 <span className="review-listing-host">
-                  Hosted by: {tripData.host.firstName} {tripData.host.lastName}
+                  Hosted by: {tripData.host.name} {tripData.host.name}
                 </span>
               </div>
               <div className="review-reserve-details">
                 <span className="review-reservation-dates">{tripRange}</span>
-                <span>Guests: {tripData.reservation.numGuests}</span>
+                <span>Guests: {tripData.reservation.num_guests}</span>
               </div>
             </div>
             <div className="review-reserve-info-right">
-              <img src={tripData.listing.photoUrls[0]} alt="" />
+              <img src={tripData.listing.photos[0]} alt="" />
             </div>
           </div>
           <div className="review-form-container">

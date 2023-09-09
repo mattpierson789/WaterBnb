@@ -111,19 +111,19 @@ const endDate = tripData?.reservation?.endDate ? convertToDate(tripData.reservat
                 </span>
                 <div className="review-listing-rating">
                   Overall Rating: <Star />
-                  {tripData.ratings.overallRating}
+                  {/* {tripData.ratings.overallRating} */}
                 </div>
                 <span className="review-listing-host">
-                  Hosted by: {tripData.host.name} {tripData.host.name}
+                  {/* Hosted by: {tripData.host.name} {tripData.host.name} */}
                 </span>
               </div>
               <div className="review-reserve-details">
                 <span className="review-reservation-dates">{tripRange}</span>
-                <span>Guests: {tripData.reservation.num_guests}</span>
+                {/* <span>Guests: {tripData.reservation.num_guests}</span> */}
               </div>
             </div>
             <div className="review-reserve-info-right">
-              <img src={tripData.listing.photos[0]} alt="" />
+              {/* <img src={tripData.listing.photos[0]} alt="" /> */}
             </div>
           </div>
           <div className="review-form-container">

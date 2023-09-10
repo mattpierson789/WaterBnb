@@ -22,8 +22,8 @@ const ReviewForm = () => {
   const startDate = tripData?.reservation?.startDate ? convertToDate(tripData.reservation.startDate) : null;
 const endDate = tripData?.reservation?.endDate ? convertToDate(tripData.reservation.endDate) : null;
   const tripRange = `${formatDate(startDate)} - ${formatDate(endDate)}`;
-  const reservedTrips = useSelector((state) => state.listings) 
-  // const tripId = useSelector(state) => state.reservations.id
+  const reservedTrips = useSelector((state) => state.listings); 
+  const tripId = useSelector((state) => state.reservations.id);  
   const header = !!tripData.reviewData.id
     ? "Update Review"
     : "Write a new Review";

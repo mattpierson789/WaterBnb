@@ -4,11 +4,9 @@ import './index.css';
 import App from './App';
 import * as sessionActions from './store/session';
 import * as listingActions from './store/listings';
-import { csrfFetch } from './store/csrf';
+import csrfFetch, { restoreCSRF, storeCSRFToken } from './store/csrf';
 import configureStore from './store';
 import { Provider } from 'react-redux';
-
-
 
 const store = configureStore();
 

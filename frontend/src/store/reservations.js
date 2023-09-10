@@ -1,11 +1,14 @@
-import {csrfFetch, storeCSRFToken, restoreCSRF} from "./csrf";
+import csrfFetch, { storeCSRFToken, restoreCSRF } from "./csrf";
+
 export const RECEIVE_RESERVATIONS = 'listings/receiveReservations';
 export const RECEIVE_RESERVATION = 'listings/receiveReservation';
 export const REMOVE_RESERVATION = 'listings/removeReservation';
+
 export const receiveReservations = (reservations) => ({
   type: RECEIVE_RESERVATIONS,
   reservations,
 });
+
 export const receiveReservation = (reservation) => {
   // debugger
  return {type: RECEIVE_RESERVATION,

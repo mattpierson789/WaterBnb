@@ -1,5 +1,4 @@
-import csrfFetch from "./csrf";
-import { storeCSRFToken, restoreCSRF } from "./csrf";
+import csrfFetch, { storeCSRFToken, restoreCSRF } from "./csrf";
 
 export const SET_CURRENT_USER = "session/setCurrentUser";
 export const REMOVE_CURRENT_USER = 'session/removeCurrentUser';

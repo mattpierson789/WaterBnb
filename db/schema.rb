@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_222056) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_191139) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,7 +106,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_222056) do
     t.integer "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "reservation_id"
     t.index ["listing_id"], name: "index_reviews_on_listing_id"
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
@@ -130,5 +132,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_222056) do
   add_foreign_key "reservations", "listings"
   add_foreign_key "reservations", "users", column: "reserver_id"
   add_foreign_key "reviews", "listings"
+  add_foreign_key "reviews", "reservations"
   add_foreign_key "reviews", "users", column: "reviewer_id"
 end

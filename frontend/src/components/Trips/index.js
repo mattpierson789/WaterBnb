@@ -227,15 +227,10 @@ const TripsIndex = () => {
             <div className="trips-index-container">
                 <div className="trips-page-header">
                     <h1>Trips</h1>
-                    <h3>
-                        You booked a total of <span id="trips-count">{trips.length}</span> trips so far!
-                    </h3>
                 </div>
                 <div className="search-trips-box">
                     <div className="search-trips left">
-                        <div className="hello">
-                            <h2>Hi {currentUser ? currentUser.firstName : 'Guest'}, welcome back!</h2>
-                        </div>
+                     
                         <div className="banner-card">{bannerCard}</div>
                         <button
                             className="trip-search-btn"

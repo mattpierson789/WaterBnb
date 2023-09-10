@@ -64,11 +64,14 @@ const TripsList = ({ trips, type }) => {
             header = "Booked trips";
     }
 
-    const tripItems = trips.map((trip, i) => (
-        <div className="trip-item-container" key={trip.id}>
-            <TripItem trip={trip} type={type} />
-        </div>
-    ));
+    const filteredTrips = trips.filter(trip => trip.photos && trip.photos.length > 0);
+
+    const tripItems = filteredTrips.map((trip, i) => (
+      <div className="trip-item-container" key={trip.id || i}>
+          <TripItem trip={trip} type={type} />
+      </div>
+  ));
+  
 
     const emptyList = 
         <div className="empty-list">
@@ -81,7 +84,7 @@ const TripsList = ({ trips, type }) => {
             <div className="trip-list-header">
                 <h2>{header}</h2>
             </div>
-            {trips.length === 0 ? (
+            {filteredTrips.length === 0 ? (
                 emptyList
             ) : (
                 <div className="trip-list-grid">{tripItems}</div>
@@ -91,3 +94,4 @@ const TripsList = ({ trips, type }) => {
 };
 
 export default TripsList;
+

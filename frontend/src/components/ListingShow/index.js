@@ -20,6 +20,8 @@ const ListingShow = () => {
     dispatch(fetchListing(listingId));
   }, [listingId]);
 
+  debugger
+
   if (!listing) {
     return null;
   }
@@ -158,11 +160,11 @@ const ListingShow = () => {
       </div>
 
 
-      {/* <div className="map-section">
+        <div className="map-section">
           <MapContainer
-            center={{ lat: listing.latitude, lng: listing.longitude }}
+            center={{ lat: parseFloat(listing.latitude), lng: parseFloat(listing.longitude)}}
           />
-        </div> */}
+        </div>
 
      
     </div>

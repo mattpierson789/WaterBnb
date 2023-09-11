@@ -26,9 +26,9 @@ const endDate = tripData?.reservation?.endDate ? convertToDate(tripData.reservat
   const tripId = useSelector((state) => state.reservations.id);  
   const header = !!tripData.reviewData.id
     ? "Update Review"
-    : "Write a new Review";
+    : "Leave a Review";
 
-  const buttonTxt = !!tripData.reviewData.id ? "Update Review" : "Post Review";
+  const buttonTxt = !!tripData.reviewData.id ? "Update Review" : "Leave Review";
 
   const reviewFunction = !!tripData.reviewData.id ? updateReview : createReview;
 

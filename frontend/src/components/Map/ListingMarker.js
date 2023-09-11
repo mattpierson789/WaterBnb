@@ -23,13 +23,16 @@ const MarkerInfoCard = ({ listing, onClick }) => {
         <div className="info-card-img-container" onClick={handleCardClick}>
           <ImageLoader
             className={"info-card-img"}
-            // src={listing.photos[0]}
+            src={listing.photos[0]}
             alt={"map listing info card photo"}
           />
         </div>
         <div className="info-card-detail-container" onClick={handleCardClick}>
+        <div className="info-card-title">
+            {listing.title}
+          </div>
           <div className="info-card-location">
-            {listing.city}, {listing.state}
+            {listing.city}, {listing.country}
           </div>
           <div className="info-card-rating">
             <div className="review-star">
@@ -39,12 +42,8 @@ const MarkerInfoCard = ({ listing, onClick }) => {
               {/* {listing.ratings.overallRating} */}
             </div>
           </div>
-          <div className="info-card-category">
-            {/* {listing.category.charAt(0).toUpperCase() +
-              listing.category.slice(1)} */}
-          </div>
           <div className="info-card-price">
-            {/* ${listing.nightPrice} <span>night</span> */}
+          <span> ${listing.nightPrice} night</span>
           </div>
         </div>
       </div>

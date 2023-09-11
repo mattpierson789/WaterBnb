@@ -20,7 +20,7 @@ const MapContainer = ({ center }) => {
   const listings = useSelector(getListings); // Get listings from redux store
   const [activeMarker, setActiveMarker] = useState(null);
 
-  const defaultCenter = center ? center : { lat: 40.770124, lng: -73.993277 };
+  const defaultCenter = center ? center : { lat: 0, lng: 0 }
   const isActiveMarker = useMemo(() => activeMarker, [activeMarker]);
   const mapCenter = useMemo(() => defaultCenter, []);
 
@@ -63,7 +63,7 @@ const MapContainer = ({ center }) => {
 
   return (
     <GoogleMap
-      zoom={center ? 14 : 10}
+    zoom={center ? 14 : 2}
       center={mapCenter}
       mapContainerClassName="map-container"
       options={options}

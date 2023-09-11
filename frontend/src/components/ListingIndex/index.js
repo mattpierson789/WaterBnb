@@ -85,6 +85,7 @@ import { ReactComponent as MapIcon } from "../../assets/images/map_icon.svg";
 import MapContainer from "../Map"
 import { useSelector } from 'react-redux';
 import { getListings } from '../../store/listings';
+import "./ListingIndex.css";
 
 const ListingIndex = () => {
     const dispatch = useDispatch();

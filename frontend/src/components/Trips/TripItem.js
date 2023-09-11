@@ -86,7 +86,7 @@ const TripItem = ({ trip, type }) => {
                 </>
             ) : (
                 <button className="res-btn review" onClick={(e) => handleCreateUpdate(e, "create")}>
-                    Write a Review
+                    Leave a Review
                 </button>
             );
             break;

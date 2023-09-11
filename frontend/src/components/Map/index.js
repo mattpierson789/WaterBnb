@@ -8,13 +8,16 @@ import {
 import LoadingPage from "../../util/LoadingPage";
 import "./Map.css";
 import mapStyles from "./MapStyles";
+import { useSelector } from 'react-redux';
 import ListingMarker from "./ListingMarker";
 import { ReactComponent as HomeIcon } from "../../assets/images/home_icon.svg";
+import { getListings } from "../../store/listings";
 
-const MapContainer = ({ listings, center }) => {
+const MapContainer = ({ center }) => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
+      googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY
   });
+  const listings = useSelector(getListings); // Get listings from redux store
   const [activeMarker, setActiveMarker] = useState(null);
 
   const defaultCenter = center ? center : { lat: 40.770124, lng: -73.993277 };

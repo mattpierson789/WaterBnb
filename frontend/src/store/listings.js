@@ -39,18 +39,18 @@ export const fetchListings = () => async (dispatch) => {
 
     dispatch(receiveListings(data.listings))
     dispatch(receiveReservations(data.reservations))
-    debugger
+    // debugger
 }
 
 export const fetchListing = (listingId) => async (dispatch) => {
     const res = await fetch(`/api/listings/${listingId}`)
     const data = await res.json();
   
-    debugger
+    // debugger
     dispatch(receiveListing(data.listing))
     dispatch(receiveHost(data.host));
     dispatch(receiveReservations(data.reservations))
-    debugger
+    // debugger
 }
 
 export const fetchListingsType = (unique_type) => async dispatch => {
@@ -75,20 +75,20 @@ export const fetchListingsActivity = (unique_activity) => async dispatch => {
 }
 
 const listingsReducer = (state = {}, action) => {
-    debugger
+    // debugger
     const newState = {...state}
     switch(action.type) {
         case RECEIVE_LISTINGS:
             
             if (action.listings !== undefined) {
-                debugger
+                // debugger
                 return action.listings;
             } else {
                 return state; 
             }
 
         case RECEIVE_LISTING:
-            debugger
+            // debugger
             newState[action.listing.id] = action.listing
             return newState;
 

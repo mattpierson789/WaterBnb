@@ -77,7 +77,7 @@ export const fetchReservations = () => async (dispatch) => {
   const reservationsWithListingData = await Promise.all(
     Object.values(data.reservations).map(async (reservation) => {
       const listingRes = await csrfFetch(`/api/listings/${reservation.listingId}`);
-      debugger 
+      // debugger 
       const listingData = await listingRes.json();
       return {
         ...reservation,

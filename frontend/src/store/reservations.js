@@ -68,12 +68,12 @@ export const deleteReservation = (reservationId) => async (dispatch) => {
     dispatch(removeReservation(reservationId));
   }
 }
-// Modify your fetchReservations and fetchReservation actions
+
 export const fetchReservations = () => async (dispatch) => {
   const res = await csrfFetch('/api/reservations');
   const data = await res.json();
   
-  // Fetch associated listing data for each reservation
+
   const reservationsWithListingData = await Promise.all(
     Object.values(data.reservations).map(async (reservation) => {
       const listingRes = await csrfFetch(`/api/listings/${reservation.listingId}`);
@@ -81,7 +81,7 @@ export const fetchReservations = () => async (dispatch) => {
       const listingData = await listingRes.json();
       return {
         ...reservation,
-        listing: listingData, // Store the listing data within the reservation object
+        listing: listingData, 
       };
     })
   );
@@ -90,18 +90,18 @@ export const fetchReservations = () => async (dispatch) => {
 export const fetchReservation = (reservationId) => async (dispatch) => {
   const res = await csrfFetch(`/api/reservations/${reservationId}`);
   const data = await res.json();
-  // Fetch associated listing data for the reservation
+  
   const listingRes = await csrfFetch(`/api/listings/${data.reservation.listingId}`);
   const listingData = await listingRes.json();
-  // Create a flattened reservation object with listing data
+  
   const flattenedReservation = {
     ...data.reservation,
     listingId: data.reservation.listingId,
-    listing: listingData, // Store the listing data directly within the reservation
+    listing: listingData, 
   };
   dispatch(receiveReservation(flattenedReservation));
 };
-// Update your reservationsReducer to store the reservations with flattened listing data
+
 const reservationsReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = { ...state };

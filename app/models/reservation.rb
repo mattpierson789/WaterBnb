@@ -31,7 +31,7 @@ class Reservation < ApplicationRecord
           reserve_price = (listing.night_price * nights)
           service_fee = (reserve_price * 0.17).round(2)
       
-          self.total_price = (reserve_price + listing.cleaning_fee + service_fee)
+          self.total_price = (reserve_price + (listing.night_price * 0.3) + service_fee)
           self.total_price = total_price.round(2)
         end
       end

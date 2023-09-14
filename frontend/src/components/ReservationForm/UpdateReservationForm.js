@@ -13,34 +13,38 @@ import "./UpdateReservationForm.css";
 
 const UpdateReservationModal = () => {
   const { setToggleEditModal, tripToUpdate } = useModal();
-  const trip = tripToUpdate;
+  const trip = tripToUpdate || {};
+
+  debugger
 
   const dispatch = useDispatch();
-  const startDate = convertToDate(trip.reservation.startDate);
-  const endDate = convertToDate(trip.reservation.endDate);
-  const [newStartDate, setNewStartDate] = useState(startDate);
-  const [newEndDate, setNewEndDate] = useState(endDate);
-  const [newNumGuests, setNewNumGuests] = useState(trip.reservation.numGuests);
+  debugger
+  const start_date = trip.start_date ? convertToDate(trip.start_date) : new Date();
+  const end_date = trip.end_date ? convertToDate(trip.end_date) : new Date();  
+  const [newStartDate, setNewStartDate] = useState(start_date);
+  const [newEndDate, setNewEndDate] = useState(end_date);
+  const [newNumGuests, setNewNumGuests] = useState(trip.numGuests);
   const [newNumNights, setNewNumNights] = useState(
-    differenceInDays(startDate, endDate)
+    differenceInDays(start_date, end_date)
   );
   const [newServiceFee, setNewServiceFee] = useState(0);
   const [errors, setErrors] = useState([]);
   const [newTotal, setNewTotal] = useState(0);
-  const nightPrice = trip.listing.nightPrice;
-  const cleaningFee = trip.listing.cleaningFee;
+  const nightPrice = trip.listing.listing.nightPrice;
+  const cleaningFee = trip.listing.listing.nightPrice * .30
 
   const formatDate = (date) => {
     return format(date, "MMM dd, yy");
   };
 
-  const tripRange = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+  const tripRange = `${formatDate(start_date)} - ${formatDate(end_date)}`;
 
-  const selectionRange = {
+const selectionRange = {
     startDate: newStartDate,
     endDate: newEndDate,
     key: "selection",
   };
+
 
   const [mousePositions, setMousePositions] = useState({
     update: { x: 0, y: 0 },
@@ -97,11 +101,11 @@ const UpdateReservationModal = () => {
     if (validateDates()) {
       const reservation = {
         ...trip.reservation,
-        listingId: trip.listing.id,
-        numGuests: newNumGuests,
-        totalPrice: newTotal,
-        startDate: format(newStartDate, "yyyy-MM-dd"),
-        endDate: format(newEndDate, "yyyy-MM-dd"),
+        listing_id: trip.listing.id,
+        num_guests: newNumGuests,
+        total_price: newTotal,
+        start_date: format(newStartDate, "yyyy-MM-dd"),
+        end_date: format(newEndDate, "yyyy-MM-dd"),
       };
       try {
         await new Promise((resolve, reject) => {
@@ -131,6 +135,7 @@ const UpdateReservationModal = () => {
     }
   };
 
+
   return (
     <div className="update-modal-bg">
       <div className="update-modal-wrapper">
@@ -143,19 +148,19 @@ const UpdateReservationModal = () => {
           <div className="trip-update-header">
             <h1 className="trip-range update">{tripRange}</h1>
             <div className="trip-details">
-              <h3 className="trip-title update">{trip.listing.title}</h3>
+              <h3 className="trip-title update">{trip.listing.listing.title}</h3>
               <div className="trip-location update">
-                {trip.listing.city}, {trip.listing.state}
+                {trip.listing.listing.city}, {trip.listing.listing.state}
               </div>
               <div className="trip-guests update">
-                Guests: {trip.reservation.numGuests}
+                Guests: {trip.listing.listing.numGuests}
               </div>
             </div>
           </div>
           <div className="trip-img-container update">
             <ImageLoader
               className={"trip-img update"}
-              src={trip.listing.photoUrls[0]}
+              src={trip.listing.listing.photos[0]}
               alt="listing-banner-img"
             />
           </div>
@@ -227,7 +232,7 @@ const UpdateReservationModal = () => {
                 <div>${cleaningFee}</div>
               </div>
               <div className="price-calc-line">
-                <div>NextBnB service fee</div>
+                <div>Service fee</div>
                 <div>${newServiceFee}</div>
               </div>
               <div className="divisor">

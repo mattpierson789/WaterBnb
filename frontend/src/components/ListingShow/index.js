@@ -160,11 +160,11 @@ const ListingShow = () => {
       </div>
 
 
-        <div className="map-section">
+        {/* <div className="map-section">
           <MapContainer
             center={{ lat: parseFloat(listing.latitude), lng: parseFloat(listing.longitude)}}
           />
-        </div>
+        </div> */}
 
      
     </div>

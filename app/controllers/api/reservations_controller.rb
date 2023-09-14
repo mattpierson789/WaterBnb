@@ -51,7 +51,7 @@
 
 module Api
   class ReservationsController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: :create
+    skip_before_action :verify_authenticity_token, only: [:create, :destroy]
     wrap_parameters Reservation.attribute_names + [:start_date, :end_date, :num_guests, :listing_id, :reserver_id]
 
     def index
@@ -80,9 +80,13 @@ module Api
     end
 
     def destroy
-      @reservation = Reservation.find(params[:id])
-      @reservation.destroy
-      render :show
+      @reservation = Reservation.find_by(id: params[:id])
+unless @reservation
+  render json: { error: "Reservation not found" }, status: 404 and return
+end
+@reservation.destroy
+render :show
+
     end
 
     def show

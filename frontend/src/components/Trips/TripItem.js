@@ -70,7 +70,7 @@ const TripItem = ({ trip, type }) => {
         setTripToUpdate(trip);
         setToggleEditModal(true);
     };
-    const toCancel = () => dispatch(deleteReservation(trip.reservation.id));
+    const toCancel = () => dispatch(deleteReservation(trip.id));
 
     let buttonGroup;
     debugger

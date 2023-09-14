@@ -1,0 +1,405 @@
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .modal-content {
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  }
+
+div.login-form, div.signup-form {
+	box-sizing: border-box;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	border-radius: 12px;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	background-color: white;
+	animation: slideIn 0.4s both, fadeInModal 0.4s forwards;
+	/* animation: slideIn 0.4s both; */
+	max-width: 568px;
+	overscroll-behavior-x: contain;
+}
+
+div.login-form input, div.signup-form input {
+	/* background-color: inherit; */
+}
+
+div.signup-form, div.login-form {
+	justify-self: center;
+	align-self: center;
+	max-height: 682px;
+	/* height: 682px; */
+	align-self: center;
+	overflow-y:hidden;
+}
+
+.signup-form {
+	height: 682px;
+}
+
+@keyframes slideIn {
+	0% {
+		transform: translateY(50%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes fadeInModal {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.auth-form-header {
+	position: sticky;
+	top: 0px;
+	z-index: 1;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	box-sizing: border-box;
+	/* border-bottom: 0.5px solid rgb(221, 221, 221); */
+	border-bottom: 1px solid #EBEBEB;
+	padding: 23px 24px;
+	font-size:17px;
+}
+
+.auth-form-title {
+	font-weight: 600;
+}
+
+.x-close {
+	border:none;
+	padding: 0px;
+	background-color:inherit;
+	border-radius: 50%;
+	position: absolute;
+	top: 24px;
+	left: 24px;
+	left: 27px;
+}
+
+.session-buffer-box {
+	/* position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 520px;
+	height: 47px; */
+}
+	
+.session-buffer {
+	/* position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border:none;
+	padding: 0px;
+	background-color:inherit;
+	border-radius: 50%;
+	cursor: pointer; */
+}
+
+.x-close::before, .session-buffer::before {
+	content: "";
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.x-close:hover::before, .session-buffer:hover::before {
+	background-color: rgb(247,247,247);
+}
+
+.fa-x {
+	font-size: 0.9em;
+	transform: scaleY(0.9);
+	transform: scaleX(1.2);
+	cursor: pointer;
+}
+
+.auth-form-body {
+	box-sizing: border-box;
+	display: flex;
+	padding: 24px;
+	overflow-x: hidden;
+	
+}
+
+.signup-form .auth-form-body {
+	overflow-y:scroll;
+	scroll-behavior: smooth;
+}
+
+.auth-form-body::-webkit-scrollbar {
+	/* display: none; */
+}
+
+.name-entry-div {
+	box-sizing: border-box;
+	width: 520px;
+	border-radius: 8px;
+	border: 1px solid rgb(176, 176, 176);
+}
+
+.error-entry-div {
+	box-sizing: border-box;
+	width: 520px;
+	border-radius: 8px;
+	border: 1px solid rgb(202, 37, 0);
+}
+
+.name-entry-div > div {
+	height: 56px;
+	display: flex;
+	align-items: center;
+}
+
+.floating-placeholder-container {
+	/* USE THIS TO ANCHOR INNER POSITION:ABSOLUTE STUFF */
+	position: relative;
+}
+
+.signup-form .floating-placeholder, .login-form .floating-placeholder {
+	position: absolute;
+	top: 20px;
+	left: 12px;
+	/* right: 12px; */
+	color: rgb(113, 113, 113);
+	font-size: 18px;
+	font-weight: 300;
+	transition: all 0.15s;
+	transform-origin: 0% 0%;
+}
+
+.show-pw-toggle {
+	position: absolute;
+	top: 20px;
+	right: 6px;
+	color: black;
+	text-decoration: underline;
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+	border: none;
+	background-color: white;
+}
+
+.password:not(:focus) ~ .show-pw-toggle-pw-error {
+	background-color: rgb(255,248,246);
+}
+
+.name-entry-label:focus-within .floating-placeholder:nth-child(1) {
+	transform: translateY(-9px) scale(0.75);
+}
+
+.input-placeholder-not-empty {
+	transform: translateY(-9px) scale(0.75);
+}
+
+.signup-form .input-placeholder-error, .login-form .input-placeholder-error {
+	transform: translateY(-9px) scale(0.75);
+	color: rgb(202, 37, 0);
+	font-weight: 600;
+}
+
+.first-name-box {
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom: 0.5px solid rgb(176, 176, 176);
+}
+
+.last-name-box {
+	border-top: 0.5px solid rgb(176, 176, 176);
+}
+
+.name-entry-label {
+	display: flex;
+}
+
+.first-name-input, .last-name-input, .email, .password {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	box-sizing: border-box;
+	width: 518px;
+	/* width: 100%; */
+	height: 56px;
+	padding: 26px 12px 6px 12px;
+	padding: 23px 12px 9px 12px;
+	border-radius: 8px;
+	/* Weird, these two borders prevent missing corner otherwise... START */
+	border: 1px solid rgb(176, 176, 176);
+	border: 0px;
+	/* Weird, these two borders prevent missing corners otherwise... END */
+
+	outline-color: black;
+	-moz-outline-radius: 8px;
+
+	font-size: 17px;
+	font-weight: 100;
+}
+
+.session-error-input {
+	outline-color: rgb(202, 37, 0);
+}
+
+.session-error-input:not(:focus) {
+	background-color: rgb(255, 248, 246);
+}
+
+/* .password:focus .show-pw-toggle-pw-error {
+	background-color: white;
+} */
+
+.input-tooltip {
+	margin: 8px 0px;
+	font-size: 13px;
+	font-weight: 100;
+	letter-spacing: 0.3px;
+	color: #717171;
+}
+
+.error-tooltip {
+	margin: 8px 0px;
+	font-size: 13px;
+	font-weight: 100;
+	letter-spacing: 0.3px;
+	/* color: red; */
+	color: rgb(202, 37, 0);
+}
+
+.password-errors-container {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/* .password-errors-container .error-tooltip {
+	padding: 0.5px 0px;
+} */
+
+.error-password-tooltip {
+	font-size: 13px;
+	font-weight: 500;
+	margin: 0px;
+	padding: 0.5px 0px;
+}
+
+.ok-password-tooltip {
+	font-size: 13px;
+	font-weight: 500;
+	margin: 0px;
+	padding: 0.5px 0px;
+	color: green;
+}
+
+.error-tooltip > i {
+	font-size: inherit;
+	height: 12px;
+	font-size: 12px;
+}
+
+.password-errors-container i {
+	font-size: 11px;
+}
+
+.signup-tooltip {
+	margin: 8px 0px;
+	font-size: 13px;
+	font-weight: 100;
+	letter-spacing: 0.3px;
+	color: black;
+	display: inline;
+	/* display: flex; */
+	/* flex-direction: row; */
+	/* flex-wrap: wrap; */
+	white-space: wrap;
+}
+
+.switch-auth-modal {
+	padding-bottom: 15px;
+}
+
+.signup-link {
+	cursor: pointer;
+	font-weight: 600;
+	text-decoration: underline;
+	color:#0038AB;
+}
+
+.auth-session-btns {
+	padding-top: 35px;
+	padding-bottom: 20px;
+}
+
+.session-btn {
+	text-align: center;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	box-sizing: border-box;
+	width: 520px;
+	height: 48px;
+	border-radius: 8px;
+	/* Weird, these two borders prevent missing corner otherwise... START */
+	background-color: #FF0000;
+	letter-spacing: 1px;
+	color: white;
+	border: 0px;
+	/* Weird, these two borders prevent missing corners otherwise... END */
+
+	/* outline-color: black; */
+	/* -moz-outline-radius: 8px; */
+
+	font-size:17px;
+	font-weight: 500;
+	cursor: pointer;
+
+	transition: box-shadow 0.2s linear, 
+		transform 0.1s linear,
+		background-color 0.4s linear
+		;
+
+	margin-bottom: 12px;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	/* user-select: none; */
+}
+
+.session-btn:hover {
+	background-color: #d00000;
+}
+
+.session-btn:focus {
+	outline: none;
+	transition: box-shadow 0.2s linear;
+	box-shadow: 0 0 0 2px rgba(255,255,255,0.8), 0 0 0 4px #222222;
+	/* user-select: none; */
+}
+
+.mouse-down-session-btn {
+	transform-origin: center;
+	transform: scale(0.96);
+}

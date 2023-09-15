@@ -1,4 +1,4 @@
-// import "./Amenities.css";
+import "./Amenities.css";
 
 const Amenities = ({ listing }) => {
   return (

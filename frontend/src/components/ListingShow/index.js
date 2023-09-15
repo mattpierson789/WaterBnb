@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getListing } from '../../store/listings';
 import { fetchListing } from '../../store/listings';
 import { useParams } from 'react-router-dom';
-// import './ListingShow.css';
+import './ListingShow2.css';
 import ReservationForm from '../ReservationForm';
 import MapContainer from '../Map'; // Make sure to import MapContainer
 // // import Star from '../../assets/images/star.svg'; // Adjust the import path for Star

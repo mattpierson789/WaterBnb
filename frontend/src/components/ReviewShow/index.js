@@ -63,28 +63,28 @@ const ReviewShow = ({ listing }) => {
 // //     );
 // //   });
 
-  return (
-// //     <div className="listing-review-container">
-// //       <div className="listing-review-header">
-// //         <div className="listing-rating">
-// //           <div className="review-star">
-// //             <Star />
-// //           </div>
-// //           <div className="listing-rating-score">
-// //             {listing.ratings.overallRating}
-// //           </div>
-// //         </div>
-// //         <span className="separator">&#x2022;</span>
-// //         <div id="listing-num-reviews">
-// //           <span id="num-reviews">{listing.numReviews} reviews</span>
-// //         </div>
-// //       </div>
-// //       <div className="listing-average-ratings">{ratingFields}</div>
-// //       <div className="listing-review-cards">{reviewCards}</div>
-// //     </div>
-<div> Hi </div>
-  );
 
+  return (
+    <div className="listing-review-container">
+      <div className="listing-review-header">
+        <div className="listing-rating">
+          <div className="review-star">
+            <Star />
+          </div>
+          <div className="listing-rating-score">
+            {/* {listing.ratings.overallRating} */}
+          </div>
+        </div>
+        <span className="separator">&#x2022;</span>
+        <div id="listing-num-reviews">
+          <span id="num-reviews">{listing.numReviews} reviews</span>
+        </div>
+      </div>
+      {/* <div className="listing-average-ratings">{ratingFields}</div>
+      <div className="listing-review-cards">{reviewCards}</div> */}
+    </div>
+  );
 };
+
 
 export default ReviewShow;

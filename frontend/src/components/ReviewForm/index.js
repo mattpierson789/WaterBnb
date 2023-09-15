@@ -59,25 +59,31 @@ const endDate = tripData?.reservation?.endDate ? convertToDate(tripData.reservat
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { ...tripData.reviewData, ...rating, body: body };
-    dispatch(reviewFunction(payload)).then(() => {
-      setMessage(
-        <div className="save-success-bg">
-          <div className="save-success-content">
-            <span>Save Successful !</span>
-            <span>Closing in 3 seconds...</span>
-            <button onClick={handleClose} className="res-btn close">
-              Close Now
-            </button>
+    const payload = { ...tripData.reviewData, listingId: tripData.listingId, ...rating, body: body };
+    debugger;
+    dispatch(reviewFunction(payload))
+      .then(() => {
+        console.log("Dispatch successful");
+        setMessage(
+          <div className="save-success-bg">
+            <div className="save-success-content">
+              <span>Save Successful !</span>
+              <span>Closing in 3 seconds...</span>
+              <button onClick={handleClose} className="res-btn close">
+                Close Now
+              </button>
+            </div>
           </div>
-        </div>
-      );
-      window.setTimeout(() => {
-        setToggleReviewModal(false);
-      }, 3000);
-    });
+        );
+        window.setTimeout(() => {
+          setToggleReviewModal(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Dispatch error:", error);
+      });
   };
-
+  
   const handleChange = (field, i) => {
     const newRating = { ...rating };
     newRating[field] = i;

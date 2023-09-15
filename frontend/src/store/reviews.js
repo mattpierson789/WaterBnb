@@ -160,6 +160,7 @@
 // export default reviewsReducer;
 
 import csrfFetch from "./csrf";
+import { fetchReservation } from "./reservations";
 
 const RECEIVE_REVIEW = "reviews/receiveReview";
 const RECEIVE_REVIEWS = "reviews/receiveReviews";
@@ -229,22 +230,35 @@ export const fetchListingReviews = (listingId) => async (dispatch) => {
 };
 
 export const createReview = (review) => async (dispatch) => {
-  const res = await csrfFetch(
-    `/api/reservations/${review.reservationId}/reviews`,
-    {
-      method: "POST",
-      body: JSON.stringify({ review: review }),
-    }
-  );
-  if (res.ok) {
-    const data = await res.json();
-    dispatch(receiveReview(data.review));
-  } else {
-    throw res;
-  }
 
-  return res;
-};
+  debugger
+ 
+   
+    review.listingId = review.listingId;
+
+    debugger
+
+    const res = await csrfFetch(
+      `/api/reservations/${review.reservationId}/reviews`,
+      {
+        method: "POST",
+        body: JSON.stringify({ review: review }),
+      }
+    );
+
+    debugger
+
+    if (res.ok) {
+      const data = await res.json();
+      debugger
+      dispatch(receiveReview(data.review));
+    } else {
+      throw res;
+    }
+
+    return res;
+  } ;
+
 
 export const updateReview = (review) => async (dispatch) => {
   const res = await csrfFetch(`/api/reviews/${review.id}`, {
@@ -292,6 +306,7 @@ export const reviewsReducer = (state = {}, action) => {
       action.reviews.forEach(review => {
         if (review.listingId !== undefined) {
           if (!newState[review.listingId]) {
+            debugger
             newState[review.listingId] = {};
           }
           newState[review.listingId][review.id] = review;

@@ -66,9 +66,12 @@ class Api::ReviewsController < ApplicationController
 
   def create
     reservation = Reservation.find_by(id: params[:reservation_id])
+    debugger
     if reservation
       @review = reservation.build_review(review_params)
       @review.reviewer_id = current_user.id
+
+      debugger
 
       if @review.save 
         render :show 
@@ -130,7 +133,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:reservation_id, :cleanliness, :accuracy, :value, :communication, :check_in, :location, :body)
+    params.require(:review).permit(:reservation_id, :cleanliness, :accuracy, :value, :communication, :check_in, :location, :body, :listing_id)
   end
 end
 

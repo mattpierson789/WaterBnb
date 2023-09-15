@@ -1,8 +1,29 @@
 import csrfFetch, { storeCSRFToken, restoreCSRF } from "./csrf";
+import { convertToDate } from "../util/util";
 
 export const RECEIVE_RESERVATIONS = 'listings/receiveReservations';
 export const RECEIVE_RESERVATION = 'listings/receiveReservation';
 export const REMOVE_RESERVATION = 'listings/removeReservation';
+
+export const getReservedDates = (listingId) => (state) => {
+  const listingReservations = Object.values(state.reservations).filter(
+    (res) => res.listingId === listingId
+  );
+  const reservedDates = [];
+  listingReservations.forEach((res) => {
+    const start = convertToDate(res.startDate);
+    const end = convertToDate(res.endDate);
+
+    const currentDate = new Date(start);
+
+    while (currentDate <= end) {
+      reservedDates.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+  });
+
+  return reservedDates;
+};
 
 export const receiveReservations = (reservations) => ({
   type: RECEIVE_RESERVATIONS,
@@ -70,6 +91,7 @@ export const deleteReservation = (reservationId) => async (dispatch) => {
 }
 
 export const fetchReservations = () => async (dispatch) => {
+  debugger
   const res = await csrfFetch('/api/reservations');
   const data = await res.json();
   
@@ -77,7 +99,7 @@ export const fetchReservations = () => async (dispatch) => {
   const reservationsWithListingData = await Promise.all(
     Object.values(data.reservations).map(async (reservation) => {
       const listingRes = await csrfFetch(`/api/listings/${reservation.listingId}`);
-      // debugger 
+      
       const listingData = await listingRes.json();
       return {
         ...reservation,
@@ -88,6 +110,7 @@ export const fetchReservations = () => async (dispatch) => {
   dispatch(receiveReservations(reservationsWithListingData));
 };
 export const fetchReservation = (reservationId) => async (dispatch) => {
+  debugger
   const res = await csrfFetch(`/api/reservations/${reservationId}`);
   const data = await res.json();
   

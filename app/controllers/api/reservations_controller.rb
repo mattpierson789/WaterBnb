@@ -81,11 +81,11 @@ module Api
 
     def destroy
       @reservation = Reservation.find_by(id: params[:id])
-unless @reservation
-  render json: { error: "Reservation not found" }, status: 404 and return
-end
-@reservation.destroy
-render :show
+    unless @reservation
+   render json: { error: "Reservation not found" }, status: 404 and return
+  end
+    @reservation.destroy
+  render :show
 
     end
 

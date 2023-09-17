@@ -169,4 +169,22 @@
   .listing-rating-score {
     font-weight: bold;
   }
+
+  /* Remove the sticky position from the .reserve-form */
+.reserve-form {
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+    /* Remove 'top: 80px;' and 'position: sticky;' */
+    /* top: 80px; */
+    /* position: sticky; */
+    z-index: 1;
+  }
+  
+  /* Add a margin-top to create space between amenities and the calendar */
+  .booking-calendar {
+    margin-top: 20px; /* Adjust the value as needed */
+  }
+  
   

@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import React from "react";
 import "./Header.css";
-// import logo from "../assets/images/waterbnb_logo.png"
+import logo from "../assets/images/waterbnb_logo.png"
 
 function Header(props) {
   return (
     <>
     <div id="header-bar-4">
-      {/* <Link id="logo" to="/">
+      <Link id="logo" to="/">
         <img id="logo-img" alt="WaterBnb logo" src={logo} />
         <span id="span-logo">waterbnb</span>
-      </Link> */}
+      </Link>
       <a href="https://github.com/mattpierson789" target="_blank">
         <img
           className="icons-header"

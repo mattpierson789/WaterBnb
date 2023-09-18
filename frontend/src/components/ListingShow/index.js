@@ -155,11 +155,7 @@ const ListingShow = () => {
             }}
           />
         </div>
-        <span> hello </span>
-        <span> hello </span>
-        <span> hello </span>
-        <span> hello </span>
-        <span> hello </span> <span> hello </span>
+      
       </main>
     </div>
     

@@ -3,18 +3,11 @@
   border: 1px solid #EBEBEB;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   padding: 20px;
-  margin-top: 650px;
-  margin-bottom: 20px;
-  margin-right: 110px;
-  height: 65%;
   width: 25%;
   display: sticky;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  
-  }
+  top: 20px; /* Change this according to where you want the form to start sticking */
+}
+
 
   #booking-info {
 

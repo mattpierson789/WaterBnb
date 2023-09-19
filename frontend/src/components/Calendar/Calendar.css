@@ -1,7 +1,6 @@
 .reservation-calendar {
     box-sizing: border-box;
     border-radius: 8px;
-    position: absolute;
     top: 60px;
     right: 0;
     transform: translateX(1px);

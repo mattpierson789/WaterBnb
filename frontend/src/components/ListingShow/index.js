@@ -14,6 +14,7 @@ import Amenities from './Amenities';
 import Calendar from '../Calendar/Calendar';
 import ReviewShow from '../ReviewShow';
 
+
 const ListingShow = () => {
   const { listingId } = useParams();
   const dispatch = useDispatch();
@@ -139,7 +140,16 @@ const ListingShow = () => {
 
         <div className="reserve-form-container">
           <div className="reserve-form">
-            <ReservationForm />
+            <ReservationForm 
+             calendarOpen={calendarOpen} 
+             setCalendarOpen={setCalendarOpen} 
+              listing={listing}
+              startDate={startDate}
+              setStartDate={setStartDate}
+              endDate={endDate}
+              setEndDate={setEndDate}
+              blockedDates={blockedDates}
+            />
           </div>
         </div>
 

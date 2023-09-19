@@ -290,43 +290,51 @@ const ReservationForm = ({
     dateField.classList.remove("date-error");
     checkin.classList.remove("date-error");
     checkout.classList.remove("date-error");
+    
     if (validateDates()) {
-      const reservation = {
-        listingId: listing.id,
-        numGuests,
-        totalPrice: total,
-        startDate: format(startDate, "yyyy-MM-dd"),
-        endDate: format(endDate, "yyyy-MM-dd"),
-      };
-      try {
-        await new Promise((resolve, reject) => {
-          dispatch(createReservation(reservation)).then(resolve).catch(reject);
-        });
-        navigate("/user/trips");
-      } catch (res) {
-        let data;
+        const reservationData = {
+            reservation: {
+                listingId: listing.id,
+                numGuests,
+                totalPrice: total,
+                startDate: format(startDate, "yyyy-MM-dd"),
+                endDate: format(endDate, "yyyy-MM-dd"),
+            }
+        };
+
         try {
-          data = await res.clone().json();
-        } catch {
-          data = await res.text();
+            await new Promise((resolve, reject) => {
+                dispatch(createReservation(reservationData)).then(resolve).catch(reject);
+            });
+            navigate("/user/trips");
+        } catch (res) {
+            let data;
+            try {
+                data = await res.clone().json();
+            } catch {
+                data = await res.text();
+            }
+            if (data?.errors) {
+                setErrors(data.errors);
+                inputField.classList.add("date-error");
+                dateField.classList.add("date-error");
+                checkin.classList.add("date-error");
+                checkout.classList.add("date-error");
+            } else if (data) {
+                setErrors([data]);
+            } else {
+                setErrors([res.statusText]);
+            }
         }
-        if (data?.errors) {
-          setErrors(data.errors);
-          inputField.classList.add("date-error");
-          dateField.classList.add("date-error");
-          checkin.classList.add("date-error");
-          checkout.classList.add("date-error");
-        } else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
-      }
     } else {
-      setErrors(["Minimum of 1 night required!"]);
-      inputField.classList.add("date-error");
-      dateField.classList.add("date-error");
-      checkin.classList.add("date-error");
-      checkout.classList.add("date-error");
+        setErrors(["Minimum of 1 night required!"]);
+        inputField.classList.add("date-error");
+        dateField.classList.add("date-error");
+        checkin.classList.add("date-error");
+        checkout.classList.add("date-error");
     }
-  };
+};
+
 
   useEffect(() => {
     const calculatedNumNights = differenceInDays(endDate, startDate);

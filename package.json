@@ -9,7 +9,9 @@
     "node": "18.9.1"
   },
   "scripts": {
-    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm start --prefix frontend"
+
   },
   "keywords": [],
   "author": "",

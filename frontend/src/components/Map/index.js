@@ -13,7 +13,7 @@ import ListingMarker from "./ListingMarker";
 import { ReactComponent as HomeIcon } from "../../assets/images/home_icon.svg";
 import { getListings } from "../../store/listings";
 
-const MapContainer = ({ center }) => {
+const MapContainer = ({ center, zoom }) => {
   const { isLoaded } = useLoadScript({
       googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY
   });
@@ -63,7 +63,7 @@ const MapContainer = ({ center }) => {
 
   return (
     <GoogleMap
-    zoom={center ? 14 : 2}
+    zoom={zoom ? zoom : (center ? 14 : 2)}
       center={mapCenter}
       mapContainerClassName="map-container"
       options={options}

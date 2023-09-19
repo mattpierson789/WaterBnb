@@ -162,13 +162,15 @@ const ListingShow = () => {
         </div>
 
         <div className="map-section">
-          <MapContainer
-            center={{
-              lat: parseFloat(listing.latitude),
-              lng: parseFloat(listing.longitude),
-            }}
-          />
-        </div>
+  <MapContainer
+    center={{
+      lat: parseFloat(listing.latitude),
+      lng: parseFloat(listing.longitude),
+    }}
+    zoom={10}  // Adjust this value to change the zoom level
+  />
+</div>
+
       
       </main>
     </div>

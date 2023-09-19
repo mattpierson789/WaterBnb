@@ -96,6 +96,10 @@ const ListingIndex = () => {
         dispatch(fetchListings());
     }, [dispatch]);
 
+    useEffect(() => {
+        document.title = `WaterBnB | Find your next adventure!`;
+      }, []);
+
     return (
         <div className="container">
             {toggleMap ? (

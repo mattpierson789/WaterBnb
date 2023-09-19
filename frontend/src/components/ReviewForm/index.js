@@ -60,7 +60,7 @@ const endDate = tripData?.reservation?.endDate ? convertToDate(tripData.reservat
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { ...tripData.reviewData, listingId: tripData.listingId, ...rating, body: body };
-    // debugger;
+    debugger;
     dispatch(reviewFunction(payload))
       .then(() => {
         console.log("Dispatch successful");

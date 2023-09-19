@@ -20,9 +20,9 @@ const ReviewShow = ({ listing }) => {
     "value",
   ];
 
-  // useEffect(() => {
-  //   dispatch(fetchListingReviews(listing.id));
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchListingReviews(listing.id));
+  }, []);
 
   if (!listingReviews) return null;
 
@@ -81,8 +81,8 @@ const ReviewShow = ({ listing }) => {
           <span id="num-reviews">{listing.numReviews} reviews</span>
         </div>
       </div>
-      {/* <div className="listing-average-ratings">{ratingFields}</div>
-      <div className="listing-review-cards">{reviewCards}</div> */}
+      <div className="listing-average-ratings">{ratingFields}</div>
+      <div className="listing-review-cards">{reviewCards}</div>
     </div>
   );
 };

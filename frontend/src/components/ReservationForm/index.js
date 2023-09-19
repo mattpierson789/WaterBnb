@@ -462,11 +462,12 @@ const ReservationForm = ({
       )}
       {errors.length > 0 && (
         <div className="errors-container">
-          {errors.map((error, idx) => (
-            <div className="error-item" key={idx}>
-              {error}
-            </div>
-          ))}
+         {errors.map((error, idx) => (
+    <div className="error-item" key={idx}>
+        {typeof error === 'object' ? JSON.stringify(error) : error}
+    </div>
+))}
+
         </div>
       )}
       {calendarOpen && (

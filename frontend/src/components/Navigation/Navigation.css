@@ -142,6 +142,7 @@
 	width: 100%;
 	display: block;
 	flex: 1 0 140px;
+	
 }
 
 .upper-navbar-logo {
@@ -153,42 +154,15 @@
 	vertical-align: middle;
 	font-size: 35px;
 	color: red;
+	margin-right: 200px;
 }
 
-/****************************/
-/* UPPER NAV BAR SEARCH BAR */
-/****************************/
 
-.upper-navbar-search-container {
-	height: 48px;
-	
-	flex: 0 1 auto; 
-	display: block;
-	padding: 0px 24px;
-	box-sizing: border-box;
-}
 
 .session-menu-button:hover, .upper-navbar-search:hover {
 	box-shadow: 0 2px 4px rgba(0,0,0,0.18);
 }
 
-.upper-navbar-search {
-	display: flex;
-	height: 48px;
-	width: 350px;
-	border: 1px lightgray solid;
-	border-radius: 40px;
-	
-	justify-content: space-around;
-	align-items: center;
-	
-	
-	box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-	transition: box-shadow 0.2s ease;
-
-	color: #222222;
-
-}
 
 span.search-location-unopened {
 	width: 1px;
@@ -201,18 +175,6 @@ span.search-date-unopened, span.search-people-unopened {
 	background-color: rgb(221,221,221);
 }
 
-.upper-navbar-search > button {
-	cursor: pointer;
-	padding: 0px;
-	margin: -1px;
-	border: 1px solid rgba(0,0,0,0);
-	background-color: rgba(0,0,0,0);
-	appearance: none;
-	box-sizing: border-box;
-	font-family: inherit;
-	font-size: 14px;
-	font-weight: 500;
-}
 
 button.search-location-unopened {
 	height: 46px;
@@ -225,30 +187,6 @@ button.search-date-unopened {
 	padding: 0px 16px;
 }
 
-button.search-people-unopened {
-	height: 46px;
-	font-weight: 200;
-	display: flex;
-	align-items: center;
-}
-
-div.search-people-unopened-text {
-	padding: 0px 16px;
-}
-
-div.search-people-unopened-magnifying {
-	height: 12px;
-	width: 12px;
-	padding: 10px;
-	margin: 7px 7px 7px 0px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 12px;
-	background-color: red;
-	color: white;
-	border-radius: 18px;
-}
 
 
 
@@ -327,6 +265,7 @@ div.search-people-unopened-magnifying {
 	border-radius: 21px;
 	border: 1px solid rgb(221,221,221);
 	background-color: white;
+	margin-left: 450px;	
 }
 
 .session-menu-button:hover {
@@ -399,6 +338,8 @@ ul.nav-bar-links {
 
 .session-menu-button-container {
 	position: relative;
+	margin-right: 310px;
+	
 }
 
 .profile-drop-menu {
@@ -406,7 +347,7 @@ ul.nav-bar-links {
 	/* top: 40px; */
 	/* right: 80px; */
 	top: 20px;
-	right: 0px;
+	right: 20px;
 	box-sizing: border-box;
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.12);
 	border-radius: 12px;
@@ -467,4 +408,32 @@ ul.nav-bar-links {
 
 .profile-drop-menu > li:hover {
 	/* color: red; */
+}
+
+/* For the Logo */
+#logo {
+    display: flex;
+    align-items: center;
+    gap: 78px;
+    margin-left: 50px;  /* Pushes the logo and the picture over to the right by 100px */
+}
+
+/* For Social Icons */
+.social-icons-container {
+    display: flex;
+    gap: 10px;
+    margin-left: 700px;  /* Pushes the social logos over to the right by 400px */
+}
+
+
+.icons-header {
+
+	right: 10px;
+	margin-left: 20px
+}
+
+/* For the Dropdown, assuming the dropdown appears from the ProfileButton */
+.profile-drop-menu {
+    right: 5px; /* Adjust this value based on your layout to ensure it doesn't overlap with social icons */
+
 }

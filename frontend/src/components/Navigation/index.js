@@ -78,41 +78,48 @@ function Navigation({ filter, setFilter }) {
   }
 
   return (
-    <>
-        <div className="upper-navbar-container">
-            <Link id="logo" to="/">
-              <img id="logo-img" alt="WaterBnb logo" src={logo} />
-              <span id="span-logo">waterbnb</span>
-            </Link>
-            <a href="https://github.com/mattpierson789" target="_blank">
-              <img
-                className="icons-header"
-                alt="Github"
-                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-              />
-            </a>
-            <a href="https://www.linkedin.com/in/mattpierson1/" target="_blank">
-              <img
-                className="icons-header"
-                alt="LinkedIn"
-                src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
-              />
-            </a>
-          <div className="upper-navbar-left">
-            <ProfileButton
-              setShowSignUpModal={setShowSignUpModal}
-              setShowLogInModal={setShowLogInModal}
-            />
-          </div>  
-        </div>
-      {(showLogInModal || showSignUpModal) && (
-        <div>
-          {showLogInModal && <LoginForm setShowSignUpModal={setShowSignUpModal} setShowLogInModal={setShowLogInModal} />}
-          {showSignUpModal && <SignupForm setShowSignUpModal={setShowSignUpModal} setShowLogInModal={setShowLogInModal} />}
-        </div>
+
+  <>
+  <div className="upper-navbar-container">
+    <Link id="logo" to="/">
+      <img id="logo-img" alt="WaterBnb logo" src={logo} />
+      <span id="span-logo">waterbnb</span>
+    </Link>
+    <div className="social-icons-container">
+      <a href="https://github.com/mattpierson789" target="_blank">
+        <img
+          className="icons-header"
+          alt="Github"
+          src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+        />
+      </a>
+      <a href="https://www.linkedin.com/in/mattpierson1/" target="_blank">
+        <img
+          className="icons-header"
+          alt="LinkedIn"
+          src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+        />
+      </a>
+    </div>
+    <div className="upper-navbar-left">
+      <ProfileButton
+        setShowSignUpModal={setShowSignUpModal}
+        setShowLogInModal={setShowLogInModal}
+      />
+    </div>
+  </div>
+  {(showLogInModal || showSignUpModal) && (
+    <div>
+      {showLogInModal && (
+        <LoginForm setShowSignUpModal={setShowSignUpModal} setShowLogInModal={setShowLogInModal} />
       )}
-    </>
-  )
+      {showSignUpModal && (
+        <SignupForm setShowSignUpModal={setShowSignUpModal} setShowLogInModal={setShowLogInModal} />
+      )}
+    </div>
+  )}
+</>)
+
 }
 
 export default Navigation;

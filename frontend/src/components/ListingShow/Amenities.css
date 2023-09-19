@@ -1,32 +1,26 @@
 #amenities {
-    height: 100%;
-  }
-  
-  .amenities-item {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .amenities-item li {
-    box-sizing: border-box;
-    width: 50%;
-    height: 50px;
-    margin-right: auto;
-    display: flex;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-  
-  .amenities-item li {
-    display: flex;
-    align-items: center;
-  }
-  
-  .amenities-item li img {
-    margin-left: 0;
-    margin-right: 16px;
-    width: 24px;
-    height: 24px;
-  }
-  
+  height: 100%;
+  width: 70%;
+}
+
+.amenities-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding from ul */
+}
+
+.amenities-item li {
+  box-sizing: border-box;
+  width: calc(50.33% - 150px); /* Adjusting width for 3 items per row, and subtracting a bit for margin */
+  height: 60px;
+  margin: 1px; /* Giving some margin to each item */
+  display: -ms-inline-grid;
+}
+
+.amenities-item li img {
+  margin-right: 5px;
+  width: 24px;
+  height: 24px;
+}

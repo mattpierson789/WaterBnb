@@ -126,9 +126,8 @@ const ListingShow = () => {
               <span id="description">{listing.description}</span>
               <div className="amenities">
                 <h2>What this place offers</h2>
-                <div className="amenities-comp">
                   <Amenities listing={listing} />
-                </div>
+               
               </div>
             </div>
           </div>

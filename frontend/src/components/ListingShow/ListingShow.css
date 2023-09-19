@@ -123,23 +123,6 @@ span {
   max-height: 600px;
 }
 
-.amenities-item li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.amenities-item li img {
-  width: 40px; 
-  height: 40px;
-  margin-right: 10px; 
-}
-
-.amenities-item li  {
-  font-size: 20px; 
-  font-weight: normal; 
-
-}
 
 #amenities-item-h2 {
   font-size: 30px;

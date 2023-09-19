@@ -3,7 +3,6 @@ import "./Amenities.css";
 const Amenities = ({ listing }) => {
   return (
     <div id="amenities">
-    <h2 id='amenities-item-h2'>What this place offers</h2>
     <ul className="amenities-item">
       {listing.kitchen ? (
         <li>

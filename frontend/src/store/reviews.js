@@ -159,8 +159,184 @@
 
 // export default reviewsReducer;
 
+// import csrfFetch from "./csrf";
+// import { fetchReservation } from "./reservations";
+
+// const RECEIVE_REVIEW = "reviews/receiveReview";
+// const RECEIVE_REVIEWS = "reviews/receiveReviews";
+// const REMOVE_REVIEW = "reviews/removeReview";
+
+// export const getReservationReview = (reservationId) => (state) => {
+//   const reservationReview = Object.values(state.reviews).find(
+//     (review) => review.reservationId === reservationId
+//   );
+//   return reservationReview;
+// };
+
+// export const getListingReviews = (listingId) => (state) => {
+//   debugger
+//   const listingReviews = Object.values(state.reviews).filter(
+//     (review) => review.listingId === listingId
+//   );
+//   debugger
+//   return listingReviews;
+// };
+
+// export const receiveReview = (review) => {
+//   return {
+//     type: RECEIVE_REVIEW,
+//     review,
+//   };
+// };
+
+// export const receiveReviews = (reviews) => {
+//   debugger
+//   return {
+//     type: RECEIVE_REVIEWS,
+//     reviews,
+//   };
+// };
+
+// export const removeReview = (reviewId) => {
+//   return {
+//     type: REMOVE_REVIEW,
+//     reviewId,
+//   };
+// };
+// export const fetchReview = (reservationId) => async (dispatch) => {
+//   try {
+//     const res = await csrfFetch(`/api/reservations/${reservationId}/review`);
+//     if (res.ok) {
+//       const data = await res.json();
+//       if (data.review) {
+//         dispatch(receiveReview(data.review));
+//       }
+//     } else {
+//       throw res;
+//     }
+//   } catch (errors) {
+//     return;
+//   }
+// };
+
+// export const fetchListingReviews = (listingId) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/listings/${listingId}/reviews`);
+
+//   if (res.ok) {
+//     const data = await res.json();
+//     if (data.reviews && Array.isArray(data.reviews)) { // Ensure the reviews key exists and is an array
+//       dispatch(receiveReviews(data.reviews));
+//     } else {
+//       console.error("Invalid data structure received from server");
+//       // Handle this case if needed, maybe dispatch an error action or set default value
+//     }
+//   } else {
+//     throw res;
+//   }
+
+//   return res;
+// };
+
+
+// export const createReview = (review) => async (dispatch) => {
+
+//   debugger
+ 
+   
+//     review.listingId = review.listingId;
+
+//     debugger
+
+//     const res = await csrfFetch(
+//       `/api/reservations/${review.reservationId}/reviews`,
+//       {
+//         method: "POST",
+//         body: JSON.stringify({ review: review }),
+//       }
+//     );
+
+//     debugger
+
+//     if (res.ok) {
+//       const data = await res.json();
+//       debugger
+//       dispatch(receiveReview(data.review));
+//     } else {
+//       throw res;
+//     }
+
+//     return res;
+//   } ;
+
+
+// export const updateReview = (review) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/reviews/${review.id}`, {
+//     method: "PATCH",
+//     body: JSON.stringify({ review: review }),
+//   });
+//   if (res.ok) {
+//     const data = await res.json();
+//     dispatch(receiveReview(data.review));
+//   } else {
+//     throw res;
+//   }
+
+//   return res;
+// };
+
+// export const deleteReview = (reviewId) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+//     method: "DELETE",
+//   });
+
+//   if (res.ok) {
+//     dispatch(removeReview(reviewId));
+//   } else {
+//     throw res;
+//   }
+
+//   return res;
+// };
+
+// export const reviewsReducer = (state = {}, action) => {
+//   Object.freeze(state);
+//   const newState = { ...state };
+//   switch (action.type) {
+//     case RECEIVE_REVIEW:
+//       if(action.review.listingId !== undefined) {
+//         if(!newState[action.review.listingId]) {
+//           newState[action.review.listingId] = {};
+//         }
+//         newState[action.review.listingId][action.review.id] = action.review;
+//       }
+//       return newState;
+
+//       case RECEIVE_REVIEWS:
+//         if (Array.isArray(action.reviews)) {
+//           action.reviews.forEach(review => {
+//             if (review.listingId !== undefined) {
+//               if (!newState[review.listingId]) {
+//                 newState[review.listingId] = {};
+//               }
+//               newState[review.listingId][review.id] = review;
+//             }
+//           });
+//         }
+//         return newState;
+      
+
+//     case REMOVE_REVIEW:
+//       delete newState[action.reviewId];
+//       return newState;
+
+//     default:
+//       return state;
+//   }
+// };
+
+// export default reviewsReducer;
+
 import csrfFetch from "./csrf";
-import { fetchReservation } from "./reservations";
 
 const RECEIVE_REVIEW = "reviews/receiveReview";
 const RECEIVE_REVIEWS = "reviews/receiveReviews";
@@ -200,6 +376,7 @@ export const removeReview = (reviewId) => {
     reviewId,
   };
 };
+
 export const fetchReview = (reservationId) => async (dispatch) => {
   try {
     const res = await csrfFetch(`/api/reservations/${reservationId}/review`);
@@ -230,35 +407,22 @@ export const fetchListingReviews = (listingId) => async (dispatch) => {
 };
 
 export const createReview = (review) => async (dispatch) => {
-
-  debugger
- 
-   
-    review.listingId = review.listingId;
-
-    debugger
-
-    const res = await csrfFetch(
-      `/api/reservations/${review.reservationId}/reviews`,
-      {
-        method: "POST",
-        body: JSON.stringify({ review: review }),
-      }
-    );
-
-    debugger
-
-    if (res.ok) {
-      const data = await res.json();
-      debugger
-      dispatch(receiveReview(data.review));
-    } else {
-      throw res;
+  const res = await csrfFetch(
+    `/api/reservations/${review.reservationId}/reviews`,
+    {
+      method: "POST",
+      body: JSON.stringify({ review: review }),
     }
+  );
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(receiveReview(data.review));
+  } else {
+    throw res;
+  }
 
-    return res;
-  } ;
-
+  return res;
+};
 
 export const updateReview = (review) => async (dispatch) => {
   const res = await csrfFetch(`/api/reviews/${review.id}`, {
@@ -289,35 +453,18 @@ export const deleteReview = (reviewId) => async (dispatch) => {
   return res;
 };
 
-export const reviewsReducer = (state = {}, action) => {
+const reviewsReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = { ...state };
   switch (action.type) {
     case RECEIVE_REVIEW:
-      if(action.review.listingId !== undefined) {
-        if(!newState[action.review.listingId]) {
-          newState[action.review.listingId] = {};
-        }
-        newState[action.review.listingId][action.review.id] = action.review;
-      }
+      newState[action.review.id] = action.review;
       return newState;
-
     case RECEIVE_REVIEWS:
-      action.reviews.forEach(review => {
-        if (review.listingId !== undefined) {
-          if (!newState[review.listingId]) {
-            debugger
-            newState[review.listingId] = {};
-          }
-          newState[review.listingId][review.id] = review;
-        }
-      });
-      return newState;
-
+      return { ...newState, ...action.reviews };
     case REMOVE_REVIEW:
       delete newState[action.reviewId];
       return newState;
-
     default:
       return state;
   }

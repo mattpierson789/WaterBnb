@@ -66,12 +66,12 @@ class Api::ReviewsController < ApplicationController
 
   def create
     reservation = Reservation.find_by(id: params[:reservation_id])
-    debugger
+    # debugger
     if reservation
       @review = reservation.build_review(review_params)
       @review.reviewer_id = current_user.id
 
-      debugger
+      # debugger
 
       if @review.save 
         render :show 
@@ -100,6 +100,17 @@ class Api::ReviewsController < ApplicationController
       render json: { message: ["No review associated with the given reservation"] }
     end
   end
+
+  def listing_review
+    listing = Listing.find_by(id: params[:listing_id])
+    @reviews = listing&.reviews
+    if @reviews.present?
+      render :index
+    else
+      render json: { message: ["No reviews associated with the given listing"] }
+    end
+  end
+  
 
   def update
     if @review

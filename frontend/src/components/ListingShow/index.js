@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getListing } from '../../store/listings';
-import { fetchListing } from '../../store/listings';
+import { getListing, fetchListing } from '../../store/listings';
 import { useParams } from 'react-router-dom';
 import './ListingShow2.css';
 import ReservationForm from '../ReservationForm';
-import MapContainer from '../Map'; // Make sure to import MapContainer
-// // import Star from '../../assets/images/star.svg'; // Adjust the import path for Star
+import MapContainer from '../Map';
 import { getReservedDates } from '../../store/reservations';
 import ImageLoader from "../../util/ImageLoader";
-// // import sampleHouse from '../../assets/images/sample_house.jpg';
 import Amenities from './Amenities';
 import Calendar from '../Calendar/Calendar';
 import ReviewShow from '../ReviewShow';
-
+import { fetchListingReviews } from '../../store/reviews'; // Importing fetchListingReviews
 
 const ListingShow = () => {
   const { listingId } = useParams();
@@ -30,7 +27,15 @@ const ListingShow = () => {
     dispatch(fetchListing(listingId));
   }, [listingId, dispatch]);
 
-  // Conditional rendering of imageGroup
+  useEffect(() => {
+    dispatch(fetchListingReviews(listingId));  // Fetching the reviews when the component loads
+  }, [listingId, dispatch]);
+
+  useEffect(() => {
+    document.title = `WaterBnB | ${listing?.title}`;
+  }, [listing]);
+
+
   const imageGroup = listing ? (
     <div className="listing-img-group-container">
       <div className="img-group-left">

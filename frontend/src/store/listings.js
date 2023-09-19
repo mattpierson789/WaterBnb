@@ -1,6 +1,7 @@
 import csrfFetch from "./csrf";
 import { receiveHost } from "./hosts";
 import { receiveReservations } from "./reservations";
+import { receiveReviews } from "./reviews";
 
 
 export const RECEIVE_LISTINGS = 'listings/receiveListings'
@@ -53,6 +54,7 @@ export const fetchListing = (listingId) => async (dispatch) => {
     dispatch(receiveListing(data.listing))
     dispatch(receiveHost(data.host));
     dispatch(receiveReservations(data.reservations))
+    dispatch(receiveReviews(data.reviews, data.listing.id))
     // debugger
 }
 

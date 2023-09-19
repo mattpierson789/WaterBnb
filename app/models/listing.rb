@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
 
     validates :lister_id, :city, :night_price, :country, :description, :unique_type,
-    :bedrooms, :bathrooms, :max_guests, :rental_type, :latitude, :longitude,
+    :bedrooms, :bathrooms, :max_guests, :rental_type, :latitude, :longitude, :reviews,
      presence: true
 
     validates :latitude , numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }

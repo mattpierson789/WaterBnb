@@ -15,10 +15,10 @@ const UpdateReservationModal = () => {
   const { setToggleEditModal, tripToUpdate } = useModal();
   const trip = tripToUpdate || {};
 
-  debugger
+  // debugger
 
   const dispatch = useDispatch();
-  debugger
+  // debugger
   const start_date = trip.start_date ? convertToDate(trip.start_date) : new Date();
   const end_date = trip.end_date ? convertToDate(trip.end_date) : new Date();  
   const [newStartDate, setNewStartDate] = useState(start_date);

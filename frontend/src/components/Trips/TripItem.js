@@ -73,7 +73,7 @@ const TripItem = ({ trip, type }) => {
     const toCancel = () => dispatch(deleteReservation(trip.id));
 
     let buttonGroup;
-    debugger
+    // debugger
     switch (type) {
         case "past":
             buttonGroup = review ? (
@@ -92,7 +92,7 @@ const TripItem = ({ trip, type }) => {
             );
             break;
         case "whereYouAreGoing":
-          debugger
+        //   debugger
             buttonGroup = (
                 <>
                     <button className="res-btn" onClick={toUpdate}>

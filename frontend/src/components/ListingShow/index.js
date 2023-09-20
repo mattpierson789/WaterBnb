@@ -10,7 +10,7 @@ import ImageLoader from "../../util/ImageLoader";
 import Amenities from './Amenities';
 import Calendar from '../Calendar/Calendar';
 import ReviewShow from '../ReviewShow';
-import { fetchListingReviews } from '../../store/reviews'; // Importing fetchListingReviews
+import { fetchListingReviews } from '../../store/reviews'; 
 
 const ListingShow = () => {
   const { listingId } = useParams();
@@ -59,11 +59,7 @@ const ListingShow = () => {
     </div>
   ) : (
     <div className="listing-img-group-container">
-      <img
-        className="listing-img-group-container"
-        // src={sampleHouse}
-        alt="sample"
-      />
+    
     </div>
   );
 
@@ -87,19 +83,7 @@ const ListingShow = () => {
           <div className="top-break"></div>
           <h1>{listing.title}</h1>
 
-          <div className="listing-rating">
-            {/* <div className="review-star">
-              <img src={Star} alt="Star" />
-            </div> */}
-            {/* <div className="listing-rating-score">
-              {listing.ratings.overallRating}
-            </div> */}
-          </div>
-          <span className="separator">&#x2022;</span>
-          <div className="listing-num-reviews">
-            <span>{listing.numReviews} reviews</span>
-          </div>
-          <span className="separator">&#x2022;</span>
+    
           <span className="listing-location">
             {listing.city}, {listing.country}
           </span>
@@ -107,7 +91,8 @@ const ListingShow = () => {
 
         <div className="show-images">{imageGroup}</div>
 
-        <div id="general-reservation-info">
+        <div className="show-container">
+        <div className="listing-info">
           <div className="listing-show-reservation">
            
             <div id="listing-show-title-details">
@@ -115,7 +100,7 @@ const ListingShow = () => {
                 {listing.rentalType} {locationAdjective} hosted by{' '}
                 {listing.listerName}
               </h2>
-              {/* <img id="prof-pic" src={listing.lister_id.profile_picture} /> */}
+              
             </div>
 
             <div id="listing-show-description-details">
@@ -135,11 +120,21 @@ const ListingShow = () => {
                
               </div>
             </div>
-          </div>
+          
         </div>
 
         <div className="booking-calendar">
-          <Calendar />
+          <Calendar 
+            calendarOpen={calendarOpen} 
+            setCalendarOpen={setCalendarOpen} 
+             listing={listing}
+             startDate={startDate}
+             setStartDate={setStartDate}
+             endDate={endDate}
+             setEndDate={setEndDate}
+             blockedDates={blockedDates}
+          />
+        </div>
         </div>
 
         <div className="reserve-form-container">
@@ -155,6 +150,7 @@ const ListingShow = () => {
               blockedDates={blockedDates}
             />
           </div>
+        </div>
         </div>
 
         <div className="reviews-section">

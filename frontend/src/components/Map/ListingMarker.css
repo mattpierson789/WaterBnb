@@ -7,7 +7,7 @@
     padding: 0px 8px;
     box-shadow: 0px 0px 3px gray;
     font-size: 14px;
-    font-family: Cereal-bd;
+    font-family: 'Circular Std';
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +79,7 @@
   }
   
   .info-card-detail-container {
-    font-family: Cereal-bd;
+    font-family: 'Circular Std';
     height: 40%;
     padding: 10px;
     display: flex;
@@ -101,7 +101,7 @@
     font-size: 11px;
   }
   .info-card-category {
-    font-family: Cereal;
+    font-family: 'Circular Std';
     font-size: 12px;
     color: gray;
   }
@@ -111,7 +111,7 @@
   
   .info-card-price span {
     font-size: 11px;
-    font-family: Cereal;
+    font-family: 'Circular Std';
   }
   
   .info-card-rating {

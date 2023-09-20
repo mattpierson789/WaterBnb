@@ -65,7 +65,7 @@ const TripItem = ({ trip, type }) => {
 
     const formatDate = (date) => format(date, "MMM dd, yy");
     const tripRange = `${formatDate(startDate)} - ${formatDate(endDate)}`;
-    const toListing = () => navigate(`/listings/${trip.listing.id}`);
+    const toListing = () => navigate(`/listings/${trip.listing.listing.id}`);
     const toUpdate = () => {
         setTripToUpdate(trip);
         setToggleEditModal(true);

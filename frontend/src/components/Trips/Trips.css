@@ -79,7 +79,7 @@
   
   .banner-first {
       margin-bottom: 5px;
-      font-family: Cereal-bd;
+      font-family: 'Circular Std';
   }
   
   .banner-second {
@@ -90,7 +90,7 @@
   .trip-search-btn{
       width: 163px;
       height: 48px;
-      font-family: Cereal-bd;
+      font-family: 'Circular Std';
       border: none;
       font-size: 16px;
       color: white;

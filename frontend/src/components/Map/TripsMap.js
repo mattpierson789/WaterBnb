@@ -16,7 +16,7 @@ const TripsMap = ({ center, zoom, pastTrips = [] }) => {
       googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY
   });
 
-  const mapRef = useRef(); // <-- Moved before any condition
+  const mapRef = useRef(); 
 
   const onMapLoad = useCallback((map) => {
       mapRef.current = map;

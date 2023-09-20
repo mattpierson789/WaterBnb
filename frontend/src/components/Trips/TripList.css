@@ -1,6 +1,7 @@
 .trip-list-container {
     display: flex;
     flex-direction: column;
+    height: auto;
   }
   
   .trip-list-header {
@@ -21,7 +22,7 @@
     padding: 8px;
     border-radius: 5px;
     border: 1px solid rgb(213, 213, 213);
-    height: 160px;
+    height: auto;
   }
   
   .empty-list {
@@ -39,5 +40,5 @@
   
   .empty-list > div {
     padding: 15px;
-    font-family: Cereal-bd;
+    font-family: 'Circular Std';
   }

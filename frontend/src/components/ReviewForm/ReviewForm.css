@@ -107,7 +107,7 @@
   }
   
   .review-listing-title {
-    font-family: Cereal-bd;
+    font-family: 'Circular Std';
     /* overflow: hidden; */
     /* white-space: nowrap; */
     text-overflow: ellipsis;
@@ -134,7 +134,7 @@
     padding: 5px 10px;
     border-radius: 10px;
     border-color: lightgray;
-    font-family: Cereal;
+    font-family: 'Circular Std';
     font-size: 14px;
   }
   
@@ -173,7 +173,7 @@
   }
   
   .save-success-content {
-    font-family: Cereal-bd;
+    font-family: 'Circular Std';
     background-color: white;
     padding: 25px;
     border-radius: 10px;

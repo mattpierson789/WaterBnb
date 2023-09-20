@@ -23,10 +23,26 @@ const LoginForm = ({setShowSignUpModal, setShowLogInModal}) => {
 	const demoLoginRef = useRef(null);
 	const signupBtnRef = useRef(null);
 	const activeBtnRef = useRef(null);
+	const modalRef = useRef(null);
+
 
 	useEffect(() => {
-		// document.querySelector(".x-close").focus({focusVisible:true, preventScroll:false})
-	}, [])
+		const handleClickOutside = (event) => {
+			console.log("Attaching mousedown event listener");
+			console.log("Modal ref:", modalRef.current);
+			console.log("Event target:", event.target);
+			if (modalRef.current && !modalRef.current.contains(event.target)) {
+				setShowLogInModal(false);
+			}
+		};
+	
+		document.addEventListener("mousedown", handleClickOutside);
+		
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [setShowLogInModal]);
+	
 
 	useEffect(() => {
 		setInvalidCredentials(false)
@@ -70,6 +86,13 @@ const LoginForm = ({setShowSignUpModal, setShowLogInModal}) => {
 			}
 		}
 	}
+
+
+
+	const closeModal = () => {
+		setShowLogInModal(false);
+	  };
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -133,8 +156,11 @@ const LoginForm = ({setShowSignUpModal, setShowLogInModal}) => {
 	}
 	
 	return (
-        <div className="modal">
-        //       <div className="modal-content">
+        <div className="modal" ref={modalRef} onMouseDown={(e) => e.stopPropagation()}>			
+        //       <div className="modal-content" >
+		<span className="close" onClick={closeModal}>
+              &times;
+            </span>
 		<div className="login-form">
 			<header className="auth-form-header">
 				<button autoFocus className='x-close' onClick={e => setShowLogInModal(false)}><i className="fa-solid fa-x"></i></button>

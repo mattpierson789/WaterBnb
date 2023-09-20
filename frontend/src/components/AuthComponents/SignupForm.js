@@ -100,6 +100,12 @@ const SignupForm = ({setShowSignUpModal, setShowLogInModal}) => {
 		document.addEventListener("mouseup", mouseUpAuthBtn) //add/rmv elisteners require exact reference...so separate function names
 	}
 
+
+
+	const closeModal = () => {
+		setShowSignUpModal(false);
+	  };
+
 	const mouseUpAuthBtn = (e) => {
 		e.preventDefault();
 		document.removeEventListener("mouseup", mouseUpAuthBtn);
@@ -213,6 +219,9 @@ const SignupForm = ({setShowSignUpModal, setShowLogInModal}) => {
 	return (
         <div className="modal">
         //       <div className="modal-content">
+		<span className="close" onClick={closeModal}>
+              &times;
+            </span>
 		<div className="signup-form" >
 			<header className="auth-form-header">
 				<button autoFocus className='x-close' onClick={e => setShowSignUpModal(false)}><i className="fa-solid fa-x"></i></button>

@@ -41,37 +41,39 @@ const ListingIndexItem = ({ listing }) => {
   return (
     <div className="listing-index-item2">
       <div className="listing-index-item-image-container">
-        <img
-          className="listing-index-item-image"
-          src={listing.photos[currentImageIndex]}
-          alt=""
-        />
+        <Link className="index-show-element" to={`/listings/${listing.id}`}>
+          <img
+            className="listing-index-item-image"
+            src={listing.photos[currentImageIndex]}
+            alt=""
+          />
+        </Link>
         <button className="arrow left-arrow" onClick={prevImage}></button>
         <button className="arrow right-arrow" onClick={nextImage}></button>
       </div>
-      
-      <Link className="index-show-element" to={`/listings/${listing.id}`}>
-        <div>
-          <div className="listing-test">
-            <span id="title">
+    
+      <div>
+        <div className="listing-test">
+          <span id="title">
             {listing.city}, {listing.country}
-            </span>
-          </div>
-          <span id="location">
-            {listing.rentalType} {locationAdjective} hosted by {listing.listerName}
-          </span>
-          <br />
-          <span id="beds">
-            {listing.sleeps / 2} {listing.sleeps / 2 > 1 ? 'beds' : 'bed'} 
-          </span>
-          <br />
-          <span id="price">
-            <span id="price-number">${listing.nightPrice}</span> night
           </span>
         </div>
-      </Link>
+        <span id="location">
+          {listing.rentalType} {locationAdjective} hosted by {listing.listerName}
+        </span>
+        <br />
+        <span id="beds">
+          {listing.sleeps / 2} {listing.sleeps / 2 > 1 ? 'beds' : 'bed'}
+        </span>
+        <br />
+        <span id="price">
+          <span id="price-number">${listing.nightPrice}</span> night
+        </span>
+      </div>
     </div>
   );
+  
+  
 };
 
 export default ListingIndexItem;

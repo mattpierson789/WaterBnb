@@ -156,6 +156,7 @@ import LoadingPage from "../../util/LoadingPage";
 import { useModal } from "../../context/ModalContext";
 import UpdateReservationModal from "../ReservationForm/UpdateReservationForm";
 import ReviewForm from "../ReviewForm/index.js";
+import MapContainer from "../Map";
 
 const TripsIndex = () => {
     const { toggleEditModal, toggleReviewModal } = useModal();
@@ -209,9 +210,9 @@ const TripsIndex = () => {
                 <div className="banner-first">
                     You have {combinedTrips.length} current or  upcoming trips!
                 </div>
-                <div className="banner-second">
+                {/* <div className="banner-second">
                     Find more upcoming trips!
-                </div>
+                </div> */}
             </div>
         ) : (
             <div className="banner-container">
@@ -240,12 +241,12 @@ const TripsIndex = () => {
                             }}
                             onMouseMove={(e) => handleMouseMove(e, "search")}
                         >
-                            Start searching
+                            Find your Next Adventure!
                         </button>
                     </div>
                     <div className="search-trips right">
-                        <img src={adventure} alt="adventure" />
-                    </div>
+        <MapContainer pastTrips={pastTrips} />
+    </div>
                 </div>
                 <div className="divisor">
                     <hr />

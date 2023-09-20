@@ -13,7 +13,7 @@ import ListingMarker from "./ListingMarker";
 import { ReactComponent as HomeIcon } from "../../assets/images/home_icon.svg";
 import { getListings } from "../../store/listings";
 
-const MapContainer = ({ center, zoom }) => {
+const MapContainer = ({ center, zoom, pastTrips = [] }) => {
   const { isLoaded } = useLoadScript({
       googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY
   });

@@ -155,8 +155,8 @@ const SignupForm = ({setShowSignUpModal, setShowLogInModal}) => {
 		setFirstName('Demo');
 		setLastName('Lition');
 		setEmail('demo@user.io');
-		setPassword('dprian83');
-		const user = {credential:'demo@user.io', password:'dprian83'}
+		setPassword('password');
+		const user = {credential:'demo@user.io', password:'password'}
 		dispatch(loginUser(user))
 			.then(() => {
 				setShowSignUpModal(false)
@@ -323,10 +323,10 @@ const SignupForm = ({setShowSignUpModal, setShowLogInModal}) => {
 					
 					<div className='signup-tooltip'>
 						By selecting <span style={{fontWeight: "600"}}>Agree and continue</span>, 
-						I agree to Airbnb’s <a target="_blank" className="signup-link" href="https://www.linkedin.com/in/carvey-hor/">Terms of Service</a>,&nbsp;
-						<a target="_blank" className="signup-link" href="https://www.linkedin.com/in/carvey-hor/">Payments Terms of Service</a>, 
-						and <a target="_blank" className="signup-link" href="https://www.linkedin.com/in/carvey-hor/">Nondiscrimination Policy</a>
-						&nbsp;and acknowledge the <a target="_blank" className="signup-link" href="https://www.linkedin.com/in/carvey-hor/">Privacy Policy</a>.
+						I agree to Airbnb’s <a target="_blank" className="signup-link" href="https://www.airbnb.com/help/article/2908">Terms of Service</a>,&nbsp;
+						<a target="_blank" className="signup-link" href="https://www.airbnb.com/help/article/2909">Payments Terms of Service</a>, 
+						and <a target="_blank" className="signup-link" href="https://www.airbnb.com/help/article/2867">Nondiscrimination Policy</a>
+						&nbsp;and acknowledge the <a target="_blank" className="signup-link" href="https://www.airbnb.com/help/article/3175">Privacy Policy</a>.
 					</div>
 
 					<div className='auth-session-btns'>

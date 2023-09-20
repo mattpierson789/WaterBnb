@@ -437,3 +437,8 @@ ul.nav-bar-links {
     right: 5px; /* Adjust this value based on your layout to ensure it doesn't overlap with social icons */
 
 }
+
+.user-info {
+
+	color: red;
+}

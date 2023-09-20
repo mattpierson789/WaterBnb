@@ -46,7 +46,7 @@
     font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: 550;
-    margin-left: 0px;
+    margin-left: -5px;
     margin-right: 0px;
     color: black;
     padding-bottom: 15px; /* Reduced padding */
@@ -104,13 +104,16 @@
     transition: 0.5s;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start; /* This is changed to start instead of center */
+    align-items: flex-start; /* This is changed to start instead of center */
     box-sizing: border-box;
-    align-content: center;
     width: 310px;
     margin-right: auto;
-  }
+    text-align: left; /* Added to align the text to the left */
+}
+
+/* ... [rest of your styles unchanged] ... */
+
   
   .listing-index-item2:hover {
     border-radius: 20px;
@@ -164,6 +167,52 @@
     object-fit: cover;
     scroll-snap-align: center;
   }
+
+ /* Arrow styles */
+
+.arrow {
+  position: absolute;
+  top: 40%; /* Adjusted to make it slightly higher */
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  opacity: 0; 
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 50%; /* To make it a circle */
+  display: flex; /* Added flex to center the > or < sign */
+  justify-content: center;
+  align-items: center;
+  font-size: 18px; /* Adjust size as per your preference */
+  color: grey; /* For the arrow color */
+}
+
+.left-arrow::before {
+  content: '<'; /* Adding the left arrow sign */
+}
+
+.right-arrow::before {
+  content: '>'; /* Adding the right arrow sign */
+}
+
+.left-arrow {
+  left: 10px; /* positioning it to the far left */
+}
+
+.right-arrow {
+  right: 10px; /* positioning it to the far right */
+}
+
+.listing-index-item-image-container:hover .arrow {
+  opacity: 1;
+}
+
+
+
+
+
   
 
   

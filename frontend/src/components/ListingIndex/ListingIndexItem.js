@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ListingIndexItem.css';
+import {useState} from 'react';
 
 const ListingIndexItem = ({ listing }) => {
   let locationAdjective = '';
@@ -21,20 +22,39 @@ const ListingIndexItem = ({ listing }) => {
     activityStatement = 'Go ' + listing.uniqueActivities + ' nearby!';
   }
 
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = (e) => {
+    e.stopPropagation(); // Stops the event from propagating to the parent <Link>
+    if (currentImageIndex < listing.photos.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
+  
+  const prevImage = (e) => {
+    e.stopPropagation(); // Stops the event from propagating to the parent <Link>
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
+
   return (
     <div className="listing-index-item2">
+      <div className="listing-index-item-image-container">
+        <img
+          className="listing-index-item-image"
+          src={listing.photos[currentImageIndex]}
+          alt=""
+        />
+        <button className="arrow left-arrow" onClick={prevImage}></button>
+        <button className="arrow right-arrow" onClick={nextImage}></button>
+      </div>
+      
       <Link className="index-show-element" to={`/listings/${listing.id}`}>
-        <div className="listing-index-item-image-container">
-          <img
-            className="listing-index-item-image"
-            src={listing.photos[0]}
-            alt=""
-          />
-        </div>
         <div>
           <div className="listing-test">
             <span id="title">
-              {listing.city}, {listing.country}
+            {listing.city}, {listing.country}
             </span>
           </div>
           <span id="location">
@@ -42,8 +62,7 @@ const ListingIndexItem = ({ listing }) => {
           </span>
           <br />
           <span id="beds">
-            {' '}
-            {listing.sleeps / 2} {listing.sleeps / 2 > 1 ? 'beds' : 'bed'}{' '}
+            {listing.sleeps / 2} {listing.sleeps / 2 > 1 ? 'beds' : 'bed'} 
           </span>
           <br />
           <span id="price">

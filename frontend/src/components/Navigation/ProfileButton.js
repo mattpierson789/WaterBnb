@@ -115,10 +115,10 @@ const ProfileButton = ({ setShowSignUpModal, setShowLogInModal }) => {
         <li className="menu-divider-li">
           <MenuDivider />
         </li>
-        <a target="_blank" href="https://www.linkedin.com/in/carvey-hor/">
+        <a target="_blank" href="https://www.linkedin.com/in/mattpierson1/">
           <li>LinkedIn</li>
         </a>
-        <a target="_blank" href="https://github.com/carveyh/sparebnb">
+        <a target="_blank" href="https://github.com/mattpierson789">
           <li>Github</li>
         </a>
         {/* <li>Help</li> */}
@@ -129,13 +129,15 @@ const ProfileButton = ({ setShowSignUpModal, setShowLogInModal }) => {
     sessionLinks = (
       <>
         <div className="profile-drop-menu-bold-item">
-          {/* <li>2023 Summer Release NEW</li> */}
-          {/* <li className="menu-divider-li">
-            <MenuDivider />
-          </li> */}
-          {/* <li>Messages</li> */}
+        <div className="user-info">
+          <h3>Welcome {sessionUser.username}!</h3>
+          <p className="user-name">
+            
+          </p>
+        </div>
+        <div className="line"></div>
           <Link to={`user/trips`}>
-            <li>Trips</li>
+            <div>Trips</div>
           </Link>
           {/* <li>Wishlists</li> */}
         </div>
@@ -152,7 +154,7 @@ const ProfileButton = ({ setShowSignUpModal, setShowLogInModal }) => {
         <li className="menu-divider-li">
           {/* <MenuDivider /> */}
         </li>
-        <li onClick={handleLogout}>Logout</li>
+        <span onClick={handleLogout}>Logout</span>
       </>
     );
   }

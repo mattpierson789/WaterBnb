@@ -51,7 +51,7 @@
   }
   
   .listing-info h2 {
-    padding-bottom: 24px;
+    padding-bottom: 4px;
   }
   
   .reserve-form-container {
@@ -136,7 +136,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100px; /* adjust this value to the desired width of the border */
+  width: 110px; /* adjust this value to the desired width of the border */
   height: 1px;
   background-color: lightgray;
 }
@@ -215,6 +215,55 @@
   height: 100%;
   margin-left: 0%;
   margin-right: 0%;
+}
+
+/* Reduce space between title details and description details */
+#listing-show-title-details h2 {
+  margin-bottom: 0px;  /* Adjust this value as needed */
+}
+
+#listing-show-description-details {
+  margin-bottom: 20px;  /* Adjust this value as needed */
+  border-bottom: 1px solid lightgray;
+  padding: 5px 0 5px;
+
+}
+
+/* Make the listing description slightly bigger */
+#description {
+  font-size: 18px;  /* Adjust this value to your preferred size */
+  margin-top: 25px;  /* Adds some space above the description for better readability */
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.0015em;  /* Half of the original 0.83em */
+  margin-block-end: 0.53em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.separator {
+  border-bottom: 1px solid lightgray;
+  padding-top: 10px;    /* space above the separator */
+  padding-bottom: 10px; /* space below the separator */
+  width: 100%;          /* default width to take full container's width */
+  box-sizing: border-box;
+}
+
+
+.separator.short {
+  width: 500px;
+}
+
+.separator.medium {
+  width: 700px;
+}
+
+.separator.long {
+  width: 1000px;
 }
 
   

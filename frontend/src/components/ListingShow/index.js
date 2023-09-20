@@ -113,7 +113,9 @@ const ListingShow = () => {
             </div>
 
             <div>
+            {/* <h2>About this Place</h2> */}
               <span id="description">{listing.description}</span>
+              <div className="separator medium"></div>
               <div className="amenities">
                 <h2>What this place offers</h2>
                   <Amenities listing={listing} />

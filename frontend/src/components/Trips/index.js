@@ -156,7 +156,7 @@ import LoadingPage from "../../util/LoadingPage";
 import { useModal } from "../../context/ModalContext";
 import UpdateReservationModal from "../ReservationForm/UpdateReservationForm";
 import ReviewForm from "../ReviewForm/index.js";
-import MapContainer from "../Map";
+import TripsMap from "../Map/TripsMap";
 
 const TripsIndex = () => {
     const { toggleEditModal, toggleReviewModal } = useModal();
@@ -245,7 +245,7 @@ const TripsIndex = () => {
                         </button>
                     </div>
                     <div className="search-trips right">
-        <MapContainer pastTrips={pastTrips} />
+        <TripsMap pastTrips={pastTrips} />
     </div>
                 </div>
                 <div className="divisor">

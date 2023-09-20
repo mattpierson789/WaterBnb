@@ -26,7 +26,9 @@ const TripsMap = ({ center, zoom, pastTrips = [] }) => {
     if (mapRef.current && pastTrips.length > 0) {
         const bounds = new window.google.maps.LatLngBounds();
         pastTrips.forEach((trip) => {
-            bounds.extend(new window.google.maps.LatLng(parseFloat(trip.listing.listing.latitude), parseFloat(trip.listing.listing.longitude)));
+            if (trip.listing && trip.listing.listing) {
+                bounds.extend(new window.google.maps.LatLng(parseFloat(trip.listing.listing.latitude), parseFloat(trip.listing.listing.longitude)));
+            }
         });
         mapRef.current.fitBounds(bounds);
     }
@@ -64,7 +66,6 @@ const TripsMap = ({ center, zoom, pastTrips = [] }) => {
     fillOpacity: 0.35,
   };
 
-
   return (
     <GoogleMap
       zoom={zoom ? zoom : (center ? 14 : 2)}
@@ -88,17 +89,22 @@ const TripsMap = ({ center, zoom, pastTrips = [] }) => {
       )}
 
       {pastTrips.map((trip) => {
-        const latitude = parseFloat(trip.listing.listing.latitude);
-        const longitude = parseFloat(trip.listing.listing.longitude);
-        return (
-          <OverlayView
-            key={trip.id}
-            position={{ lat: latitude, lng: longitude }}
-            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-          >
-            <div style={{ background: 'blue', borderRadius: '50%', width: '20px', height: '20px' }}></div>
-          </OverlayView>
-        );
+        const latitude = trip.listing && trip.listing.listing ? parseFloat(trip.listing.listing.latitude) : null;
+        const longitude = trip.listing && trip.listing.listing ? parseFloat(trip.listing.listing.longitude) : null;
+        
+        if(latitude !== null && longitude !== null) {
+          return (
+            <OverlayView
+              key={trip.id}
+              position={{ lat: latitude, lng: longitude }}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            >
+              <div style={{ background: 'blue', borderRadius: '50%', width: '20px', height: '20px' }}></div>
+            </OverlayView>
+          );
+        } else {
+          return null; // Return null if there's no valid latitude and longitude.
+        }
       })}
     </GoogleMap>
   );

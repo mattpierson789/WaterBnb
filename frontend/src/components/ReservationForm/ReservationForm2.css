@@ -132,4 +132,16 @@
   .date-error {
     border-color: #FF385C !important;
   }
-  
+
+  .reservation-form-container {
+    position: relative; /* This makes it the reference for any absolutely positioned child elements */
+    height: auto; /* Or set to a fixed height like '300px' if needed */
+    overflow: hidden; /* Prevents any internal absolute/fixed positioned elements from expanding this container */
+}
+
+.calendar-container {
+    position: absolute; /* Positioned relative to the reservation form container */
+    top: 40%; /* Increased to bring it down */
+    left: -50%; /* Increased to push it more to the right */
+    z-index: 9999; /* Ensure it's on top of any other elements */
+}

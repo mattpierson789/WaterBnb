@@ -10,7 +10,7 @@ import { useModal } from "../../context/ModalContext";
 import { deleteReview, fetchReview } from "../../store/reviews";
 import { useEffect } from "react";
 
-const TripItem = ({ trip, type }) => {
+const TripItem = ({ trip, type, setRefreshTrips }) => {
     debugger
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -71,8 +71,15 @@ const TripItem = ({ trip, type }) => {
         setTripToUpdate(trip);
         setToggleEditModal(true);
     };
-    const toCancel = () => dispatch(deleteReservation(trip.id));
-
+    
+    const toCancel = async () => {
+        const result = await dispatch(deleteReservation(trip.id));
+        if (result === 'success') {
+            // This will cause the TripsIndex component to re-fetch trips
+            setRefreshTrips(true);
+        }
+    };
+    
     let buttonGroup;
     // debugger
     switch (type) {

@@ -260,14 +260,16 @@ const ReservationForm = ({
         </div>
       )}
       {calendarOpen && (
-        <Calendar
-          startDate={startDate}
-          setStartDate={setStartDate}
-          endDate={endDate}
-          setEndDate={setEndDate}
-          setCalendarOpen={setCalendarOpen}
-          blockedDates={blockedDates}
-        />
+  <div className="calendar-container">
+    <Calendar
+      startDate={startDate}
+      setStartDate={setStartDate}
+      endDate={endDate}
+      setEndDate={setEndDate}
+      setCalendarOpen={setCalendarOpen}
+      blockedDates={blockedDates}
+    />
+  </div>
       )}
     </>
   );

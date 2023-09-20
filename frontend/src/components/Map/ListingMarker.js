@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Star } from "../../assets/images/star.svg";
 
 const MarkerInfoCard = ({ listing, onClick }) => {
-
-
+  const navigate = useNavigate(); // Using the useNavigate hook
+  
+  // Define the handleCardClick function
   const handleCardClick = () => {
-
+    navigate(`/listings/${listing.id}`);
   };
 
   const handleClick = () => {
@@ -28,7 +29,7 @@ const MarkerInfoCard = ({ listing, onClick }) => {
           />
         </div>
         <div className="info-card-detail-container" onClick={handleCardClick}>
-        <div className="info-card-title">
+          <div className="info-card-title">
             {listing.title}
           </div>
           <div className="info-card-location">
@@ -39,11 +40,12 @@ const MarkerInfoCard = ({ listing, onClick }) => {
               <Star />
             </div>
             <div className="info-card-rating-score">
+              {/* Assuming you might fill this in later: */}
               {/* {listing.ratings.overallRating} */}
             </div>
           </div>
           <div className="info-card-price">
-          <span> ${listing.nightPrice} night</span>
+            <span> ${listing.nightPrice} night</span>
           </div>
         </div>
       </div>
@@ -55,6 +57,7 @@ const ListingMarker = ({ listing, isActive, onClick }) => {
   const handleClick = () => {
     onClick(listing.id);
   };
+  
   return (
     <div
       className={`list-map-marker ${isActive ? "active-marker" : ""}`}

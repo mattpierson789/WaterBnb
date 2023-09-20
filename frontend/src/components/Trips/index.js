@@ -164,6 +164,7 @@ const TripsIndex = () => {
     const navigate = useNavigate();
     const currentUser = useSelector((state) => state.session.user);
     const trips = useSelector(getReservations);
+    debugger
 
     const [mousePositions, setMousePositions] = useState({
         search: { x: 0, y: 0 },

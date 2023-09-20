@@ -56,7 +56,7 @@ export const getReservation = (reservationId) => (state) => state.reservation ? 
 //   debugger
 // };
 export const createReservation = (reservation) => async (dispatch) => {
-  // debugger
+  debugger
  
   const res = await csrfFetch(`/api/reservations`, {
     method: 'POST', 

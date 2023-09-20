@@ -11,6 +11,7 @@ import { deleteReview, fetchReview } from "../../store/reviews";
 import { useEffect } from "react";
 
 const TripItem = ({ trip, type }) => {
+    debugger
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const startDate = convertToDate(trip.startDate);
@@ -125,7 +126,7 @@ const TripItem = ({ trip, type }) => {
                     <div className="trip-title">{trip.listing.listing.title}</div>
                     <div className="trip-dates">{tripRange}</div>
                     <div className="trip-guests">Guests: {trip.numGuests}</div>
-                    <div className="trip-price">Total: ${trip.totalPrice.toFixed(2)}</div>
+                    <div className="trip-price">${trip.listing.listing.nightPrice} night</div>
                 </div>
                 <div className="button-group">{buttonGroup}</div>
             </div>

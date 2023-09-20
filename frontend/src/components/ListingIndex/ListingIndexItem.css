@@ -12,16 +12,20 @@
   .featured-listings-ul .listing-index-item-image-container {
     border-radius: 10px;
     overflow: hidden;
-  }
+    margin-bottom: 0; 
+    height: 275px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
   
-  .featured-listings-ul .listing-index-item-image {
+.featured-listings-ul .listing-index-item-image {
     width: 300px;
     height: 250px;
-    top: 0;
-    left: 0;
     object-fit: cover;
     border-radius: 10px;
-  }
+}
+
 
   
   @media screen and (min-width: 9000px) {
@@ -39,72 +43,130 @@
   }
 
   #title {
-
     font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: 550;
     margin-left: 0px;
     margin-right: 0px;
     color: black;
-    padding-bottom: 10px
+    padding-bottom: 15px; /* Reduced padding */
+}
 
-
-  }
-
-  #location {
-
+#location {
     font-family: Arial, sans-serif;
     font-size: 12px;
     font-weight: 250;
     margin-left: 0px;
     margin-right: 0px;
-    margin-top: 10px;
+    margin-top: 0px; /* Reduced margin */
     color: rgb(145, 137, 137);
-    padding-bottom: 10px
+    padding-bottom: 15px; /* Reduced padding */
+}
 
+#beds {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 250;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: rgb(145, 137, 137);
+  margin-bottom: 15px; /* Reduced margin */
+}
 
-  }
+#price {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 250;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: black;
+}
 
-  #beds {
-
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 250;
-    margin-left: 0px;
-    margin-right: 0px;
-    color: rgb(145, 137, 137);
-    margin-bottom: 30px
-
-
-  }
-
-  #price {
-
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 250;
-    margin-left: 0px;
-    margin-right: 0px;
-    color: black;
-    
-
-  }
-
-  #price-number {
-
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    margin-left: 0px;
-    margin-right: 0px;
-    color: black;
-    margin-top: 20px;
-
-  }
+#price-number {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: black;
+  margin-top: 5px; /* Reduced margin */
+}
 
   a {
     text-decoration: none;
   }
+
+  .listing-index-item2 {
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    align-content: center;
+    width: 310px;
+    margin-right: auto;
+  }
+  
+  .listing-index-item2:hover {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(213, 213, 213, 0.7);
+    scale: 1.01;
+  }
+  
+  .listing-test #title {
+    font-weight: bold;
+    width: 100%;
+    padding: 5px;
+    padding-bottom: 2px;
+    font-size: 15px;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+  }
+  
+  #location {
+    color: gray;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  #price span {
+    font-weight: bold;
+  }
+  
+  .listing-index-item-image-container {
+    box-sizing: border-box;
+    display: flex;
+    overflow-x: hidden;
+    scroll-snap-type: x proximity;
+    width: 300px;
+    height: 310px;
+    padding-bottom: 0px; /* Reduced padding */
+    margin-bottom: 0px; /* Reduced margin */
+}
+  
+  .listing-index-item2:hover .listing-index-item-image-container {
+    overflow-x: scroll;
+    box-sizing: border-box;
+  }
+  
+  .listing-index-item-image {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+    scroll-snap-align: center;
+  }
+  
+
+  
 
  
   

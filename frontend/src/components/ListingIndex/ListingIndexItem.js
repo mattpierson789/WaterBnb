@@ -47,7 +47,7 @@ const ListingIndexItem = ({ listing }) => {
           </span>
           <br />
           <span id="price">
-            <span id="price-number">${listing.nightPrice}</span>/night
+            <span id="price-number">${listing.nightPrice}</span> night
           </span>
         </div>
       </Link>

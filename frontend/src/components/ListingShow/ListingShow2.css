@@ -11,6 +11,7 @@
     padding-left: 13vw;
     padding-right: 13vw;
     list-style-type: none;
+    font-family: 'Circular Std';
   }
   
   .show-main-container > div {
@@ -112,8 +113,8 @@
   }
   
   .listing-location {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: normal !important;
     text-decoration: underline;
     list-style-type: none;
   }

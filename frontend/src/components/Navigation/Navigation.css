@@ -110,7 +110,7 @@
 	box-sizing: border-box;
 	/* Padding changes - if it is full screen, 80px, else 40px */
 	/* padding: 0px 80px; */
-	font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+	font-family: 'Circular Std';
 }
 
 .narrow-navbar-container {
@@ -363,7 +363,7 @@ ul.nav-bar-links {
 .profile-drop-menu li {
 	font-size: 14px;
 	font-weight: 300;
-	font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+	font-family: 'Circular Std';
 	padding: 12px 16px;
 	display:flex;
 	/* align-self: flex-start; */

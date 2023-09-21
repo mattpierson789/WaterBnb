@@ -11,7 +11,7 @@ import { deleteReview, fetchReview } from "../../store/reviews";
 import { useEffect } from "react";
 
 const TripItem = ({ trip, type, setRefreshTrips }) => {
-    debugger
+    // debugger
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const startDate = convertToDate(trip.startDate);

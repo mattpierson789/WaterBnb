@@ -31,7 +31,7 @@ export const getListings = (state) => state.listings ? Object.values(state.listi
 export const getListing = (listingId) => (state) => {
     return state.listings[listingId] || null;
   };
-debugger
+// debugger
 
 
 

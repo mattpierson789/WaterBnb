@@ -64,7 +64,7 @@ const ReservationForm = ({
     checkin.classList.remove("date-error");
     checkout.classList.remove("date-error");
 
-    debugger
+    // debugger
     
     if (validateDates()) {
         const reservationData = {
@@ -77,7 +77,7 @@ const ReservationForm = ({
             }
         };
 
-        debugger 
+        // debugger 
         
         try {
             await new Promise((resolve, reject) => {

@@ -9,7 +9,7 @@ const ReviewShow = ({ listing }) => {
   const dispatch = useDispatch();
   
   const listingReviews = useSelector(getListingReviews(listing.id));
-  debugger
+  // debugger
 
   const ratingTitle = [
     "cleanliness",

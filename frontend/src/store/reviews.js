@@ -357,7 +357,7 @@ export const getListingReviews = (listingId) => (state) => {
 };
 
 export const receiveReview = (review) => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_REVIEW,
     review,
@@ -365,7 +365,7 @@ export const receiveReview = (review) => {
 };
 
 export const receiveReviews = (reviews) => {
-  debugger
+  // debugger
   return {
     type: RECEIVE_REVIEWS,
     reviews,
@@ -409,7 +409,7 @@ export const fetchListingReviews = (listingId) => async (dispatch) => {
 };
 
 export const createReview = (review) => async (dispatch) => {
-  debugger
+  // debugger
   const res = await csrfFetch(
     `/api/reservations/${review.reservationId}/reviews`,
     {
@@ -419,7 +419,7 @@ export const createReview = (review) => async (dispatch) => {
   );
   if (res.ok) {
     const data = await res.json();
-    debugger
+    // debugger
     dispatch(receiveReview(data));
   } else {
     throw res;
@@ -467,7 +467,7 @@ export const reviewsReducer = (state = {}, action) => {
           newState[action.review.listingId] = {};
           
         }
-        debugger
+        // debugger
         newState[action.review.listingId][action.review.id] = action.review;
       }
       return newState;

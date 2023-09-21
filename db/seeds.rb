@@ -15,7 +15,9 @@ ApplicationRecord.transaction do
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
     User.create!(
-      username: 'Guest User', 
+      first_name: 'Guest',
+      last_name: 'User', 
+      username: 'Demo-lition',
       email: 'demo@user.io', 
       password: 'password'
     )
@@ -23,47 +25,61 @@ ApplicationRecord.transaction do
     # Create the base users for the application
 
     u2 = User.create!(
-      name: 'Michael',
-      username: 'aquaman',
-      email: 'michael.phelps@gmail.com',
+      first_name: 'Michael',
+      last_name: 'Phelps',
+      username: 'Olympian',
+      email: 'michael.phelps@gmail.com',  
       password: 'password',
-  )
-  u2.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/michael'), filename: 'Profile-Pictures/michael')
-  
-  u3 = User.create!(
-      name: 'Katie',
-      username: 'katie-ledecky',
-      email: 'katie.ledecky@gmail.com',
+    )
+    u2.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/michael'), filename: 'Profile-Pictures/michael')
+    
+    u3 = User.create!(
+      first_name: 'Katie',
+      last_name: 'Ledecky',
+      username: 'Freestyle',
+      email: 'katie.ledecky@gmail.com',  
       password: 'password',
-  )
-  u3.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/katie'), filename: 'Profile-Pictures/katie')
-  
-  u4 = User.create!(
-      name: 'Jason',
-      username: 'aquaman2',
-      email: 'jason.aquaman.momoa@gmail.com',
+    )
+    u3.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/katie'), filename: 'Profile-Pictures/katie')
+    
+    u4 = User.create!(
+      first_name: 'Jason',
+      last_name: 'Aquaman',
+      username: 'Poseidon',
+      email: 'jason.aquaman.momoa@gmail.com', 
       password: 'password',
-  )
-  u4.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/jason'), filename: 'Profile-Pictures/jason')
-  
-  u5 = User.create!(
-      name: 'Ariel',
-      username: 'under-the-sea',
-      email: 'ariel@gmail.com',
+    )
+    u4.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/jason'), filename: 'Profile-Pictures/jason')
+    
+    u5 = User.create!(
+      first_name: 'Ariel',
+      last_name: 'Mermaid',
+      username: 'LagoonBay',
+      email: 'ariel@gmail.com',  
       password: 'password',
-  )
-  u5.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/ariel'), filename: 'Profile-Pictures/ariel')
-  
+    )
+    u5.photo.attach(io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Profile-Pictures/ariel'), filename: 'Profile-Pictures/ariel')
 
-    # More users
-    10.times do 
+    def generate_unique_username
+      username = Faker::Internet.unique.username
+      while username.length < 7
+        username = Faker::Internet.unique.username
+      end
+      username
+    end
+    
+    20.times do 
       User.create!({
-        username: Faker::Internet.unique.username(specifier: 6),
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        username: generate_unique_username,
         email: Faker::Internet.unique.email,
         password: 'password'
       }) 
     end
-  
+    
+
+      
 
     # Create some base listings for the application 
 
@@ -1820,4 +1836,214 @@ ApplicationRecord.transaction do
     puts "Done!"
   end
 
+  puts "Creating reservations..."
+
+
+  # Assuming you have already defined listings and users
   
+  # Define the number of listings you have
+
+  listings = Listing.all.to_a
+  users = User.all.to_a
+
+  num_listings = 53
+
+  # Define a range for the listings (1 to 53 in this case)
+  listing_range = (1..num_listings)
+  
+  # Define a range for the reservations you want to create for each listing (1 reservation per listing)
+  reservation_range = (1..10)
+  
+  # Define the maximum reservation duration in days
+  max_reservation_duration = 7
+  
+  # Define the number of years you want to go back
+  years_to_go_back = 7
+  
+  # Loop through each listing
+  listing_range.each do |listing_num|
+    listing = listings[listing_num - 1]  # Corrected indexing
+  
+    # Loop through each reservation for the current listing
+    reservation_range.each do |res_num|
+      guest = users.sample  # Randomly select a guest from your users
+  
+      # Calculate random start_date within the last 7 years
+      today = Date.today
+      max_start_date = today - years_to_go_back.years  # Maximum start_date
+      start_date = Faker::Date.between(from: max_start_date, to: today)
+  
+      # Calculate the end_date, ensuring it's within 7 days
+      end_date = start_date + max_reservation_duration.days
+  
+      # Check if start date is before end date
+      if start_date < end_date
+        # Check for date conflicts with existing reservations
+        conflicts = listing.reservations.where(
+          '(start_date <= ? AND end_date >= ?) OR (start_date <= ? AND end_date >= ?)',
+          start_date, start_date, end_date, end_date
+        )
+  
+        if conflicts.empty?
+          # No conflicts, create the reservation
+          reservation = Reservation.create!(
+            listing_id: listing.id,
+            reserver_id: guest.id,
+            num_guests: rand(1..25),  # Randomly choose the number of guests
+            start_date: start_date,
+            end_date: end_date
+          )
+  
+          puts "Created reservation #{res_num} for Listing #{listing_num}"
+        else
+          puts "Conflict found for reservation #{res_num} in Listing #{listing_num}, skipping..."
+          conflicts.each do |conflict_reservation|
+            puts "Conflict with Reservation ID: #{conflict_reservation.id}, Start Date: #{conflict_reservation.start_date}, End Date: #{conflict_reservation.end_date}"
+          end
+        end
+      else
+        puts "Invalid date range for reservation #{res_num} in Listing #{listing_num}, skipping..."
+      end
+    end
+    puts 'Done'
+  end
+  
+
+
+
+
+
+
+
+  puts "Creating reviews..."
+
+  users = User.all.to_a
+  listings = Listing.all.to_a
+  reservations = Reservation.all.to_a
+
+  def generate_reviews(reservations)
+    reviews = []
+
+    review_texts = [
+      "Our stay at this place was absolutely fantastic! The host was extremely accommodating, and the check-in process was a breeze. The cleanliness and accuracy of the listing were outstanding.",
+      "We couldn't have asked for a better stay. The value for the price was exceptional, and the host's communication was top-notch. The location was perfect for our needs.",
+      "This place exceeded our expectations in every way. The host was friendly and responsive, and the check-in was seamless. We highly recommend this listing to others.",
+      "Our experience here was superb. The cleanliness of the place was impeccable, and the host provided all the necessary information for a great stay. The value for the price was excellent.",
+      "We had a wonderful time staying here. The accuracy of the listing was spot on, and the communication with the host was outstanding. The location couldn't have been better.",
+      "From start to finish, our stay was exceptional. The host's attention to detail was evident, and the check-in process was hassle-free. We would definitely return in the future.",
+      "Our stay was a delight from beginning to end. The host was accommodating and helpful, and the cleanliness and comfort of the place were top-notch. We couldn't have asked for more.",
+      "We had an amazing experience at this property. The host was welcoming, and the check-in process was smooth. The value for the price was unbeatable, and the location was convenient.",
+      "Our time at this place was simply wonderful. The accuracy of the listing was perfect, and the communication with the host was outstanding. We left with great memories.",
+      "This accommodation was a hidden gem. The cleanliness and amenities provided were exceptional, and the host's recommendations for local attractions were spot on.",
+      "We thoroughly enjoyed our stay here. The host's hospitality was exceptional, and the check-in was a breeze. The overall value for the price was outstanding.",
+      "Our stay was nothing short of amazing. The host's communication was prompt and helpful, and the cleanliness of the place exceeded our expectations. We would return in a heartbeat.",
+      "This property provided us with a fantastic experience. The host went above and beyond to ensure our comfort, and the location was peaceful and relaxing. Highly recommended!",
+      "Our stay at this place was a true pleasure. The host's warmth and attentiveness made all the difference, and the accuracy of the listing was on point.",
+      "We had an excellent time staying here. The host was incredibly helpful and responsive, and the cleanliness and comfort of the place were outstanding. We can't wait to come back!",
+      "This accommodation made our trip unforgettable. The host's hospitality was exceptional, and the check-in process was seamless. The amenities provided were top-notch.",
+      "Our experience at this property was wonderful. The host was attentive, and the cleanliness and accuracy of the listing were exceptional. We would highly recommend this place.",
+      "We had a fantastic stay at this property. The location was convenient, and the host's communication was excellent. The cleanliness and amenities provided were top-notch.",
+      "Our stay here was an absolute joy. The host's attention to detail and warm welcome made our trip special. We couldn't have asked for a better experience.",
+      "Staying here was a highlight of our trip. The host's recommendations for local attractions were on point, and the amenities provided added to our enjoyment.",
+      "Our time at this place was simply amazing. The host's attention to detail and the convenience of the location made our trip unforgettable.",
+      "This accommodation exceeded our expectations. The host's responsiveness and the overall value for the price were outstanding. We can't wait to return for another stay.",
+      "Our stay here was absolutely perfect. The host's communication and the cleanliness of the place were exceptional. We left with nothing but positive memories.",
+      "We had a fantastic experience staying at this property. The host's hospitality and the amenities provided made our trip special. Highly recommended!",
+      "Staying at this place was a true pleasure. The host's responsiveness and the accuracy of the listing exceeded our expectations. We will be back for sure.",
+      "Our stay here was simply fantastic. The host's attention to detail and the overall experience were top-notch. We left with great memories and a desire to return.",
+      "This accommodation is a hidden gem. The host's warm welcome and the convenience of the location made our stay enjoyable. We will definitely be back.",
+      "Our time at this property was unforgettable. The host's hospitality and the cleanliness of the place exceeded our expectations. We can't wait to return.",
+      "Our stay here was a dream come true. The host's communication and the value for the price were exceptional. We left with smiles on our faces and a desire to return.",
+      "We had a wonderful time at this property. The host's warmth and attentiveness made our stay special, and the amenities provided added to our enjoyment.",
+      "Staying here was a highlight of our trip. The host's recommendations for local attractions were spot on, and the overall value for the price was outstanding.",
+      "Our time at this place was simply amazing. The host's attention to detail and the convenience of the location made our trip unforgettable.",
+      "This accommodation exceeded our expectations. The host's responsiveness and the overall value for the price were outstanding. We can't wait to return for another stay.",
+      "Our stay here was absolutely perfect. The host's communication and the cleanliness of the place were exceptional. We left with nothing but positive memories.",
+      "We had a fantastic experience staying at this property. The host's hospitality and the amenities provided made our trip special. Highly recommended!",
+      "Staying at this place was a true pleasure. The host's responsiveness and the accuracy of the listing exceeded our expectations. We will be back for sure.",
+      "Our stay here was simply fantastic. The host's attention to detail and the overall experience were top-notch. We left with great memories and a desire to return.",
+      "This accommodation is a hidden gem. The host's warm welcome and the convenience of the location made our stay enjoyable. We will definitely be back.",
+      "Our time at this property was unforgettable. The host's hospitality and the cleanliness of the place exceeded our expectations. We can't wait to return.",
+      "Our stay here was a dream come true. The host's communication and the value for the price were exceptional. We left with smiles on our faces and a desire to return.",
+      "The moment we arrived at this place, we were blown away by its beauty! The host's warm welcome and attention to detail made our stay exceptional.",
+      "Our stay here was like a dream come true. The view from the property was breathtaking, and the host's recommendations for local restaurants were spot on.",
+      "This accommodation provided the perfect getaway. The tranquility of the location and the comfortable amenities ensured a relaxing stay.",
+      "We couldn't have asked for a better vacation. The host's hospitality was second to none, and the cleanliness of the place was remarkable.",
+      "From the moment we stepped in, we felt at home. The cozy atmosphere and thoughtful touches by the host made our stay memorable.",
+      "Our experience at this property was truly extraordinary. The unique design of the place and the host's graciousness left a lasting impression.",
+      "Staying here was a highlight of our trip. The host's knowledge of the local area and the incredible sunsets made our evenings unforgettable.",
+      "Our stay at this place was simply magical. The host's kindness and the abundance of wildlife in the area made our stay one-of-a-kind.",
+      "This hidden gem exceeded our wildest expectations. The host's attention to detail and the serenity of the surroundings made for a perfect retreat.",
+      "Our time at this property was a treasure. The host's thoughtfulness and the convenience of nearby hiking trails added to our enjoyment.",
+      "We had a fantastic experience staying at this unique property. The host's commitment to sustainability and the starry nights were highlights of our trip.",
+      "Staying at this place was a true escape. The host's homemade breakfasts and the peaceful mornings on the porch made our stay exceptional.",
+      "Our stay here was absolutely perfect. The host's local insights and the impeccably maintained garden were a delight.",
+      "We had an unforgettable experience at this property. The host's warmth and the picturesque surroundings created cherished memories.",
+      "This accommodation was a true paradise. The host's commitment to preserving nature and the abundance of birdwatching opportunities were incredible.",
+      "Our experience at this property was a masterpiece. The host's passion for art and the stunning sculptures on the grounds made our stay unique.",
+      "We had a fantastic time staying at this charming property. The host's homemade jams and the serene lake views made mornings special.",
+      "Our stay here was like a fairytale. The host's attention to detail and the enchanting forest nearby made our stay magical.",
+      "This hidden treasure was a dream come true. The host's dedication to sustainability and the starry nights were highlights of our trip.",
+      "Our time at this property was a journey into tranquility. The host's thoughtful touches and the serene lake views made our stay unforgettable.",
+      "Our stay at this place was an absolute joy. The host's friendly demeanor and the picturesque countryside made for a delightful getaway.",
+      "We couldn't have asked for a better retreat. The host's knowledge of the local history and the cozy fireplace created warm memories.",
+      "This accommodation exceeded our expectations in every way. The host's commitment to guest comfort and the stunning views were exceptional.",
+      "From the moment we arrived, we were welcomed with open arms. The host's homemade breakfasts and the charming cottage made our stay special.",
+      "Our experience at this property was simply magical. The host's passion for gardening and the enchanting flowers around the estate were a visual treat.",
+      "Staying here was like a dream. The host's culinary expertise and the gourmet meals served at sunset made our stay extraordinary.",
+      "Our stay at this place was a journey into tranquility. The host's mindfulness retreats and the serene surroundings left us refreshed.",
+      "This hidden waterfront treasure was a dream for those seeking tranquility. The host's waterside meditation sessions and the soothing sounds of water made our stay a meditative escape.",
+      "Our time at this property was a deep dive into the world of aquatic wonders. The host's aquatic workshops and the opportunity to witness bioluminescent phenomena were highlights of our trip.",
+      "This waterfront retreat was a masterpiece of nature's beauty. The host's nature-inspired activities and the serene waterfront views for inspiration left us with memories of nature's wonders.",
+      "Our experience at this waterfront property was a journey into the heart of nature. The host's water-based adventures and the opportunity to observe local wildlife in natural surroundings made our stay a naturalist's dream.",
+      "Our stay by the water was a tranquil escape from the everyday hustle and bustle. The soothing sound of waves and the waterfront view created a serene and peaceful atmosphere.",
+      "This waterfront retreat was a hidden gem. The host's water-based activities and the opportunity for aquatic adventures were the highlights of our stay.",
+      "From the moment we arrived, we were captivated by the allure of the water. The host's private waterfront access and the chance to engage in water sports made our coastal getaway an unforgettable experience.",
+      "Staying here was like having our own private beachfront paradise. The untouched shores and the crystal-clear waters right at our doorstep were a water enthusiast's dream come true.",
+      "Our experience at this coastal haven was like a dream come true. The host's boat excursions and the opportunity for fishing left us with cherished memories of evenings by the water.",
+      "This waterfront oasis was a haven for water lovers. The host's equipment rentals and the opportunity to explore the underwater world made our stay truly remarkable.",
+      "Our stay at this waterfront property was a refreshing escape from the city's chaos. The host's water-based activities and the sounds of nature just steps away made our stay a serene retreat.",
+      "This hidden waterfront paradise was a delight for nature enthusiasts. The host's guided tours and the chance to spot rare wildlife in the wetlands added to our wildlife encounters.",
+      "Our time at this property was like living on a floating paradise. The host's aquatic adventures and the tranquil waters of the bay made our stay a serene and balanced experience.",
+      "We had an extraordinary time at this waterside getaway. The host's water excursions and the chance to explore the beauty beneath the water's surface made our stay an aquatic adventure.",
+      "Staying at this place was like having a private island retreat. The host's boat trips to neighboring islands and the opportunity to immerse in marine life made our stay an island paradise.",
+      "Our stay here was a memorable journey along the water's edge. The host's romantic boat rides and the serene canals of the city made our stay a waterfront escape.",
+      "This waterfront accommodation was a haven for those who appreciate the beauty of aquatic surroundings. The host's waterside picnics and the chance to watch the sunset by the water's edge left us with scenic memories.",
+      "Our experience at this property was a dream come true for water enthusiasts. The host's beachcombing adventures and the chance to collect treasures by the shore made our stay a coastal delight.",
+      "Our stay here was like a rejuvenating retreat. The host's water-based activities and the serene waterfront views left us with peaceful and centered memories.",
+      "This hidden waterfront gem was a perfect sanctuary for those seeking tranquility. The host's waterside meditation sessions and the soothing sounds of water made our stay a meditative escape.",
+      "Our time at this property was an exploration of aquatic wonders. The host's aquatic workshops and the opportunity to witness natural phenomena were highlights of our trip.",
+      "This waterfront escape was a masterpiece of nature's beauty. The host's nature-inspired activities and the serene waterfront surroundings left us with memories of nature's wonders.",
+      "Our experience at this waterfront property was an immersion into the heart of nature. The host's water-based adventures and the opportunity to observe local wildlife in natural settings made our stay a naturalist's dream."
+  ]
+  
+  reservations.each do |reservation|
+    review = {
+      reservation_id: reservation.id,
+      reviewer_id: reservation.reserver_id,
+      listing_id: reservation.listing_id,  # Assign the listing_id from the reservation
+      cleanliness: rand(4..5),
+      accuracy: rand(4..5),
+      value: rand(4..5),
+      communication: rand(4..5),
+      check_in: rand(4..5),
+      location: rand(4..5),
+      body: review_texts.sample
+    }
+
+    reviews << review
+  end
+
+  # Shuffle the reviews to randomize them and then take one review for each reservation
+  reviews.shuffle!
+  unique_reviews = reviews.uniq { |review| review[:reservation_id] }
+
+  Review.create!(unique_reviews)
+end
+
+generate_reviews(reservations)
+
+puts "Reviews created!"
+reviews = Review.all
+puts "Total reviews generated: #{reviews.length}"
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_10_191139) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_20_215400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -121,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_191139) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "profile_picture", default: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -130,7 +132,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_191139) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "listings", "users", column: "lister_id"
   add_foreign_key "reservations", "listings"
-  add_foreign_key "reservations", "users", column: "reserver_id"
   add_foreign_key "reviews", "listings"
   add_foreign_key "reviews", "reservations"
   add_foreign_key "reviews", "users", column: "reviewer_id"

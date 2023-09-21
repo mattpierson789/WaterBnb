@@ -63,6 +63,7 @@ module Api
     def create
       @reservation = Reservation.new(reservation_params)
       @reservation.reserver_id ||= current_user.id
+      debugger
       if @reservation.save
         render :show
       else
@@ -113,7 +114,7 @@ module Api
     private
 
     def reservation_params
-      params.require(:reservation).permit(:reserver_id, :listing_id, :start_date, :end_date, :num_guests)
+      params.require(:reservation).permit(:reserver_id, :listing_id, :start_date, :end_date, :num_guests, :total_price)
     end
   end
 end

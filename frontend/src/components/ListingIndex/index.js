@@ -86,6 +86,7 @@ import MapContainer from "../Map"
 import { useSelector } from 'react-redux';
 import { getListings } from '../../store/listings';
 import "./ListingIndex.css";
+import LoadingPage from "../../util/LoadingPage"
 
 const ListingIndex = () => {
     const dispatch = useDispatch();
@@ -98,7 +99,9 @@ const ListingIndex = () => {
 
     useEffect(() => {
         document.title = `WaterBnB | Find your next adventure!`;
-      }, []);
+    }, []);
+
+    if (!listings) return <LoadingPage />; 
 
     return (
         <div className="container">

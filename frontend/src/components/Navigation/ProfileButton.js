@@ -130,7 +130,7 @@ const ProfileButton = ({ setShowSignUpModal, setShowLogInModal }) => {
       <>
         <div className="profile-drop-menu-bold-item">
         <div className="user-info">
-          <h3>Welcome {sessionUser.username}!</h3>
+          <h3>Welcome {sessionUser.firstName}!</h3>
           <p className="user-name">
             
           </p>

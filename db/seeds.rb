@@ -1839,74 +1839,69 @@ ApplicationRecord.transaction do
   puts "Creating reservations..."
 
 
-  # Assuming you have already defined listings and users
-  
-  # Define the number of listings you have
+# Assuming you have already defined listings and users
+listings = Listing.all.to_a
+users = User.all.to_a
 
-  listings = Listing.all.to_a
-  users = User.all.to_a
+num_listings = 53
+reservation_range = (1..10)
+max_reservation_duration = 7
+years_to_go_back = 7
+today = Date.today
 
-  num_listings = 53
+# Users reserved for current reservations
+reserved_users = users.sample(users.length / 2)  # Reserve half of the users for current reservations
+general_users = users - reserved_users  # Remaining users for random reservations
 
-  # Define a range for the listings (1 to 53 in this case)
-  listing_range = (1..num_listings)
+listing_range = (1..num_listings)
+listing_range.each do |listing_num|
+  listing = listings[listing_num - 1]
+  reserved_user = reserved_users.pop  # Pop a user from reserved_users array for current reservation
   
-  # Define a range for the reservations you want to create for each listing (1 reservation per listing)
-  reservation_range = (1..10)
-  
-  # Define the maximum reservation duration in days
-  max_reservation_duration = 7
-  
-  # Define the number of years you want to go back
-  years_to_go_back = 7
-  
-  # Loop through each listing
-  listing_range.each do |listing_num|
-    listing = listings[listing_num - 1]  # Corrected indexing
-  
-    # Loop through each reservation for the current listing
-    reservation_range.each do |res_num|
-      guest = users.sample  # Randomly select a guest from your users
-  
-      # Calculate random start_date within the last 7 years
-      today = Date.today
-      max_start_date = today - years_to_go_back.years  # Maximum start_date
+  reservation_range.each do |res_num|
+    guest = res_num == 1 ? reserved_user : (general_users + reserved_users).sample  # Ensure the first reservation for each listing is a current one
+    
+    # If guest is nil, skip to the next iteration
+    next unless guest
+
+    # For the first reservation of each listing, make it a current reservation
+    if res_num == 1
+      start_date = today
+      end_date = today + rand(1..max_reservation_duration).days  # Randomly choose the end date for current reservation
+    else
+      # For the other reservations, use the previous logic
+      max_start_date = today - years_to_go_back.years
       start_date = Faker::Date.between(from: max_start_date, to: today)
-  
-      # Calculate the end_date, ensuring it's within 7 days
-      end_date = start_date + max_reservation_duration.days
-  
-      # Check if start date is before end date
-      if start_date < end_date
-        # Check for date conflicts with existing reservations
-        conflicts = listing.reservations.where(
-          '(start_date <= ? AND end_date >= ?) OR (start_date <= ? AND end_date >= ?)',
-          start_date, start_date, end_date, end_date
-        )
-  
-        if conflicts.empty?
-          # No conflicts, create the reservation
-          reservation = Reservation.create!(
-            listing_id: listing.id,
-            reserver_id: guest.id,
-            num_guests: rand(1..25),  # Randomly choose the number of guests
-            start_date: start_date,
-            end_date: end_date
-          )
-  
-          puts "Created reservation #{res_num} for Listing #{listing_num}"
-        else
-          puts "Conflict found for reservation #{res_num} in Listing #{listing_num}, skipping..."
-          conflicts.each do |conflict_reservation|
-            puts "Conflict with Reservation ID: #{conflict_reservation.id}, Start Date: #{conflict_reservation.start_date}, End Date: #{conflict_reservation.end_date}"
-          end
-        end
-      else
-        puts "Invalid date range for reservation #{res_num} in Listing #{listing_num}, skipping..."
-      end
+      end_date = start_date + rand(1..max_reservation_duration).days
     end
-    puts 'Done'
+    
+    # Check and create reservation as in your previous logic
+    if start_date < end_date
+      conflicts = listing.reservations.where(
+        '(start_date <= ? AND end_date >= ?) OR (start_date <= ? AND end_date >= ?)',
+        start_date, start_date, end_date, end_date
+      )
+      
+      if conflicts.empty?
+        reservation = Reservation.create!(
+          listing_id: listing.id,
+          reserver_id: guest.id,
+          num_guests: rand(1..25),
+          start_date: start_date,
+          end_date: end_date
+        )
+        
+        puts "Created reservation #{res_num} for Listing #{listing_num}"
+      else
+        puts "Conflict found for reservation #{res_num} in Listing #{listing_num}, skipping..."
+      end
+    else
+      puts "Invalid date range for reservation #{res_num} in Listing #{listing_num}, skipping..."
+    end
   end
+end
+puts 'Done'
+
   
 
 

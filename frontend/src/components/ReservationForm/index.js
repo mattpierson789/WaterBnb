@@ -10,6 +10,7 @@ import { createReservation } from "../../store/reservations";
 import { differenceInDays } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Star } from "../../assets/images/star.svg";
+import { fetchListingReviews, getListingReviews } from "../../store/reviews";
 
 const ReservationForm = ({
   startDate,
@@ -128,6 +129,22 @@ const ReservationForm = ({
     setTotal(calculatedTotal);
   }, [startDate, endDate, nightPrice, cleaningFee]);
 
+  const listingReviews = useSelector(getListingReviews(listing.id));
+  const ratingTitle = ["cleanliness", "accuracy", "communication", "location", "checkIn", "value"];
+
+  useEffect(() => {
+    dispatch(fetchListingReviews(listing.id));
+  }, [dispatch, listing.id]);
+
+  if (!listingReviews) return null;
+  
+  // Calculating the average ratings
+  let averageRatings = {};
+  ratingTitle.forEach(title => {
+    let sum = listingReviews.reduce((acc, review) => acc + review[title], 0);
+    averageRatings[title] = (sum / listingReviews.length).toFixed(2);
+  });
+
   return (
     <>
       <div className="booking-header">
@@ -146,7 +163,7 @@ const ReservationForm = ({
           </div>
           <span className="separator">&#x2022;</span>
           <div className="listing-num-reviews">
-            <span>{listing.numReviews} reviews</span>
+            <span>{listingReviews.length} reviews</span>
           </div>
         </div>
       </div>

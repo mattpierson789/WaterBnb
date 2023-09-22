@@ -41,21 +41,23 @@ const ReviewShow = ({ listing }) => {
     </div>
   ));
   
-  const reviewCards = listingReviews.map((review) => (
-    <div className="review-card-item" key={review.id}>
-      <div className="review-user-field">
-        <div className="review-user-left">
-          <i className="fa-regular fa-circle-user" style={{color: randomRGB()}}></i>
+  const reviewCards = listingReviews.map((review) => {
+    return (
+      <div className="review-card-item" key={review.id}>
+        <div className="review-user-field">
+          <div className="review-user-left">
+            <img src={review.reviewerProfilePicture} alt={`${review.reviewer}'s profile`} className="profile-picture" />
+          </div>
+          <div className="review-user-right">
+            <div className="review-user-name">{review.reviewerFirstName} {review.reviewerLastName}</div>
+          </div>
         </div>
-        <div className="review-user-right">
-          <div className="review-user-name">{review.reviewer}</div>
+        <div className="review-body-field">
+          <div>{review.body}</div>
         </div>
       </div>
-      <div className="review-body-field">
-        <div>{review.body}</div>
-      </div>
-    </div>
-  ));
+    );
+  });
   
   const overallRating = (Object.values(averageRatings).reduce((a, b) => a + parseFloat(b), 0) / ratingTitle.length).toFixed(2);
 

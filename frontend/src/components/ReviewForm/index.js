@@ -115,10 +115,6 @@ const endDate = tripData?.reservation?.endDate ? convertToDate(tripData.reservat
                 <span className="review-listing-location">
                   {reservedTrips.city}, {reservedTrips.state}
                 </span>
-                <div className="review-listing-rating">
-                  Overall Rating: <Star />
-                  {/* {tripData.ratings.overallRating} */}
-                </div>
                 <span className="review-listing-host">
                   {/* Hosted by: {tripData.host.name} {tripData.host.name} */}
                 </span>

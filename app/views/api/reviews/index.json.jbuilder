@@ -5,7 +5,10 @@ json.reviews do
                     :communication, :check_in, :accuracy, :location, :value
       
       json.reviewer review.reviewer.name
+      json.reviewerFirstName review.reviewer.first_name
+      json.reviewerLastName review.reviewer.last_name
       json.reviewerProfilePicture review.reviewer.profile_picture
     end
   end
 end
+

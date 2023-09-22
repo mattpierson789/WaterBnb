@@ -121,6 +121,7 @@
     display: flex;
     flex-direction: column;
     align-content: space-between;
+    bottom: 40px;
   }
   
   .review-user-name {
@@ -135,4 +136,18 @@
   .review-body-field {
     max-height: 150px;
   }
+
+  .profile-picture {
+    width: 40px; /* Or whatever size you want */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .review-user-name {
+    font-family: 'Circular Std';
+    margin-top: 15px; /* Adjust as needed */
+}
+
+  
   

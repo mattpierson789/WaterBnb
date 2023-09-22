@@ -7,16 +7,21 @@
   
   .listing-review-header {
     display: flex;
-    font-size: 20px;
     align-items: center;
+    gap: 8px; /* Adjust as needed to add space between the elements */
   }
   
-  #listing-num-reviews span {
-    font-size: 20px;
+  .listing-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Adjust as needed to add space between the star and the score */
+  }
+  
+  #listing-num-reviews {
+    font-size: 14px;
     font-weight: bold;
-    text-decoration: none;
   }
-  
+    
   .listing-review-header svg {
     width: 18px;
     height: 18px;

@@ -87,6 +87,7 @@ import { useSelector } from 'react-redux';
 import { getListings } from '../../store/listings';
 import "./ListingIndex.css";
 import LoadingPage from "../../util/LoadingPage"
+import { toggleLoading } from '../../store/listings';
 
 const ListingIndex = () => {
     const dispatch = useDispatch();
@@ -97,7 +98,14 @@ const ListingIndex = () => {
     useEffect(() => {
         dispatch(fetchListings()).then(() => setLoading(false));
       }, [dispatch]);
-    
+
+
+    //   useEffect(() => {
+    //     dispatch(toggleLoading());
+    //     dispatch(fetchListings()).finally(() => {
+    //         dispatch(toggleLoading());
+    //     });
+    // }, [dispatch]);
 
     useEffect(() => {
         document.title = `WaterBnB | Find your next adventure!`;

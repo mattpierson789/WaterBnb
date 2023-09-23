@@ -39,12 +39,14 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create]
-    resource :session, only: [:show, :create, :destroy]
+    resource :session, only: [:create, :destroy, :show]
 
     resources :listings, only: [:create, :show, :index] do
       collection do
         get 'unique_type/:unique_type', to: 'listings#unique_type_index'
         get 'unique_activity/:unique_activity', to: 'listings#unique_activity_index'
+        get 'rental_type/:rental_type', to: 'listings#villa'
+        get 'pets_allowed', to: 'listings#pets_allowed'
       end
       get 'reviews', to: 'reviews#listing_review' # Nested under listings
     end
@@ -56,6 +58,7 @@ Rails.application.routes.draw do
       end
       resources :reviews, only: [:create, :update, :destroy, :show]
     end
-  end 
+  end
 end
+
 

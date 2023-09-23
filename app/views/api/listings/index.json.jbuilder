@@ -1,10 +1,16 @@
+# json.listings do
+#     @listings.each do |listing|
+#       json.set! listing.id do
+#         json.partial! "listing", listing: listing
+#       end
+#     end
+#   end
+
 json.listings do
-    @listings.each do |listing|
-      json.set! listing.id do
-        json.partial! "listing", listing: listing
-      end
-    end
+  json.array! @listings do |listing|
+    json.partial! "listing", listing: listing
   end
+end
   
   reservations = Reservation.all
   json.reservations do

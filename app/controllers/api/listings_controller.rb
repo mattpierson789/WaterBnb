@@ -21,6 +21,18 @@ module Api
       @listings = Listing.where("unique_activity LIKE ?", "%#{params[:unique_activity]}%")
       render 'api/listings/index'
     end
+
+    def villa
+      @listings = Listing.where("rental_type LIKE ?", "%#{params[:rental_type]}%")
+      render 'api/listings/index'
+      debugger
+    end
+
+
+def pets_allowed
+  @listings = Listing.where(pets_allowed: true)
+  render 'api/listings/index'
+end
     
     
     private

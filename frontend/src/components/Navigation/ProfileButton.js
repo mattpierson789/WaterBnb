@@ -59,21 +59,19 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../store/session";
-import { Navigate, Link } from "react-router-dom";
-// import { formatTwoDigitNumberString } from "../../utils/urlFormatter";
-
+import { Navigate, Link, useNavigate } from "react-router-dom";
 import "./Navigation.css";
 
 const ProfileButton = ({ setShowSignUpModal, setShowLogInModal }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session?.user);
   const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    setShowMenu(false); // Close the menu after logout
-    // Instead of returning a <Navigate>, use programmatic navigation if you're using React Router
-    // Example: history.push("/")
+    setShowMenu(false); 
+    navigate('/');
   };
 
   const toggleMenu = () => {
@@ -121,7 +119,6 @@ const ProfileButton = ({ setShowSignUpModal, setShowLogInModal }) => {
         <a target="_blank" href="https://github.com/mattpierson789">
           <li>Github</li>
         </a>
-        {/* <li>Help</li> */}
       </>
     );
   }
@@ -130,29 +127,21 @@ const ProfileButton = ({ setShowSignUpModal, setShowLogInModal }) => {
       <>
         <div className="profile-drop-menu-bold-item">
         <div className="user-info">
-          <h3>Welcome {sessionUser.firstName}!</h3>
+          <h3>Welcome, {sessionUser.firstName}!</h3>
           <p className="user-name">
             
           </p>
         </div>
         <div className="line"></div>
           <Link to={`user/trips`}>
-            <div>Trips</div>
+            <div>My Trips</div>
           </Link>
-          {/* <li>Wishlists</li> */}
         </div>
         <li className="menu-divider-li">
           <MenuDivider />
         </li>
-        {/* <li>Sparebnb your home</li> */}
-        {/* <a target="_blank" href="https://www.linkedin.com/in/carvey-hor/">
-          <li>LinkedIn</li>
-        </a>
-        <a target="_blank" href="https://github.com/carveyh/sparebnb">
-          <li>Github</li>
-        </a> */}
         <li className="menu-divider-li">
-          {/* <MenuDivider /> */}
+        
         </li>
         <span onClick={handleLogout}>Logout</span>
       </>
@@ -173,16 +162,6 @@ const ProfileButton = ({ setShowSignUpModal, setShowLogInModal }) => {
         <i className="fa-solid fa-bars"></i>
         <div className="user-icon">
           {!sessionUser && <i className="fa-solid fa-user"></i>}
-          {/* Profile photo setup */}
-          {/* {sessionUser && (
-            <img
-              className="fit-photo"
-              src={require(`../../images/profilepics/${formatTwoDigitNumberString(
-                (sessionUser.id % 12) + 1
-              )}.png`)}
-              alt="User profile"
-            />
-          )} */}
         </div>
       </button>
       {showMenu && <ProfileDropMenu />}

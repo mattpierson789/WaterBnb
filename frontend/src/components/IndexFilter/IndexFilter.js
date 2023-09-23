@@ -3,14 +3,44 @@ import { useDispatch } from "react-redux"
 import { fetchListings } from "../../store/listings"
 import { fetchListingsType } from "../../store/listings"
 import {fetchListingsActivity} from "../../store/listings"
+import { fetchRandomListing } from '../../store/listings'; 
+import { fetchPetsAllowedListings } from '../../store/listings';
+import { fetchRentalType } from "../../store/listings"
+import { toggleLoading } from '../../store/listings';
 import './IndexFilter.css' 
 
 export const IndexFilter = () => {
     const dispatch = useDispatch()
     const [selected, setSelected] = useState('all')
 
+
+
+    const handleClick = (fetchFunction) => {
+        dispatch(toggleLoading());
+        dispatch(fetchFunction()).finally(() => {
+            dispatch(toggleLoading());
+        });
+    };
+
+
     return (
         <div className="filter-bar">
+
+            <div 
+                className="filter-button" 
+                onClick={() => {
+                    dispatch(fetchListings()); // Assuming fetchListings fetches all listings
+                    setSelected('All');
+                }} 
+                style={selected === 'All' ? { borderBottom: '2px solid #222222' } : {}}
+            >
+                <img 
+                    className="filter-image" 
+                    alt="" 
+                    src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+4.59.02+PM.png'
+                />
+                <p>All</p>
+            </div>
 
 
             <div className="filter-button" onClick={() => {dispatch(fetchListingsType('Ocean')); setSelected('Ocean')}} style={selected === 'Ocean' ? { borderBottom: '2px solid #222222' } : {}}>
@@ -69,19 +99,15 @@ export const IndexFilter = () => {
                 <p>National Park</p>
             </div>
 
-            <div className="filter-button" onClick={() => {dispatch(fetchListingsActivity('Top Rated')); setSelected('Top Rated')}} style={selected === 'Top Rated' ? { borderBottom: '2px solid #222222' } : {}}>
-                <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+4.59.02+PM.png'></img>
-                <p>Top Rated</p>
+        
+            <div className="filter-button" onClick={() => {dispatch(fetchRentalType("Villa")); setSelected('Villa')}} style={selected === 'Villa' ? { borderBottom: '2px solid #222222' } : {}}>
+            <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+4.59.10+PM.png'></img>
+             <p>Villa</p>
             </div>
 
-            <div className="filter-button" onClick={() => {dispatch(fetchListingsActivity('')); setSelected('')}} style={selected === '' ? { borderBottom: '2px solid #222222' } : {}}>
-                <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/Screen+Shot+2023-06-08+at+4.59.10+PM.png'></img>
-                <p>Random</p>
-            </div>
-
-            <div className="filter-button" onClick={() => {dispatch(fetchListingsActivity('Pets Allowed')); setSelected('Pets Allowed')}} style={selected === 'Pets Allowed' ? { borderBottom: '2px solid #222222' } : {}}>
-                <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/pets.png'></img>
-                <p>Pets Allowed</p>
+            <div className="filter-button" onClick={() => {dispatch(fetchPetsAllowedListings()); setSelected('Pets Allowed')}} style={selected === 'Pets Allowed' ? { borderBottom: '2px solid #222222' } : {}}>
+            <img className="filter-image" alt="" src='https://mp-waterbnb-seeds.s3.amazonaws.com/Index+Filters/pets.png'></img>
+            <p>Pets Allowed</p>
             </div>
 
             </div>

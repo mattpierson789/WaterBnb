@@ -4,6 +4,7 @@ import './ListingIndexItem.css';
 import {useState} from 'react';
 
 const ListingIndexItem = ({ listing }) => {
+  debugger
   let locationAdjective = '';
 
   if (listing.uniqueType === 'Mountains') {
@@ -42,11 +43,11 @@ const ListingIndexItem = ({ listing }) => {
     <div className="listing-index-item2">
       <div className="listing-index-item-image-container">
         <Link className="index-show-element" to={`/listings/${listing.id}`}>
-          <img
-            className="listing-index-item-image"
-            src={listing.photos[currentImageIndex]}
-            alt=""
-          />
+        <img
+        className="listing-index-item-image"
+        src={listing.photos ? listing.photos[currentImageIndex] : 'path_to_placeholder_image'}
+        alt=""
+    />
         </Link>
         <button className="arrow left-arrow" onClick={prevImage}></button>
         <button className="arrow right-arrow" onClick={nextImage}></button>

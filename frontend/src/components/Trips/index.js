@@ -18,6 +18,7 @@ const TripsIndex = () => {
     const currentUser = useSelector((state) => state.session.user);
     const trips = useSelector(getReservations);
     const [refreshTrips, setRefreshTrips] = useState(false);
+    const [loading, setLoading] = useState(true);
 
 
     const [mousePositions, setMousePositions] = useState({
@@ -30,7 +31,7 @@ const TripsIndex = () => {
 
     useEffect(() => {
         if (currentUser) {
-            dispatch(fetchReservations());
+            dispatch(fetchReservations()).then(() => setLoading(false));
             navigate("/user/trips");
         }
     }, [dispatch, currentUser]);
@@ -57,7 +58,7 @@ const TripsIndex = () => {
         navigate("/");
     };
 
-    if (!trips) return <LoadingPage />;
+    if (loading) return <LoadingPage />; 
 
     const pastTrips = Object.values(trips).filter(
         (trip) => new Date(trip.endDate) < new Date()

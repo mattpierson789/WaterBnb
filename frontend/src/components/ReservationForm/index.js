@@ -19,7 +19,7 @@ const ReservationForm = ({
   setEndDate,
   calendarOpen,
   setCalendarOpen,
-  blockedDates,
+  blockedDates, 
 }) => {
   const { listingId } = useParams();
   const listing = useSelector(state => state.listings[listingId]);
@@ -30,6 +30,7 @@ const ReservationForm = ({
   const [numGuests, setNumGuests] = useState(1);
   const [numNights, setNumNights] = useState(1);
   const [serviceFee, setServiceFee] = useState(0);
+  const [showLogInModal, setShowLogInModal] = useState(false);
   const [errors, setErrors] = useState([]);
   const [total, setTotal] = useState(0);
   const nightPrice = listing.nightPrice;
@@ -157,11 +158,7 @@ const ReservationForm = ({
             <div className="review-star">
               <Star />
             </div>
-            <div className="listing-rating-score">
-              {/* {listing.ratings.overallRating} */}
-            </div>
           </div>
-          <span className="separator">&#x2022;</span>
           <div className="listing-num-reviews">
             <span>{listingReviews.length} reviews</span>
           </div>

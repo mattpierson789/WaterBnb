@@ -68,7 +68,7 @@ ApplicationRecord.transaction do
       username
     end
     
-    20.times do 
+    100.times do 
       User.create!({
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -175,13 +175,14 @@ ApplicationRecord.transaction do
       )
 
       l3.photos.attach([
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Lakeside+Alpine+Cabin/Screen+Shot+2023-09-20+at+6.40.25+PM.png'), filename: 'OceanBeach1'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Lakeside+Alpine+Cabin/Screen+Shot+2023-09-20+at+6.39.01+PM.png'), filename: 'OceanBeach1'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Lakeside+Alpine+Cabin/Screen+Shot+2023-09-20+at+6.40.07+PM.png'), filename: 'OceanBeach2'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Lakeside+Alpine+Cabin/Screen+Shot+2023-09-20+at+6.39.52+PM.png'), filename: 'OceanBeach3'},
         {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Lakeside+Alpine+Cabin/Screen+Shot+2023-09-20+at+6.39.15+PM.png'), filename: 'OceanBeach4'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Lakeside+Alpine+Cabin/Screen+Shot+2023-09-20+at+6.39.01+PM.png'), filename: 'OceanBeach5'}
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Lakeside+Alpine+Cabin/Screen+Shot+2023-09-20+at+6.40.25+PM.png'), filename: 'OceanBeach5'}
       ])
       
+     
       l4 = Listing.create!(
         lister_id: 3,
         city: 'Amsterdam',

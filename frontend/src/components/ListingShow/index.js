@@ -11,6 +11,7 @@ import Amenities from './Amenities';
 import Calendar from '../Calendar/Calendar';
 import ReviewShow from '../ReviewShow';
 import { fetchListingReviews } from '../../store/reviews'; 
+import { ReactComponent as Star } from "../../assets/images/star.svg";
 
 const ListingShow = () => {
   const { listingId } = useParams();
@@ -79,15 +80,22 @@ const ListingShow = () => {
   return (
     <div className="listing-show-container">
       <main className="show-main-container">
-        <div className="listing-show-description">
-          <div className="top-break"></div>
-          <h1>{listing.title}</h1>
-
-    
-          <span className="listing-location">
-            {listing.city}, {listing.country}
-          </span>
-        </div>
+      <div className="show-header">
+          <h1 className="listing-title">{listing.title}</h1>
+          <div className="listing-sub-title">
+            <div className="listing-rating">
+              <div className="review-star">
+                <Star />
+              </div>
+              <div className="listing-rating-score">
+                {listing.ratings.rating}
+              </div>
+            </div>
+            <span className="listing-location">
+              {listing.city}, {listing.country}
+            </span>
+          </div>
+          </div>
 
         <div className="show-images">{imageGroup}</div>
 

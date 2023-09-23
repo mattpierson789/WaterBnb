@@ -1,207 +1,40 @@
 .listing-show {
-    animation: fade-in-show 200ms;
-    padding-bottom: 100px;
-  }
-  
-  .show-main-container {
-    padding-left: 80px;
-    padding-right: 80px;
-    display: flex;
-    flex-direction: column;
-    padding-left: 13vw;
-    padding-right: 13vw;
-    list-style-type: none;
-    font-family: 'Circular Std';
-  }
-  
-  .show-main-container > div {
-    padding-top: 10px;
-    padding-bottom: 18px;
-  }
-  
-  .show-main-container > * {
-    margin-top: 8px;
-    list-style-type: none;
-  }
-  
-  div.show-header,
-  div.show-images {
-    border: none;
-  }
-  
-  div.show-header h1 {
-    margin-bottom: 10px;
-  }
-  
-  div.map-section {
-    border-bottom: none;
-  }
-  
-  .show-container {
-    display: flex;
-  }
-  
-  .listing-info {
-    width: 58.333333333333336%;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-left: 0%;
-    margin-right: 0%;
-  }
-  
-  .listing-info h2 {
-    padding-bottom: 4px;
-  }
-  
-  .reserve-form-container {
-    position: relative;
-    width: 33.33333333333333%;
-    margin-left: 8.333333333333332%;
-    margin-right: 0%;
-    height: 100vh;
-  }
-  .reserve-form {
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-    top: 80px;
-    position: sticky;
-    z-index: 1;
-  }
-  
-  .listing-img-group-container {
-    width: 100%;
-    height: 60vh;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1%;
-    overflow: hidden;
-  }
-  
-  .img-group-left {
-    display: flex;
-    width: 49.5%;
-    height: 100%;
-  }
-  
-  .img-group-right {
-    display: flex;
-    flex-wrap: wrap;
-    width: 49.5%;
-    height: 100%;
-    gap: 2%;
-  }
-  
-  .img-wrapper {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .img-group-right .img-wrapper {
-    width: 49%;
-    height: 49%;
-  }
-  
-  .listing-location {
-    font-size: 16px;
-    font-weight: normal !important;
-    text-decoration: underline;
-    list-style-type: none;
-  }
-  
-  .listing-headers,
-  .listing-description,
-  .amenities,
-  .booking-calender {
-    border-bottom: 1px solid lightgray;
-    padding: 15px 0 15px;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
+  animation: fade-in-show 200ms;
+  padding-bottom: 100px;
 }
 
-.booking-calender::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 110px; /* adjust this value to the desired width of the border */
-  height: 1px;
-  background-color: lightgray;
+.show-main-container {
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 13vw;
+  padding-right: 13vw;
+  list-style-type: none;
+  font-family: 'Circular Std';
 }
 
+.show-main-container > div {
+  padding-top: 10px;
+  padding-bottom: 18px;
+}
 
-  
-  .booking-calender {
-    border-bottom: none;
-  }
-  
-  .listing-details {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .booking-calender {
-    position: relative;
-  }
-  
-  .booking-calender div.reservation-calendar {
-    position: static;
-    left: 0;
-    width: 100%;
-  }
-  
-  .listing-sub-title {
-    display: flex;
-    align-items: center;
-  }
-  
-  .listing-rating {
-    display: flex;
-  }
-  
-  .listing-rating-score,
-  .listing-review-text {
-    margin-left: 8px;
-  }
-  
-  .listing-num-reviews {
-    text-decoration: underline;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  .listing-rating-score {
-    font-weight: bold;
-  }
+.show-main-container > * {
+  margin-top: 8px;
+  list-style-type: none;
+}
 
-  /* Remove the sticky position from the .reserve-form */
-.reserve-form {
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-    z-index: 1;
-  }
-  
-  /* Add a margin-top to create space between amenities and the calendar */
-  .booking-calendar {
-    margin-top: 20px; /* Adjust the value as needed */
-  }
+div.show-header,
+div.show-images {
+  border: none;
+}
 
-  .listing-location {
-    list-style-type: none;
+div.show-header h1 {
+  margin-bottom: 10px;
+}
+
+div.map-section {
+  border-bottom: none;
 }
 
 .show-container {
@@ -217,54 +50,230 @@
   margin-right: 0%;
 }
 
+.listing-info h2 {
+  padding-bottom: 4px;
+}
+
+.reserve-form-container {
+  position: relative;
+  width: 33.33333333333333%;
+  margin-left: 8.333333333333332%;
+  margin-right: 0%;
+  height: 80vh;
+  margin-top: 0px; /* Adjusted margin-top */
+}
+
+.reserve-form {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  top: 200px; /* Adjusted top */
+  position: sticky;
+  z-index: 1;
+}
+
+.reviews-section {
+  margin-top: 0px
+  }
+
+
+.listing-img-group-container {
+  width: 100%;
+  height: 60vh;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1%;
+  overflow: hidden;
+  margin-top: -10px; /* Use negative value to move up */
+}
+
+
+.img-group-left {
+  display: flex;
+  width: 49.5%;
+  height: 100%;
+}
+
+.img-group-right {
+  display: flex;
+  flex-wrap: wrap;
+  width: 49.5%;
+  height: 100%;
+  gap: 2%;
+}
+
+.img-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-group-right .img-wrapper {
+  width: 49%;
+  height: 49%;
+}
+
+.listing-location {
+  font-size: 16px;
+  font-weight: normal !important;
+  list-style-type: none;
+}
+
+.listing-headers,
+.listing-description,
+.amenities,
+.booking-calender {
+  border-bottom: 1px solid lightgray;
+  padding: 15px 0 15px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.booking-calender::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 0;
+width: 110px; /* adjust this value to the desired width of the border */
+height: 1px;
+background-color: lightgray;
+}
+
+
+
+.booking-calender {
+  border-bottom: none;
+}
+
+.listing-details {
+  display: flex;
+  gap: 5px;
+}
+
+.booking-calender {
+  position: relative;
+}
+
+.booking-calender div.reservation-calendar {
+  position: static;
+  left: 0;
+  width: 100%;
+}
+
+.listing-sub-title {
+  display: flex;
+  align-items: center;
+}
+
+.listing-rating {
+  display: flex;
+}
+
+.listing-rating-score,
+.listing-review-text {
+  margin-left: 8px;
+}
+
+.listing-num-reviews {
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+
+.listing-rating-score {
+  font-weight: bold;
+}
+
+/* Remove the sticky position from the .reserve-form */
+.reserve-form {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  z-index: 1;
+}
+
+/* Add a margin-top to create space between amenities and the calendar */
+.booking-calendar {
+  margin-top: 20px; /* Adjust the value as needed */
+}
+
+.listing-location {
+  list-style-type: none;
+  margin-left: 5px;
+  margin-bottom: 3px
+}
+
+.show-container {
+display: flex;
+}
+
+.listing-info {
+width: 58.333333333333336%;
+display: flex;
+flex-direction: column;
+height: 100%;
+margin-left: 0%;
+margin-right: 0%;
+}
+
 /* Reduce space between title details and description details */
 #listing-show-title-details h2 {
-  margin-bottom: 0px;  /* Adjust this value as needed */
+margin-bottom: 0px;  /* Adjust this value as needed */
 }
 
 #listing-show-description-details {
-  margin-bottom: 20px;  /* Adjust this value as needed */
-  border-bottom: 1px solid lightgray;
-  padding: 5px 0 5px;
+margin-bottom: 20px;  /* Adjust this value as needed */
+border-bottom: 1px solid lightgray;
+padding: 5px 0 5px;
 
 }
 
 /* Make the listing description slightly bigger */
 #description {
-  font-size: 18px;  /* Adjust this value to your preferred size */
-  margin-top: 25px;  /* Adds some space above the description for better readability */
+font-size: 18px;  /* Adjust this value to your preferred size */
+margin-top: 25px;  /* Adds some space above the description for better readability */
 }
 
 h2 {
-  display: block;
-  font-size: 1.5em;
-  margin-block-start: 0.0015em;  /* Half of the original 0.83em */
-  margin-block-end: 0.53em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
+display: block;
+font-size: 1.5em;
+margin-block-start: 0.0015em;  /* Half of the original 0.83em */
+margin-block-end: 0.53em;
+margin-inline-start: 0px;
+margin-inline-end: 0px;
+font-weight: bold;
 }
 
 .separator {
-  border-bottom: 1px solid lightgray;
-  padding-top: 10px;    /* space above the separator */
-  padding-bottom: 10px; /* space below the separator */
-  width: 100%;          /* default width to take full container's width */
-  box-sizing: border-box;
+border-bottom: 1px solid lightgray;
+padding-top: 10px;    /* space above the separator */
+padding-bottom: 10px; /* space below the separator */
+width: 100%;          /* default width to take full container's width */
+box-sizing: border-box;
 }
 
 
 .separator.short {
-  width: 500px;
+width: 500px;
 }
 
 .separator.medium {
-  width: 700px;
+width: 700px;
 }
 
 .separator.long {
-  width: 1000px;
+width: 1000px;
 }
-
-
-

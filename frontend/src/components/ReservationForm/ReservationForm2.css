@@ -5,9 +5,20 @@
     margin-bottom: 16px;
   }
   
-  .booking-price h2 {
-    margin-right: 8px;
-  }
+  .booking-price {
+    display: flex;
+    align-items: center;
+}
+
+.booking-price h2 {
+  margin-right: 5px; /* or the value that suits your design */
+}
+
+.booking-price span {
+  margin-left: 0px;
+  margin-bottom: 8px; /* or the value that suits your design */
+}
+
   
   .booking-reviews {
     display: flex;

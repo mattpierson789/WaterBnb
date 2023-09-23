@@ -90,6 +90,7 @@ const ListingShow = () => {
               <div className="listing-rating-score">
                 {listing.ratings.rating}
               </div>
+              <div className="separatord">•</div>
             </div>
             <span className="listing-location">
               {listing.city}, {listing.country}

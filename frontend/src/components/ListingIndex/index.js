@@ -92,16 +92,18 @@ const ListingIndex = () => {
     const dispatch = useDispatch();
     const [toggleMap, setToggleMap] = useState(false);
     const listings = useSelector(getListings);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        dispatch(fetchListings());
-    }, [dispatch]);
+        dispatch(fetchListings()).then(() => setLoading(false));
+      }, [dispatch]);
+    
 
     useEffect(() => {
         document.title = `WaterBnB | Find your next adventure!`;
     }, []);
 
-    if (!listings) return <LoadingPage />; 
+    if (loading) return <LoadingPage />; 
 
     return (
         <div className="container">

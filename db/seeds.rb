@@ -1330,11 +1330,11 @@ ApplicationRecord.transaction do
       )
 
       l38.photos.attach([
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Harbour+Apt/Screen+Shot+2023-06-02+at+8.57.02+PM.png'), filename: '1'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Harbour+Apt/Screen+Shot+2023-06-02+at+8.57.13+PM.png'), filename: '2'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Harbour+Apt/Screen+Shot+2023-06-02+at+8.57.25+PM.png'), filename: '3'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Harbour+Apt/Screen+Shot+2023-06-02+at+8.57.39+PM.png'), filename: '4'},
-        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Harbour+Apt/Screen+Shot+2023-06-02+at+8.57.55+PM.png'), filename: '5'}
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Apt/Screen+Shot+2023-06-02+at+9.37.59+PM.png'), filename: '1'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Apt/Screen+Shot+2023-06-02+at+9.37.42+PM.png'), filename: '2'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Apt/Screen+Shot+2023-06-02+at+9.37.31+PM.png'), filename: '3'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Apt/Screen+Shot+2023-06-02+at+9.37.21+PM.png'), filename: '4'},
+        {io: URI.open('https://mp-waterbnb-seeds.s3.amazonaws.com/Listings/Sydney+Apt/Screen+Shot+2023-06-02+at+9.37.10+PM.png'), filename: '5'}
       ])
 
       l39 = Listing.create!(

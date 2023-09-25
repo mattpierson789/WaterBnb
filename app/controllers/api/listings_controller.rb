@@ -25,7 +25,6 @@ module Api
     def villa
       @listings = Listing.where("rental_type LIKE ?", "%#{params[:rental_type]}%")
       render 'api/listings/index'
-      debugger
     end
 
 

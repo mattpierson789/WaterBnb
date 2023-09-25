@@ -201,7 +201,7 @@ const ReservationForm = ({
                 className="check-out-field"
                 onClick={() => setCalendarOpen((prevState) => !prevState)}
               >
-                <div className="check-out-tag">CHECK-OUT</div>
+                <div className="check-out-tag">CHECKOUT</div>
                 <input
                   className="check-out-input"
                   placeholder="MM/DD/YYYY"
